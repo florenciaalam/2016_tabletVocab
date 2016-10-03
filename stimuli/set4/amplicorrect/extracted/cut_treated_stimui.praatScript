@@ -1,0 +1,102 @@
+# This script takes a sound file and text grid with labelled sections (works for one or several)
+# and extracts every labelled segment into its own sound file, each labelled segment will be called as the <soundfile>_1, <soundfile>_2 etc.
+# it also creates a .lab file containing all lables from the sound file. 
+
+
+form Make text file from an IntervalTier in the selected TextGrid object
+	comment Directory of TextGrids and wav files: (Note: Include final slash in directories)
+	comment e.g. Mac: /Users/Laia/Desktop/try/  	PC: C:\Users\Laia\Desktop\try\
+	text path_in /Users/Laia/Desktop/try/
+	comment Tier number used for chopping
+	integer Tier_num 1
+	comment Directory to save chopped up sound files:
+	text path_out /Users/Laia/Desktop/try/output/
+	comment Do you want corresponding TextGrids for outputted .wav files?
+	boolean Output_textgrids 1
+	comment Do you want corresponding .lab files for outputted .wav files? (open with .txt file)
+	boolean Output_labfiles 0
+endform
+
+overwrite = 0
+
+# text grids
+ 	Create Strings as file list... filelist 'path_in$'*.TextGrid
+
+# select each file from the textgrid string to work on one at a time
+	number_of_files = Get number of strings
+
+ 	for t from 1 to number_of_files
+		select Strings filelist
+		current_file$ = Get string... t
+
+# open the text grid and wav files
+		Read from file... 'path_in$''current_file$'
+		object_name$ = selected$ ("TextGrid")
+		Read from file... 'path_in$''object_name$'.wav
+
+# for counting the number of extracted intervals		
+		int = 0
+
+# find the relevant intervals
+		select TextGrid 'object_name$'
+		number_of_intervals = Get number of intervals... tier_num
+
+		for y from 1 to number_of_intervals
+# find the label
+			select TextGrid 'object_name$'
+			interval_label$ = Get label of interval... tier_num y
+
+# if the interval is labeled (not null)
+			if interval_label$ <>"" and interval_label$ <>" " and interval_label$ <>"  " and interval_label$ <> "xxx"
+
+# count it
+				int = int+1
+
+# find the start and end
+				begin = Get starting point... tier_num y
+				end = Get end point... tier_num y
+
+# open the sound file and extract the utterance
+				select Sound 'object_name$'
+				Edit
+				editor Sound 'object_name$'
+				Select... begin end
+				Extract selected sound (time from 0)
+				Close
+				select Sound untitled
+# save it
+
+				Write to WAV file... 'path_out$''object_name$'_'int'.wav
+				Remove
+				
+# make the new TextGrid
+				
+				if output_textgrids == 1
+					select TextGrid 'object_name$'
+					
+					Edit
+					editor TextGrid 'object_name$'
+					Select... begin end
+					Extract selected TextGrid (time from 0)
+					Close
+
+					select TextGrid 'object_name$'
+					Write to text file... 'path_out$''object_name$'_'int'.TextGrid
+					Remove
+				endif
+
+# make the lab file
+				if output_labfiles == 1
+					fileappend "'path_out$''object_name$'_'int'.lab" 'interval_label$'
+				endif
+			endif
+		endfor
+		
+# clean up
+		select Sound 'object_name$'
+		plus TextGrid 'object_name$'
+		Remove
+
+	endfor
+select Strings filelist
+Remove

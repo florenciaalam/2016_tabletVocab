@@ -1,0 +1,91 @@
+form    Input directory name without final slash
+    	word dirName /Users/lscp/Dropbox/stimuli/set4/amplicorrect
+    	comment To overwrite existing files, use same directory for output directory.
+    	word outDir /Users/lscp/Dropbox/stimuli/set4/amplicorrect/extracted
+    	comment Specify tier name:
+    	sentence tierName words
+    	comment Specify length of left and right buffer (in seconds):
+    	positive margin 0.0000005
+    	comment Append time point?
+    	boolean append_time no
+    	comment Enter basename of soundfile (without .wav extension)
+    	sentence baseFile 
+endform
+
+# Warn the user against overwriting files
+if "'dirName$'" == "'outDir$'"
+  pause Input and output directories are the same. Files will be OVERWRITTEN. Do you want to continue babe?
+endif
+
+# Creates a list of files to be worked on
+#Read Strings from raw text file... 'dirName$'\list.txt
+
+do ("Create Strings as file list...", "fileList", "/*.wav")
+
+# loop that goes through all files
+
+numberOfFiles = Get number of strings
+for ifile to numberOfFiles
+   select Strings fileList
+   fileName$ = Get string... ifile
+   baseFile$ = fileName$ - ".wav"
+numberOfFiles = 1
+for ifile to numberOfFiles
+
+  # Go through tiers and extract info
+
+  select TextGrid 'baseFile$'
+
+  nTiers = Get number of tiers
+    for i from 1 to 'nTiers'
+      tname$ = Get tier name... 'i'
+
+        if tname$ = "'tierName$'"
+
+        # Find non-empty intervals
+	
+        nInterv = Get number of intervals... 'i'
+        for j from 1 to 'nInterv'
+        lab$ = Get label of interval... 'i' 'j'
+          if lab$ != ""
+
+           # Get time values for start and end of the interval
+
+           begwd = Get starting point... 'i' 'j'			      
+           endwd = Get end point... 'i' 'j'
+
+           # Add buffers, if specified
+
+           begfile = 'begwd'-'margin'
+           endfile = 'endwd'+'margin' 
+
+           # Create and save small .wav file
+
+           select LongSound 'baseFile$'
+
+           Extract part... 'begfile' 'endfile' yes
+
+           if append_time = 1
+
+             Write to WAV file... 'outDir$'/'baseFile$'.wav
+
+           else
+
+             Write to WAV file... 'outDir$'/'baseFile$'.wav
+
+           endif
+
+          ## Object cleanup
+          select Sound 'baseFile$'
+          Remove
+
+         endif
+	
+    endfor
+
+endfor
+# complete object cleanup
+select Strings fileList
+
+Remove
+####### END OF SCRIPT #######

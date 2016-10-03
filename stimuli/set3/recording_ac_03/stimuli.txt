@@ -1,0 +1,181 @@
+name	stimulus
+peinar	¿Cuál se está peinando? 
+soplar	¿Cuál está soplando algo? 
+arrancar	¿Cuál está arrancando algo? 
+tirar	¿Cual está tirando algo? 
+llorar	¿Cuál está llorando? 
+atajar	¿Cuál está atajando? 
+pisar	¿Cuál está pisando algo? 
+romper	¿Cuál está rompiendo algo? 
+barrer	¿Cuál está barriendo? 
+pescar	¿Cuál está pescando? 
+dormir	¿Cuál está durmiendo? 
+comer	¿Cuál está comiendo? 
+sonreir	¿Cuál está sonriendo? 
+camas	¿Cuáles son las camas? 
+empanada	¿Cuál es la empanada? 
+vela	¿Cuál es la vela? 
+mariposa	¿Cuál es la mariposa? 
+tijera	¿Cuál es la tijera? 
+comida	¿Cuál es la comida? 
+cabeza	¿Cuál es la cabeza? 
+mochila	¿Cuál es la mochila? 
+oreja	¿Cuál es la oreja? 
+accidente	¿Cuál es el accidente? 
+mosquito	¿Cuál es el mosquito? 
+mueble	¿Cuál es el mueble? 
+medico	¿Cuál es el medico? 
+bosque	¿Cuál es el bosque? 
+canguro	¿Cuál es el canguro? 
+hombre	¿Cuál es el hombre? 
+pez	¿Cuál es el pez? 
+barco	¿Cuál es el barco? 
+gorro	¿Cuál es el gorro? 
+colectivo	¿Cuál es el colectivo? 
+lapiz	¿Cuál es el lapiz? 
+nene	¿Cuál es el nene? 
+caballo	¿Cuál es el caballo? 
+sucia	¿Cuál mano está sucia? 
+oscuro	¿Cuál es la forma oscura? 
+rota	¿Cuál es la caja rota? 
+alto	¿Cuál es el vaso alto? 
+descalzo	¿Cuál es el hombre descalzo? 
+contento	¿Cuál es el hombre contento? 
+peludo	¿Cuál es el animal peludo? 
+grande	¿Cuál es grande? 
+verde	¿Cuál es verde? 
+reir	¿Cuál se está riendo? 
+atrapar	¿Cuál está atrapando algo? 
+patear	¿Cuál está pateando algo? 
+abrir	¿Cuál está abriendo algo? 
+saltar	¿Cuál está saltando? 
+inflar	¿Cuál está inflando algo? 
+atar	¿Cuál está atando algo? 
+tocar	¿Cuál está tocando algo? 
+clavar	¿Cuál está clavando? 
+nadar	¿Cuál está nadando? 
+jugar	¿Cuál está jugando? 
+lavar	¿Cuál está lavando? 
+correr	¿Cuál está corriendo? 
+zapatillas	¿Cuáles son las zapatillas? 
+lampara	¿Cuál es la lampara? 
+canilla	¿Cuál es la canilla? 
+tortuga	¿Cuál es la tortuga? 
+bicicleta	¿Cuál es la bicicleta? 
+casa	¿Cuál es la casa? 
+boca	¿Cuál es la boca? 
+muñeca	¿Cuál es la muñeca? 
+nariz	¿Cuál es la nariz? 
+helicoptero	¿Cuál es el helicoptero? 
+loro	¿Cuál es el loro? 
+bolso	¿Cuál es el bolso? 
+grupo	¿Cuál es el grupo? 
+rio	¿Cuál es el rio? 
+pinguino	¿Cuál es el pinguino? 
+pato	¿Cuál es el pato? 
+boton	¿Cuál es el boton? 
+tren	¿Cuál es el tren? 
+camion	¿Cuál es el camion? 
+avion	¿Cuál es el avion? 
+pantalon	¿Cuál es el pantalon? 
+perro	¿Cuál es el perro? 
+gato	¿Cuál es el gato? 
+limpia	¿Cuál mano está limpia? 
+redondo	¿Cuál es la forma redonda? 
+pesada	¿Cuál es la caja pesada? 
+lleno	¿Cuál es el vaso lleno? 
+viejo	¿Cuál es el hombre viejo? 
+triste	¿Cuál es el hombre triste? 
+rayado	¿Cuál es el animal rayado? 
+rojo	¿Cuál es rojo? 
+amarillo	¿Cuál es amarillo? 
+peinar	tocà la que se està peinando 
+soplar	tocà la que està soplando algo
+arrancar	tocà la que està arrancando algo
+tirar	tocà la que està tirando algo
+llorar	tocà la que està llorando 
+atajar	tocà el que està atajando algo
+pisar	tocà el que està pisando algo
+romper	tocà el que està rompiendo algo
+barrer	tocà el que està barriendo 
+pescar	tocà el que està pescando 
+dormir	tocà el que està durmiendo 
+comer	tocà el que està comiendo 
+sonreir	tocà el que està sonriendo 
+camas	tocà las camas 
+empanada	tocà la empanada 
+vela	tocà la vela 
+mariposa	tocà la mariposa 
+tijera	tocà la tijera 
+comida	tocà la comida 
+cabeza	tocà la cabeza 
+mochila	tocà la mochila 
+oreja	tocà la oreja 
+accidente	tocà el accidente 
+mosquito	tocà el mosquito 
+mueble	tocà el mueble 
+medico	tocà el medico 
+bosque	tocà el bosque 
+canguro	tocà el canguro 
+hombre	tocà el hombre 
+pez	tocà el pez 
+barco	tocà el barco 
+gorro	tocà el gorro 
+colectivo	tocà el colectivo 
+lapiz	tocà el lapiz 
+nene	tocà el nene 
+caballo	tocà el caballo 
+sucia	tocà la mano sucia 
+oscuro	tocà la forma oscura 
+rota	tocà la caja rota 
+alto	tocà el vaso alto 
+descalzo	tocà el hombre descalzo 
+contento	tocà el hombre contento 
+peludo	tocà el animal peludo 
+grande	tocà el grande 
+verde	tocà el verde 
+reir	tocà la que se està riendo 
+atrapar	tocà la que està atrapando algo
+patear	tocà la que està pateando algo
+abrir	tocà la que està abriendo algo
+saltar	tocà la que està saltando 
+inflar	tocà el que està inflando algo
+atar	tocà el que està atando algo
+tocar	tocà el que està tocando algo
+clavar	tocà el que està clavando 
+nadar	tocà el que està nadando 
+jugar	tocà el que està jugando 
+lavar	tocà el que està lavando 
+correr	tocà el que està corriendo 
+zapatillas	tocà las zapatillas 
+lampara	tocà la lampara 
+canilla	tocà la canilla 
+tortuga	tocà la tortuga 
+bicicleta	tocà la bicicleta 
+casa	tocà la casa 
+boca	tocà la boca 
+muñeca	tocà la muñeca 
+nariz	tocà la nariz 
+helicoptero	tocà el helicoptero 
+loro	tocà el loro 
+bolso	tocà el bolso 
+grupo	tocà el grupo 
+rio	tocà el rio 
+pinguino	tocà el pinguino 
+pato	tocà el pato 
+boton	tocà el boton 
+tren	tocà el tren 
+camion	tocà el camion 
+avion	tocà el avion 
+pantalon	tocà el pantalon 
+perro	tocà el perro 
+gato	tocà el gato 
+limpia	tocà la mano limpia 
+redondo	tocà la forma redonda 
+pesada	tocà la caja pesada 
+lleno	tocà el vaso lleno 
+viejo	tocà el hombre viejo 
+triste	tocà el hombre triste 
+rayado	tocà el animal rayado 
+rojo	tocà el rojo 
+amarillo	tocà el amarillo 

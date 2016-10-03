@@ -1,0 +1,19 @@
+outdir$="~/Desktop/"
+file$="child_transition_rep1"
+select TextGrid 'file$'
+nint=Get number of intervals... 1
+for i to nint
+	select TextGrid 'file$'
+	lab$=Get label of interval... 1 'i'
+	if lab$<>""
+		beg=Get start point... 1 'i'
+		end=Get end point... 1 'i'
+		select Sound 'file$'
+		Extract part... 'beg' 'end' rectangular 1 no
+		Save as WAV file... 'outdir$''lab$'_'i'.wav
+		Remove
+	endif
+endfor
+
+print done!
+

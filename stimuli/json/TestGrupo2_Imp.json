@@ -1,0 +1,548 @@
+{
+  "name": "Espanol_Grupo2_imp",
+  "session": {
+    "time_limit": 900,
+    "assets": {
+      "objects": [
+        "nariz_imp",
+        "oreja_imp",
+        "amarillo_imp",
+        "verde_imp",
+        "correr_imp",
+        "sonreir_imp",
+        "abrir_imp",
+        "tirar_imp",
+        "gato_imp",
+        "caballo_imp",
+        "perro_imp",
+        "nene_imp",
+        "muneca_imp",
+        "mochila_imp",
+        "boca_imp",
+        "cabeza_imp",
+        "zapatillas_imp",
+        "camas_imp",
+        "pantalon_imp",
+        "lapiz_imp",
+        "casa_imp",
+        "comida_imp",
+        "lavar_imp",
+        "comer_imp",
+        "tocar_imp",
+        "romper_imp",
+        "jugar_imp",
+        "dormir_imp",
+        "saltar_imp",
+        "llorar_imp",
+        "limpia_imp",
+        "sucia_imp",
+        "lleno_imp",
+        "alto_imp",
+        "rojo_imp",
+        "grande_imp",
+        "bicicleta_imp",
+        "tijera_imp",
+        "avion_imp",
+        "colectivo_imp",
+        "camion_imp",
+        "gorro_imp",
+        "tren_imp",
+        "barco_imp",
+        "boton_imp",
+        "pez_imp",
+        "tortuga_imp",
+        "mariposa_imp",
+        "pato_imp",
+        "hombre_imp",
+        "patear_imp",
+        "arrancar_imp",
+        "atar_imp",
+        "pisar_imp",
+        "reir_imp",
+        "peinar_imp",
+        "atrapar_imp",
+        "soplar_imp",
+        "triste_imp",
+        "contento_imp",
+        "redondo_imp",
+        "oscuro_imp",
+        "pesada_imp",
+        "rota_imp",
+        "pinguino_imp",
+        "canguro_imp",
+        "rio_imp",
+        "bosque_imp",
+        "grupo_imp",
+        "medico_imp",
+        "canilla_imp",
+        "vela_imp",
+        "bolso_imp",
+        "mueble_imp",
+        "loro_imp",
+        "mosquito_imp",
+        "helicoptero_imp",
+        "accidente_imp",
+        "lampara_imp",
+        "empanada_imp",
+        "nadar_imp",
+        "pescar_imp",
+        "inflar_imp",
+        "atajar_imp",
+        "clavar_imp",
+        "barrer_imp",
+        "rayado_imp",
+        "peludo_imp",
+        "viejo_imp",
+        "descalzo_imp"],
+      "backgrounds": [
+        "countryside",
+        "beach",
+        "mountain",
+        "desert"
+      ]
+    },
+    "levels": [
+      {
+        "name": "entrenamiento",
+        "background": "countryside",
+        "introduce_objects": false,
+        "feedback": true,
+        "on_failure": "REPEAT_STAGE",
+        "stages": [
+          {
+            "objects": [
+              "nariz_imp",
+              "oreja_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "oreja_imp"
+          },
+          {
+            "objects": [
+              "amarillo_imp",
+              "verde_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "amarillo_imp"
+          },
+          {
+            "objects": [
+              "sonreir_imp",
+              "correr_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "correr_imp"
+          },
+          {
+            "objects": [
+              "abrir_imp",
+              "tirar_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "abrir_imp"
+          }
+        ]
+     },
+           {
+        "name": "block1",
+        "background": "beach",
+        "introduce_objects": false,
+        "feedback": true,
+        "on_failure": "CONTINUE",
+        "stages": [
+          {
+            "objects": [
+              "boton_imp",
+              "pez_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "boton_imp"
+          },
+          {
+            "objects": [
+              "barrer_imp",
+              "clavar_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "barrer_imp"
+          },
+          {
+            "objects": [
+              "lavar_imp",
+              "comer_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "comer_imp"
+          },
+          {
+            "objects": [
+              "pescar_imp",
+              "nadar_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "nadar_imp"
+          },
+          {
+            "objects": [
+              "tortuga_imp",
+              "mariposa_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "tortuga_imp"
+          },
+          {
+            "objects": [
+              "oscuro_imp",
+              "redondo_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "redondo_imp"
+          },
+          {
+            "objects": [
+              "pinguino_imp",
+              "canguro_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "pinguino_imp"
+          },
+          {
+            "objects": [
+              "lleno_imp",
+              "alto_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "lleno_imp"
+          },
+          {
+            "objects": [
+              "inflar_imp",
+              "atajar_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "atajar_imp"
+          },
+          {
+            "objects": [
+              "colectivo_imp",
+              "avion_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "colectivo_imp"
+          },
+          {
+            "objects": [
+              "caballo_imp",
+              "gato_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "gato_imp"
+          },
+          {
+            "objects": [
+              "peludo_imp",
+              "rayado_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "rayado_imp"
+          },
+          {
+            "objects": [
+              "helicoptero_imp",
+              "accidente_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "helicoptero_imp"
+          },
+          {
+            "objects": [
+              "casa_imp",
+              "comida_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "casa_imp"
+          }
+        ]
+     },
+           {
+        "name": "block2",
+        "background": "mountain",
+        "introduce_objects": false,
+        "feedback": true,
+        "on_failure": "CONTINUE",
+        "stages": [
+          {
+            "objects": [
+              "rio_imp",
+              "bosque_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "bosque_imp"
+          },
+          {
+            "objects": [
+              "rojo_imp",
+              "grande_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "grande_imp"
+          },
+          {
+            "objects": [
+              "tijera_imp",
+              "bicicleta_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "tijera_imp"
+          },
+          {
+            "objects": [
+              "atar_imp",
+              "pisar_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "atar_imp"
+          },
+          {
+            "objects": [
+              "romper_imp",
+              "tocar_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "tocar_imp"
+          },
+          {
+            "objects": [
+              "hombre_imp",
+              "pato_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "pato_imp"
+          },
+          {
+            "objects": [
+              "grupo_imp",
+              "medico_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "grupo_imp"
+          },
+          {
+            "objects": [
+              "viejo_imp",
+              "descalzo_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "descalzo_imp"
+          },
+          {
+            "objects": [
+              "boca_imp",
+              "cabeza_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "boca_imp"
+          },
+          {
+            "objects": [
+              "gorro_imp",
+              "camion_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "camion_imp"
+          },
+          {
+            "objects": [
+              "rota_imp",
+              "pesada_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "pesada_imp"
+          },
+          {
+            "objects": [
+              "sucia_imp",
+              "limpia_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "sucia_imp"
+          },
+          {
+            "objects": [
+              "canilla_imp",
+              "vela_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "vela_imp"
+          },
+          {
+            "objects": [
+              "lapiz_imp",
+              "pantalon_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "pantalon_imp"
+          }
+        ]
+     },
+      {
+        "name": "block3",
+        "background": "desert",
+        "introduce_objects": false,
+        "feedback": true,
+        "on_failure": "CONTINUE",
+        "stages": [
+          {
+            "objects": [
+              "mueble_imp",
+              "bolso_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "mueble_imp"
+          },
+          {
+            "objects": [
+              "muneca_imp",
+              "mochila_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "muneca_imp"
+          },
+          {
+            "objects": [
+              "perro_imp",
+              "nene_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "nene_imp"
+          },
+          {
+            "objects": [
+              "patear_imp",
+              "arrancar_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "patear_imp"
+          },
+          {
+            "objects": [
+              "llorar_imp",
+              "saltar_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "llorar_imp"
+          },
+          {
+            "objects": [
+              "triste_imp",
+              "contento_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "contento_imp"
+          },
+          {
+            "objects": [
+              "lampara_imp",
+              "empanada_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "empanada_imp"
+          },
+          {
+            "objects": [
+              "jugar_imp",
+              "dormir_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "jugar_imp"
+          },
+          {
+            "objects": [
+              "barco_imp",
+              "tren_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "tren_imp"
+          },
+          {
+            "objects": [
+              "atrapar_imp",
+              "soplar_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "soplar_imp"
+          },
+          {
+            "objects": [
+              "mosquito_imp",
+              "loro_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "mosquito_imp"
+          },
+          {
+            "objects": [
+              "zapatillas_imp",
+              "camas_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "camas_imp"
+          },
+          {
+            "objects": [
+              "peinar_imp",
+              "reir_imp"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "peinar_imp"
+          }
+        ]
+     }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+do ("Create Strings as file list...", "fileList", "/*.wav")
+nstrings=Get number of strings
+for i to nstrings
+	select Strings fileList
+	this$=Get string... 'i'
+	this$=this$-".wav"
+	done=fileReadable("'this$'.TextGrid")
+	if done <>1
+		Read from file... 'this$'.wav
+		do ("To TextGrid (silences)...", 100, 0, -25, 0.1, 0.1, "", "x")
+		plus Sound 'this$'
+		do ("View & Edit")
+		pause correct coding
+		select TextGrid 'this$'
+		Save as text file... 'this$'.TextGrid
+		plus Sound 'this$'
+		Remove
+	endif
+endfor
+print "all done, gracias!"

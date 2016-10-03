@@ -1,0 +1,181 @@
+word	stimulus	type	name
+peinar	¿Cuál se está peinando? 	preg	peinar_preg
+soplar	¿Cuál está soplando algo? 	preg	soplar_preg
+arrancar	¿Cuál está arrancando algo? 	preg	arrancar_preg
+tirar	¿Cual está tirando algo? 	preg	tirar_preg
+llorar	¿Cuál está llorando? 	preg	llorar_preg
+atajar	¿Cuál está atajando? 	preg	atajar_preg
+pisar	¿Cuál está pisando algo? 	preg	pisar_preg
+romper	¿Cuál está rompiendo algo? 	preg	romper_preg
+barrer	¿Cuál está barriendo? 	preg	barrer_preg
+pescar	¿Cuál está pescando? 	preg	pescar_preg
+dormir	¿Cuál está durmiendo? 	preg	dormir_preg
+comer	¿Cuál está comiendo? 	preg	comer_preg
+sonreir	¿Cuál está sonriendo? 	preg	sonreir_preg
+camas	¿Cuáles son las camas? 	preg	camas_preg
+empanada	¿Cuál es la empanada? 	preg	empanada_preg
+vela	¿Cuál es la vela? 	preg	vela_preg
+mariposa	¿Cuál es la mariposa? 	preg	mariposa_preg
+tijera	¿Cuál es la tijera? 	preg	tijera_preg
+comida	¿Cuál es la comida? 	preg	comida_preg
+cabeza	¿Cuál es la cabeza? 	preg	cabeza_preg
+mochila	¿Cuál es la mochila? 	preg	mochila_preg
+oreja	¿Cuál es la oreja? 	preg	oreja_preg
+accidente	¿Cuál es el accidente? 	preg	accidente_preg
+mosquito	¿Cuál es el mosquito? 	preg	mosquito_preg
+mueble	¿Cuál es el mueble? 	preg	mueble_preg
+medico	¿Cuál es el medico? 	preg	medico_preg
+bosque	¿Cuál es el bosque? 	preg	bosque_preg
+canguro	¿Cuál es el canguro? 	preg	canguro_preg
+hombre	¿Cuál es el hombre? 	preg	hombre_preg
+pez	¿Cuál es el pez? 	preg	pez_preg
+barco	¿Cuál es el barco? 	preg	barco_preg
+gorro	¿Cuál es el gorro? 	preg	gorro_preg
+colectivo	¿Cuál es el colectivo? 	preg	colectivo_preg
+lapiz	¿Cuál es el lapiz? 	preg	lapiz_preg
+nene	¿Cuál es el nene? 	preg	nene_preg
+caballo	¿Cuál es el caballo? 	preg	caballo_preg
+sucia	¿Cuál mano está sucia? 	preg	sucia_preg
+oscuro	¿Cuál es la forma oscura? 	preg	oscuro_preg
+rota	¿Cuál es la caja rota? 	preg	rota_preg
+alto	¿Cuál es el vaso alto? 	preg	alto_preg
+descalzo	¿Cuál es el hombre descalzo? 	preg	descalzo_preg
+contento	¿Cuál es el hombre contento? 	preg	contento_preg
+peludo	¿Cuál es el animal peludo? 	preg	peludo_preg
+grande	¿Cuál es grande? 	preg	grande_preg
+verde	¿Cuál es verde? 	preg	verde_preg
+reir	¿Cuál se está riendo? 	preg	reir_preg
+atrapar	¿Cuál está atrapando algo? 	preg	atrapar_preg
+patear	¿Cuál está pateando algo? 	preg	patear_preg
+abrir	¿Cuál está abriendo algo? 	preg	abrir_preg
+saltar	¿Cuál está saltando? 	preg	saltar_preg
+inflar	¿Cuál está inflando algo? 	preg	inflar_preg
+atar	¿Cuál está atando algo? 	preg	atar_preg
+tocar	¿Cuál está tocando algo? 	preg	tocar_preg
+clavar	¿Cuál está clavando? 	preg	clavar_preg
+nadar	¿Cuál está nadando? 	preg	nadar_preg
+jugar	¿Cuál está jugando? 	preg	jugar_preg
+lavar	¿Cuál está lavando? 	preg	lavar_preg
+correr	¿Cuál está corriendo? 	preg	correr_preg
+zapatillas	¿Cuáles son las zapatillas? 	preg	zapatillas_preg
+lampara	¿Cuál es la lampara? 	preg	lampara_preg
+canilla	¿Cuál es la canilla? 	preg	canilla_preg
+tortuga	¿Cuál es la tortuga? 	preg	tortuga_preg
+bicicleta	¿Cuál es la bicicleta? 	preg	bicicleta_preg
+casa	¿Cuál es la casa? 	preg	casa_preg
+boca	¿Cuál es la boca? 	preg	boca_preg
+muñeca	¿Cuál es la muñeca? 	preg	muñeca_preg
+nariz	¿Cuál es la nariz? 	preg	nariz_preg
+helicoptero	¿Cuál es el helicoptero? 	preg	helicoptero_preg
+loro	¿Cuál es el loro? 	preg	loro_preg
+bolso	¿Cuál es el bolso? 	preg	bolso_preg
+grupo	¿Cuál es el grupo? 	preg	grupo_preg
+rio	¿Cuál es el rio? 	preg	rio_preg
+pinguino	¿Cuál es el pinguino? 	preg	pinguino_preg
+pato	¿Cuál es el pato? 	preg	pato_preg
+boton	¿Cuál es el boton? 	preg	boton_preg
+tren	¿Cuál es el tren? 	preg	tren_preg
+camion	¿Cuál es el camion? 	preg	camion_preg
+avion	¿Cuál es el avion? 	preg	avion_preg
+pantalon	¿Cuál es el pantalon? 	preg	pantalon_preg
+perro	¿Cuál es el perro? 	preg	perro_preg
+gato	¿Cuál es el gato? 	preg	gato_preg
+limpia	¿Cuál mano está limpia? 	preg	limpia_preg
+redondo	¿Cuál es la forma redonda? 	preg	redondo_preg
+pesada	¿Cuál es la caja pesada? 	preg	pesada_preg
+lleno	¿Cuál es el vaso lleno? 	preg	lleno_preg
+viejo	¿Cuál es el hombre viejo? 	preg	viejo_preg
+triste	¿Cuál es el hombre triste? 	preg	triste_preg
+rayado	¿Cuál es el animal rayado? 	preg	rayado_preg
+rojo	¿Cuál es rojo? 	preg	rojo_preg
+amarillo	¿Cuál es amarillo? 	preg	amarillo_preg
+peinar	tocà la que se està peinando 	imp	peinar_imp
+soplar	tocà la que està soplando algo	imp	soplar_imp
+arrancar	tocà la que està arrancando algo	imp	arrancar_imp
+tirar	tocà la que està tirando algo	imp	tirar_imp
+llorar	tocà la que està llorando 	imp	llorar_imp
+atajar	tocà el que està atajando algo	imp	atajar_imp
+pisar	tocà el que està pisando algo	imp	pisar_imp
+romper	tocà el que està rompiendo algo	imp	romper_imp
+barrer	tocà el que està barriendo 	imp	barrer_imp
+pescar	tocà el que està pescando 	imp	pescar_imp
+dormir	tocà el que està durmiendo 	imp	dormir_imp
+comer	tocà el que està comiendo 	imp	comer_imp
+sonreir	tocà el que està sonriendo 	imp	sonreir_imp
+camas	tocà las camas 	imp	camas_imp
+empanada	tocà la empanada 	imp	empanada_imp
+vela	tocà la vela 	imp	vela_imp
+mariposa	tocà la mariposa 	imp	mariposa_imp
+tijera	tocà la tijera 	imp	tijera_imp
+comida	tocà la comida 	imp	comida_imp
+cabeza	tocà la cabeza 	imp	cabeza_imp
+mochila	tocà la mochila 	imp	mochila_imp
+oreja	tocà la oreja 	imp	oreja_imp
+accidente	tocà el accidente 	imp	accidente_imp
+mosquito	tocà el mosquito 	imp	mosquito_imp
+mueble	tocà el mueble 	imp	mueble_imp
+medico	tocà el medico 	imp	medico_imp
+bosque	tocà el bosque 	imp	bosque_imp
+canguro	tocà el canguro 	imp	canguro_imp
+hombre	tocà el hombre 	imp	hombre_imp
+pez	tocà el pez 	imp	pez_imp
+barco	tocà el barco 	imp	barco_imp
+gorro	tocà el gorro 	imp	gorro_imp
+colectivo	tocà el colectivo 	imp	colectivo_imp
+lapiz	tocà el lapiz 	imp	lapiz_imp
+nene	tocà el nene 	imp	nene_imp
+caballo	tocà el caballo 	imp	caballo_imp
+sucia	tocà la mano sucia 	imp	sucia_imp
+oscuro	tocà la forma oscura 	imp	oscuro_imp
+rota	tocà la caja rota 	imp	rota_imp
+alto	tocà el vaso alto 	imp	alto_imp
+descalzo	tocà el hombre descalzo 	imp	descalzo_imp
+contento	tocà el hombre contento 	imp	contento_imp
+peludo	tocà el animal peludo 	imp	peludo_imp
+grande	tocà el grande 	imp	grande_imp
+verde	tocà el verde 	imp	verde_imp
+reir	tocà la que se està riendo 	imp	reir_imp
+atrapar	tocà la que està atrapando algo	imp	atrapar_imp
+patear	tocà la que està pateando algo	imp	patear_imp
+abrir	tocà la que està abriendo algo	imp	abrir_imp
+saltar	tocà la que està saltando 	imp	saltar_imp
+inflar	tocà el que està inflando algo	imp	inflar_imp
+atar	tocà el que està atando algo	imp	atar_imp
+tocar	tocà el que està tocando algo	imp	tocar_imp
+clavar	tocà el que està clavando 	imp	clavar_imp
+nadar	tocà el que està nadando 	imp	nadar_imp
+jugar	tocà el que està jugando 	imp	jugar_imp
+lavar	tocà el que està lavando 	imp	lavar_imp
+correr	tocà el que està corriendo 	imp	correr_imp
+zapatillas	tocà las zapatillas 	imp	zapatillas_imp
+lampara	tocà la lampara 	imp	lampara_imp
+canilla	tocà la canilla 	imp	canilla_imp
+tortuga	tocà la tortuga 	imp	tortuga_imp
+bicicleta	tocà la bicicleta 	imp	bicicleta_imp
+casa	tocà la casa 	imp	casa_imp
+boca	tocà la boca 	imp	boca_imp
+muñeca	tocà la muñeca 	imp	muñeca_imp
+nariz	tocà la nariz 	imp	nariz_imp
+helicoptero	tocà el helicoptero 	imp	helicoptero_imp
+loro	tocà el loro 	imp	loro_imp
+bolso	tocà el bolso 	imp	bolso_imp
+grupo	tocà el grupo 	imp	grupo_imp
+rio	tocà el rio 	imp	rio_imp
+pinguino	tocà el pinguino 	imp	pinguino_imp
+pato	tocà el pato 	imp	pato_imp
+boton	tocà el boton 	imp	boton_imp
+tren	tocà el tren 	imp	tren_imp
+camion	tocà el camion 	imp	camion_imp
+avion	tocà el avion 	imp	avion_imp
+pantalon	tocà el pantalon 	imp	pantalon_imp
+perro	tocà el perro 	imp	perro_imp
+gato	tocà el gato 	imp	gato_imp
+limpia	tocà la mano limpia 	imp	limpia_imp
+redondo	tocà la forma redonda 	imp	redondo_imp
+pesada	tocà la caja pesada 	imp	pesada_imp
+lleno	tocà el vaso lleno 	imp	lleno_imp
+viejo	tocà el hombre viejo 	imp	viejo_imp
+triste	tocà el hombre triste 	imp	triste_imp
+rayado	tocà el animal rayado 	imp	rayado_imp
+rojo	tocà el rojo 	imp	rojo_imp
+amarillo	tocà el amarillo 	imp	amarillo_imp

@@ -1,0 +1,549 @@
+{
+  "name": "Espanol_Grupo2_preg",
+  "session": {
+    "time_limit": 900,
+    "assets": {
+      "objects": [
+        "nariz_preg",
+        "oreja_preg",
+        "amarillo_preg",
+        "verde_preg",
+        "correr_preg",
+        "sonreir_preg",
+        "abrir_preg",
+        "tirar_preg",
+        "gato_preg",
+        "caballo_preg",
+        "perro_preg",
+        "nene_preg",
+        "muneca_preg",
+        "mochila_preg",
+        "boca_preg",
+        "cabeza_preg",
+        "zapatillas_preg",
+        "camas_preg",
+        "pantalon_preg",
+        "lapiz_preg",
+        "casa_preg",
+        "comida_preg",
+        "lavar_preg",
+        "comer_preg",
+        "tocar_preg",
+        "romper_preg",
+        "jugar_preg",
+        "dormir_preg",
+        "saltar_preg",
+        "llorar_preg",
+        "limpia_preg",
+        "sucia_preg",
+        "lleno_preg",
+        "alto_preg",
+        "rojo_preg",
+        "grande_preg",
+        "bicicleta_preg",
+        "tijera_preg",
+        "avion_preg",
+        "colectivo_preg",
+        "camion_preg",
+        "gorro_preg",
+        "tren_preg",
+        "barco_preg",
+        "boton_preg",
+        "pez_preg",
+        "tortuga_preg",
+        "mariposa_preg",
+        "pato_preg",
+        "hombre_preg",
+        "patear_preg",
+        "arrancar_preg",
+        "atar_preg",
+        "pisar_preg",
+        "reir_preg",
+        "peinar_preg",
+        "atrapar_preg",
+        "soplar_preg",
+        "triste_preg",
+        "contento_preg",
+        "redondo_preg",
+        "oscuro_preg",
+        "pesada_preg",
+        "rota_preg",
+        "pinguino_preg",
+        "canguro_preg",
+        "rio_preg",
+        "bosque_preg",
+        "grupo_preg",
+        "medico_preg",
+        "canilla_preg",
+        "vela_preg",
+        "bolso_preg",
+        "mueble_preg",
+        "loro_preg",
+        "mosquito_preg",
+        "helicoptero_preg",
+        "accidente_preg",
+        "lampara_preg",
+        "empanada_preg",
+        "nadar_preg",
+        "pescar_preg",
+        "inflar_preg",
+        "atajar_preg",
+        "clavar_preg",
+        "barrer_preg",
+        "rayado_preg",
+        "peludo_preg",
+        "viejo_preg",
+        "descalzo_preg"],
+      "backgrounds": [
+        "countryside",
+        "beach",
+        "mountain",
+        "desert"
+      ]
+    },
+    "levels": [
+      {
+        "name": "entrenamiento",
+        "background": "countryside",
+        "introduce_objects": false,
+        "feedback": true,
+        "on_failure": "REPEAT_STAGE",
+        "stages": [
+          {
+            "objects": [
+              "nariz_preg",
+              "oreja_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "oreja_preg"
+          },
+          {
+            "objects": [
+              "amarillo_preg",
+              "verde_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "amarillo_preg"
+          },
+          {
+            "objects": [
+              "sonreir_preg",
+              "correr_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "correr_preg"
+          },
+          {
+            "objects": [
+              "abrir_preg",
+              "tirar_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "abrir_preg"
+          }
+        ]
+     },
+           {
+        "name": "block1",
+        "background": "beach",
+        "introduce_objects": false,
+        "feedback": true,
+        "on_failure": "CONTINUE",
+        "stages": [
+          {
+            "objects": [
+              "boton_preg",
+              "pez_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "boton_preg"
+          },
+          {
+            "objects": [
+              "barrer_preg",
+              "clavar_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "barrer_preg"
+          },
+          {
+            "objects": [
+              "lavar_preg",
+              "comer_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "comer_preg"
+          },
+          {
+            "objects": [
+              "pescar_preg",
+              "nadar_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "nadar_preg"
+          },
+          {
+            "objects": [
+              "tortuga_preg",
+              "mariposa_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "tortuga_preg"
+          },
+          {
+            "objects": [
+              "oscuro_preg",
+              "redondo_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "redondo_preg"
+          },
+          {
+            "objects": [
+              "pinguino_preg",
+              "canguro_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "pinguino_preg"
+          },
+          {
+            "objects": [
+              "lleno_preg",
+              "alto_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "lleno_preg"
+          },
+          {
+            "objects": [
+              "inflar_preg",
+              "atajar_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "atajar_preg"
+          },
+          {
+            "objects": [
+              "colectivo_preg",
+              "avion_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "colectivo_preg"
+          },
+          {
+            "objects": [
+              "caballo_preg",
+              "gato_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "gato_preg"
+          },
+          {
+            "objects": [
+              "peludo_preg",
+              "rayado_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "rayado_preg"
+          },
+          {
+            "objects": [
+              "helicoptero_preg",
+              "accidente_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "helicoptero_preg"
+          },
+          {
+            "objects": [
+              "casa_preg",
+              "comida_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "casa_preg"
+          }
+        ]
+     },
+           {
+        "name": "block2",
+        "background": "mountain",
+        "introduce_objects": false,
+        "feedback": true,
+        "on_failure": "CONTINUE",
+        "stages": [
+          {
+            "objects": [
+              "rio_preg",
+              "bosque_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "bosque_preg"
+          },
+          {
+            "objects": [
+              "rojo_preg",
+              "grande_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "grande_preg"
+          },
+          {
+            "objects": [
+              "tijera_preg",
+              "bicicleta_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "tijera_preg"
+          },
+          {
+            "objects": [
+              "atar_preg",
+              "pisar_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "atar_preg"
+          },
+          {
+            "objects": [
+              "romper_preg",
+              "tocar_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "tocar_preg"
+          },
+          {
+            "objects": [
+              "hombre_preg",
+              "pato_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "pato_preg"
+          },
+          {
+            "objects": [
+              "grupo_preg",
+              "medico_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "grupo_preg"
+          },
+          {
+            "objects": [
+              "viejo_preg",
+              "descalzo_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "descalzo_preg"
+          },
+          {
+            "objects": [
+              "boca_preg",
+              "cabeza_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "boca_preg"
+          },
+          {
+            "objects": [
+              "gorro_preg",
+              "camion_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "camion_preg"
+          },
+          {
+            "objects": [
+              "rota_preg",
+              "pesada_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "pesada_preg"
+          },
+          {
+            "objects": [
+              "sucia_preg",
+              "limpia_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "sucia_preg"
+          },
+          {
+            "objects": [
+              "canilla_preg",
+              "vela_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "vela_preg"
+          },
+          {
+            "objects": [
+              "lapiz_preg",
+              "pantalon_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "pantalon_preg"
+          }
+        ]
+     },
+      {
+        "name": "block3",
+        "background": "desert",
+        "introduce_objects": false,
+        "feedback": true,
+        "on_failure": "CONTINUE",
+        "stages": [
+          {
+            "objects": [
+              "mueble_preg",
+              "bolso_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "mueble_preg"
+          },
+          {
+            "objects": [
+              "muneca_preg",
+              "mochila_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "muneca_preg"
+          },
+          {
+            "objects": [
+              "perro_preg",
+              "nene_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "nene_preg"
+          },
+          {
+            "objects": [
+              "patear_preg",
+              "arrancar_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "patear_preg"
+          },
+          {
+            "objects": [
+              "llorar_preg",
+              "saltar_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "llorar_preg"
+          },
+          {
+            "objects": [
+              "triste_preg",
+              "contento_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "contento_preg"
+          },
+          {
+            "objects": [
+              "lampara_preg",
+              "empanada_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "empanada_preg"
+          },
+          {
+            "objects": [
+              "jugar_preg",
+              "dormir_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "jugar_preg"
+          },
+          {
+            "objects": [
+              "barco_preg",
+              "tren_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "tren_preg"
+          },
+          {
+            "objects": [
+              "atrapar_preg",
+              "soplar_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "soplar_preg"
+          },
+          {
+            "objects": [
+              "mosquito_preg",
+              "loro_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "mosquito_preg"
+          },
+          {
+            "objects": [
+              "zapatillas_preg",
+              "camas_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "camas_preg"
+          },
+          {
+            "objects": [
+              "peinar_preg",
+              "reir_preg"
+            ],
+            "objects_positions": "NATURAL",
+            "time_idle": 4,
+            "ask_for": "peinar_preg"
+          }
+        ]
+     }
+    ]
+  }
+}
+

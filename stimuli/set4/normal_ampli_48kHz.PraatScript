@@ -1,0 +1,48 @@
+form    Input directory name without final slash
+        word dirName /Users/lscp/Dropbox/stimuli/set4
+        comment To overwrite existing files, use same directory for output directory.
+        word outDir /Users/lscp/Dropbox/stimuli/set4
+        comment Specify new sampling rate.
+        positive newrate 48000
+endform
+
+# Warn the user against overwriting files
+if "'dirName$'" == "'outDir$'"
+  pause Input and output directories are the same. Files will be OVERWRITTEN. Continue?
+endif
+
+
+# Creates a list of files to be worked on
+#Read Strings from raw text file... 'dirName$'\list.txt
+
+do ("Create Strings as file list...", "fileList", "/*.wav")
+
+# loop that goes through all files
+
+numberOfFiles = Get number of strings
+for ifile to numberOfFiles
+   select Strings fileList
+   fileName$ = Get string... ifile
+   baseFile$ = fileName$ - ".wav"
+
+   # Read in the Sound file with that base name
+
+   Read from file... 'dirName$'/'baseFile$'.wav
+
+   #resample
+   select Sound 'baseFile$'
+   Resample... 48000 50
+
+   # save file
+   Write to WAV file... 'outDir$'/'baseFile$'.wav
+
+   # object cleanup
+   Remove
+   select Sound 'baseFile$'
+   Remove
+
+endfor
+
+# complete object cleanup
+select Strings fileList
+Remove
