@@ -1,0 +1,462 @@
+[1] "Fri Jun 10 12:55:03 2016"
+[1] 120  38
+       id             school           date                   profile   trials_completed trials_attempted
+ 491    :  1   cayetano  :56   2016-04-27:21   Espanol_Grupo1_imp :31   Min.   : 2.00    Min.   : 1.00   
+ 492    :  1   others    : 2   2016-05-11:19   Espanol_Grupo1_preg:32   1st Qu.:41.00    1st Qu.:37.00   
+ 500    :  1   pestalozzi:62   2016-04-28:18   Espanol_Grupo2_imp :29   Median :41.00    Median :40.00   
+ 501    :  1                   2016-05-10:14   Espanol_Grupo2_preg:28   Mean   :39.94    Mean   :37.81   
+ 502    :  1                   2016-05-13:12                            3rd Qu.:41.00    3rd Qu.:41.00   
+ 503    :  1                   2016-05-06:11                            Max.   :41.00    Max.   :41.00   
+ (Other):114                   (Other)   :25                                                             
+       pc            rt_corr       rt_incorr         pc_1             pc_2             rt_1     
+ Min.   :0.3590   Min.   :1544   Min.   :1622   Min.   :0.2500   Min.   :0.4000   Min.   :1540  
+ 1st Qu.:0.7698   1st Qu.:2112   1st Qu.:2199   1st Qu.:0.7619   1st Qu.:0.7500   1st Qu.:2133  
+ Median :0.8765   Median :2394   Median :2680   Median :0.8889   Median :0.8500   Median :2401  
+ Mean   :0.8350   Mean   :2485   Mean   :2845   Mean   :0.8394   Mean   :0.8303   Mean   :2506  
+ 3rd Qu.:0.9376   3rd Qu.:2788   3rd Qu.:3396   3rd Qu.:0.9518   3rd Qu.:0.9474   3rd Qu.:2810  
+ Max.   :1.0000   Max.   :3935   Max.   :5334   Max.   :1.0000   Max.   :1.0000   Max.   :3996  
+ NA's   :2        NA's   :2      NA's   :51     NA's   :2        NA's   :2        NA's   :2     
+      rt_2         propLeft           bias            N_easy          N_mod           N_diff     
+ Min.   :1446   Min.   :0.0000   Min.   :0.0000   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00  
+ 1st Qu.:2194   1st Qu.:0.4390   1st Qu.:0.0000   1st Qu.:13.00   1st Qu.:13.00   1st Qu.:11.00  
+ Median :2422   Median :0.4878   Median :0.0000   Median :14.00   Median :14.00   Median :13.00  
+ Mean   :2560   Mean   :0.4651   Mean   :0.2333   Mean   :13.23   Mean   :12.75   Mean   :11.76  
+ 3rd Qu.:2905   3rd Qu.:0.5299   3rd Qu.:0.0000   3rd Qu.:14.00   3rd Qu.:14.00   3rd Qu.:13.00  
+ Max.   :4664   Max.   :0.8378   Max.   :1.0000   Max.   :14.00   Max.   :14.00   Max.   :13.00  
+ NA's   :2                                                                                       
+    pc_easy           pc_mod          pc_diff          rt_easy         rt_mod        rt_diff    
+ Min.   :0.2308   Min.   :0.2308   Min.   :0.2308   Min.   :1424   Min.   :1014   Min.   :1389  
+ 1st Qu.:0.8462   1st Qu.:0.7857   1st Qu.:0.6923   1st Qu.:2047   1st Qu.:2096   1st Qu.:2200  
+ Median :0.9286   Median :0.8571   Median :0.8333   Median :2335   Median :2378   Median :2524  
+ Mean   :0.8675   Mean   :0.8401   Mean   :0.7919   Mean   :2437   Mean   :2479   Mean   :2639  
+ 3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:0.9231   3rd Qu.:2710   3rd Qu.:2794   3rd Qu.:3049  
+ Max.   :1.0000   Max.   :1.0000   Max.   :1.0000   Max.   :3990   Max.   :4230   Max.   :4038  
+ NA's   :3        NA's   :2        NA's   :2        NA's   :4      NA's   :3      NA's   :4     
+     N_noun          N_adj           N_verb          pc_noun           pc_adj          pc_verb      
+ Min.   : 0.00   Min.   :0.000   Min.   : 0.000   Min.   :0.3636   Min.   :0.2500   Min.   :0.1250  
+ 1st Qu.:20.75   1st Qu.:7.000   1st Qu.: 9.000   1st Qu.:0.8220   1st Qu.:0.6250   1st Qu.:0.7273  
+ Median :22.00   Median :8.000   Median :10.000   Median :0.9091   Median :0.7500   Median :0.8182  
+ Mean   :20.52   Mean   :7.425   Mean   : 9.792   Mean   :0.8786   Mean   :0.7474   Mean   :0.8092  
+ 3rd Qu.:22.00   3rd Qu.:8.000   3rd Qu.:11.000   3rd Qu.:0.9545   3rd Qu.:0.8750   3rd Qu.:1.0000  
+ Max.   :22.00   Max.   :8.000   Max.   :11.000   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+                                                  NA's   :2        NA's   :3        NA's   :2       
+    rt_noun         rt_adj        rt_verb             dob           age         SES         type          
+ Min.   :1410   Min.   :1739   Min.   :1118   2012-10-22:  3   Min.   :2.839   Low:57   Length:120        
+ 1st Qu.:1926   1st Qu.:2276   1st Qu.:2417   2012-07-19:  2   1st Qu.:3.157   Mid:63   Class :character  
+ Median :2169   Median :2637   Median :2788   2012-09-26:  2   Median :3.365            Mode  :character  
+ Mean   :2281   Mean   :2797   Mean   :2886   2012-10-12:  2   Mean   :3.390                              
+ 3rd Qu.:2467   3rd Qu.:3234   3rd Qu.:3293   2012-12-07:  2   3rd Qu.:3.608                              
+ Max.   :3806   Max.   :5395   Max.   :5080   (Other)   :100   Max.   :4.235                              
+ NA's   :2      NA's   :3      NA's   :2      NA's      :  9   NA's   :9                                  
+     age.c         
+ Min.   :-0.55060  
+ 1st Qu.:-0.23301  
+ Median :-0.02494  
+ Mean   : 0.00000  
+ 3rd Qu.: 0.21873  
+ Max.   : 0.84570  
+ NA's   :9         
+[1] "CHECK EFFECT OF INSTRUCTIONS"
+
+Call:
+lm(formula = (pc - 0.5) ~ type * SES + age.c, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.39755 -0.05493  0.01732  0.07005  0.24257 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      0.289327   0.024346  11.884  < 2e-16 ***
+typepreg        -0.041030   0.034700  -1.182 0.239704    
+SESMid           0.121341   0.032596   3.723 0.000319 ***
+age.c            0.107758   0.040660   2.650 0.009288 ** 
+typepreg:SESMid -0.001243   0.046740  -0.027 0.978834    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1214 on 105 degrees of freedom
+  (10 observations deleted due to missingness)
+Multiple R-squared:  0.2931,	Adjusted R-squared:  0.2661 
+F-statistic: 10.88 on 4 and 105 DF,  p-value: 2.026e-07
+
+
+Call:
+lm(formula = log(rt_corr) ~ type * SES + age.c, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.42224 -0.13539 -0.01306  0.13990  0.41310 
+
+Coefficients:
+                Estimate Std. Error t value Pr(>|t|)    
+(Intercept)      7.79537    0.03810 204.613   <2e-16 ***
+typepreg         0.02619    0.05430   0.482   0.6306    
+SESMid          -0.02284    0.05101  -0.448   0.6552    
+age.c           -0.14266    0.06363  -2.242   0.0271 *  
+typepreg:SESMid  0.04643    0.07314   0.635   0.5269    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.19 on 105 degrees of freedom
+  (10 observations deleted due to missingness)
+Multiple R-squared:  0.0751,	Adjusted R-squared:  0.03987 
+F-statistic: 2.131 on 4 and 105 DF,  p-value: 0.08202
+
+[1] "# ** planned analysis 1 **\ttotal number of trials completed"
+
+Call:
+lm(formula = trials_completed ~ SES + age.c, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-31.981   0.358   0.762   1.036   1.616 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  40.5151     0.6690  60.564   <2e-16 ***
+SESMid       -0.5513     0.9003  -0.612    0.542    
+age.c        -0.6857     1.5463  -0.443    0.658    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.648 on 108 degrees of freedom
+  (9 observations deleted due to missingness)
+Multiple R-squared:  0.006225,	Adjusted R-squared:  -0.01218 
+F-statistic: 0.3383 on 2 and 108 DF,  p-value: 0.7138
+
+[1] "trials_completed, mean & SD"
+     [,1]  [,2]     [,3]   
+[1,] "Low" "39.93"  "5.885"
+[2,] "Mid" "39.952" "5.484"
+[1] "trials_completed, range"
+  Group.1 x.1 x.2
+1     Low   2  41
+2     Mid   8  41
+[1] "# ** planned analysis 2 **\ttotal number of trials attempted"
+
+Call:
+lm(formula = trials_attempted ~ SES + age.c, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-30.760  -1.019   1.662   2.682   3.338 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  38.2968     0.7519  50.931   <2e-16 ***
+SESMid       -0.5314     1.0119  -0.525    0.601    
+age.c         0.2124     1.7382   0.122    0.903    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 5.225 on 108 degrees of freedom
+  (9 observations deleted due to missingness)
+Multiple R-squared:  0.002561,	Adjusted R-squared:  -0.01591 
+F-statistic: 0.1386 on 2 and 108 DF,  p-value: 0.8707
+
+[1] "trials_attempted, mean & SD"
+     [,1]  [,2]     [,3]   
+[1,] "Low" "37.807" "6.41" 
+[2,] "Mid" "37.81"  "5.769"
+[1] "trials_attempted, range"
+  Group.1 x.1 x.2
+1     Low   1  41
+2     Mid   7  41
+[1] "trials_attempted, distribution"
+    
+     Low Mid
+  1    1   0
+  7    0   1
+  12   0   1
+  19   1   0
+  24   1   0
+  29   0   1
+  30   1   0
+  32   0   1
+  34   2   2
+  35   2   3
+  36   5   6
+  37   2   2
+  38   3   4
+  39   5  12
+  40  14  11
+  41  20  19
+[1] "# ** planned analysis 3 **\t%correct & RT per group"
+
+Call:
+lm(formula = (pc - 0.5) ~ SES + age.c, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.41940 -0.06147  0.02997  0.07083  0.26439 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  0.26960    0.01757  15.345  < 2e-16 ***
+SESMid       0.12136    0.02373   5.113  1.4e-06 ***
+age.c        0.11484    0.04062   2.827  0.00561 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1221 on 107 degrees of freedom
+  (10 observations deleted due to missingness)
+Multiple R-squared:  0.2715,	Adjusted R-squared:  0.2579 
+F-statistic: 19.94 on 2 and 107 DF,  p-value: 4.365e-08
+
+
+Call:
+lm(formula = log(rt_corr) ~ SES + age.c, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.38655 -0.13782 -0.01485  0.14317  0.42369 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  7.807608   0.027393 285.025   <2e-16 ***
+SESMid      -0.001276   0.037004  -0.034   0.9726    
+age.c       -0.153826   0.063335  -2.429   0.0168 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1903 on 107 degrees of freedom
+  (10 observations deleted due to missingness)
+Multiple R-squared:  0.05383,	Adjusted R-squared:  0.03614 
+F-statistic: 3.044 on 2 and 107 DF,  p-value: 0.05181
+
+[1] "# ** not planned **\tRT per group * corr"
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: log(rt)
+           Chisq Df Pr(>Chisq)    
+SES       0.6528  1  0.4191169    
+resp     12.7996  1  0.0003467 ***
+age.c     4.0329  1  0.0446212 *  
+SES:resp  3.7002  1  0.0544044 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Linear mixed model fit by REML ['lmerMod']
+Formula: log(rt) ~ SES * resp + age.c + (1 | id)
+   Data: rtstackcor
+
+REML criterion at convergence: -24.9
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.53871 -0.48696 -0.09202  0.53174  2.77451 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.02077  0.1441  
+ Residual             0.02808  0.1676  
+Number of obs: 172, groups:  id, 110
+
+Fixed effects:
+                     Estimate Std. Error t value
+(Intercept)           7.80874    0.03177  245.83
+SESMid               -0.00332    0.04286   -0.08
+resprt_incorr         0.05411    0.03759    1.44
+age.c                -0.13225    0.06586   -2.01
+SESMid:resprt_incorr  0.11012    0.05724    1.92
+
+Correlation of Fixed Effects:
+            (Intr) SESMid rsprt_ age.c 
+SESMid      -0.748                     
+resprt_ncrr -0.476  0.350              
+age.c        0.108 -0.146  0.037       
+SESMd:rspr_  0.315 -0.421 -0.656  0.000
+[1] "# ** analysis 4 **\t%correct & RT per group * difficulty (check - not sure if we declared it)\n"
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: (pc - 0.5)
+                 Chisq Df Pr(>Chisq)    
+SES            27.2838  1  1.757e-07 ***
+difficulty     38.0736  2  5.400e-09 ***
+age.c           7.9143  1   0.004904 ** 
+SES:difficulty  9.6407  2   0.008064 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Linear mixed model fit by REML ['lmerMod']
+Formula: (pc - 0.5) ~ SES * difficulty + age.c + (1 | id)
+   Data: pcstackdif
+
+REML criterion at convergence: -416.2
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.9329 -0.4730  0.0749  0.5370  2.5705 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.012113 0.11006 
+ Residual             0.008511 0.09226 
+Number of obs: 329, groups:  id, 110
+
+Fixed effects:
+                         Estimate Std. Error t value
+(Intercept)               0.20712    0.02063  10.042
+SESMid                    0.15583    0.02782   5.602
+difficultypc_easy         0.11730    0.01864   6.293
+difficultypc_mod          0.06048    0.01864   3.245
+age.c                     0.11446    0.04069   2.813
+SESMid:difficultypc_easy -0.07527    0.02509  -3.000
+SESMid:difficultypc_mod  -0.02005    0.02503  -0.801
+
+Correlation of Fixed Effects:
+                  (Intr) SESMid dffcltypc_s dffcltypc_m age.c  SESMd:dffcltypc_s
+SESMid            -0.748                                                        
+dffcltypc_s       -0.452  0.335                                                 
+dffcltypc_m       -0.452  0.335  0.500                                          
+age.c              0.103 -0.139  0.000       0.000                              
+SESMd:dffcltypc_s  0.336 -0.449 -0.743      -0.371       0.000                  
+SESMd:dffcltypc_m  0.336 -0.450 -0.372      -0.745       0.000  0.499           
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: log(rt)
+                 Chisq Df Pr(>Chisq)    
+SES             0.1683  1     0.6816    
+difficulty     23.1162  2  9.558e-06 ***
+age.c           5.5204  1     0.0188 *  
+SES:difficulty  0.6855  2     0.7098    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Linear mixed model fit by REML ['lmerMod']
+Formula: log(rt) ~ SES * difficulty + age.c + (1 | id)
+   Data: rtstackdif
+
+REML criterion at convergence: -157.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.5657 -0.5472 -0.0252  0.4931  2.6302 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.02884  0.1698  
+ Residual             0.01832  0.1353  
+Number of obs: 325, groups:  id, 110
+
+Fixed effects:
+                         Estimate Std. Error t value
+(Intercept)               7.86799    0.03158  249.14
+SESMid                   -0.00200    0.04237   -0.05
+difficultyrt_easy        -0.09351    0.02783   -3.36
+difficultyrt_mod         -0.08721    0.02797   -3.12
+age.c                    -0.14621    0.06223   -2.35
+SESMid:difficultyrt_easy  0.02021    0.03717    0.54
+SESMid:difficultyrt_mod   0.03023    0.03719    0.81
+
+Correlation of Fixed Effects:
+                  (Intr) SESMid dffcltyrt_s dffcltyrt_m age.c  SESMd:dffcltyrt_s
+SESMid            -0.752                                                        
+dffcltyrt_s       -0.447  0.333                                                 
+dffcltyrt_m       -0.451  0.336  0.505                                          
+age.c              0.106 -0.141 -0.001      -0.005                              
+SESMd:dffcltyrt_s  0.335 -0.440 -0.749      -0.378       0.000                  
+SESMd:dffcltyrt_m  0.339 -0.444 -0.380      -0.752       0.004  0.501           
+[1] "# ** analysis 5 **\tcompare different conceptualizations of SES (maternal education, etc.)"
+[1] "##TO DO"
+[1] "# ** analysis ** Differences by word type"
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: (pc - 0.5)
+             Chisq Df Pr(>Chisq)    
+SES        25.2328  1  5.081e-07 ***
+lexCat     53.9852  2  1.893e-12 ***
+age.c       5.8039  1   0.015991 *  
+SES:lexCat 10.6074  2   0.004973 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: log(rt)
+              Chisq Df Pr(>Chisq)    
+SES          0.0797  1    0.77776    
+lexCat     136.5104  2    < 2e-16 ***
+age.c        3.9752  1    0.04617 *  
+SES:lexCat   3.8564  2    0.14541    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Linear mixed model fit by REML ['lmerMod']
+Formula: log(rt) ~ SES * lexCat + age.c + (1 | id)
+   Data: rtstacklex
+
+REML criterion at convergence: -94.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.1500 -0.4952 -0.0462  0.5191  2.5328 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.02783  0.1668  
+ Residual             0.02458  0.1568  
+Number of obs: 329, groups:  id, 110
+
+Fixed effects:
+                      Estimate Std. Error t value
+(Intercept)           7.928195   0.032870  241.20
+SESMid               -0.029397   0.044426   -0.66
+lexCatrt_noun        -0.213003   0.031672   -6.73
+lexCatrt_verb        -0.009623   0.031672   -0.30
+age.c                -0.125916   0.063154   -1.99
+SESMid:lexCatrt_noun  0.035626   0.042638    0.84
+SESMid:lexCatrt_verb  0.083414   0.042638    1.96
+
+Correlation of Fixed Effects:
+               (Intr) SESMid lxCtrt_n lxCtrt_v age.c  SESMd:lxCtrt_n
+SESMid         -0.746                                               
+lexCatrt_nn    -0.482  0.356                                        
+lexCtrt_vrb    -0.482  0.356  0.500                                 
+age.c           0.101 -0.135  0.000    0.000                        
+SESMd:lxCtrt_n  0.358 -0.482 -0.743   -0.371    0.000               
+SESMd:lxCtrt_v  0.358 -0.482 -0.371   -0.743    0.000  0.502        
+[1] "# ** planned analysis **\tInternal validity with cronbach alpha, using split trial"
+
+Reliability analysis   
+Call: alpha(x = cbind(data$pc_1, data$pc_2))
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd
+      0.87      0.87    0.77      0.77 6.8 0.023 0.83 0.14
+
+ lower alpha upper     95% confidence boundaries
+0.83 0.87 0.92 
+
+ Reliability if an item is dropped:
+   raw_alpha std.alpha G6(smc) average_r  S/N alpha se
+V1      0.77      0.77     0.6      0.77   NA       NA
+V2      0.60      0.77      NA        NA 0.77     0.08
+
+ Item statistics 
+     n raw.r std.r r.cor r.drop mean   sd
+V1 118  0.94  0.94  0.83   0.77 0.84 0.15
+V2 118  0.94  0.94  0.83   0.77 0.83 0.15
+
+Reliability analysis   
+Call: alpha(x = cbind(data$rt_1, data$rt_2))
+
+  raw_alpha std.alpha G6(smc) average_r S/N  ase mean  sd
+      0.89      0.89     0.8       0.8   8 0.02 2533 521
+
+ lower alpha upper     95% confidence boundaries
+0.85 0.89 0.93 
+
+ Reliability if an item is dropped:
+   raw_alpha std.alpha G6(smc) average_r S/N alpha se
+V1      0.80       0.8    0.64       0.8  NA       NA
+V2      0.64       0.8      NA        NA 0.8    0.082
+
+ Item statistics 
+     n raw.r std.r r.cor r.drop mean  sd
+V1 118  0.95  0.95  0.85    0.8 2506 544
+V2 118  0.95  0.95  0.85    0.8 2560 554
+[1] "# Test potential presence of side bias"
+
+ 0  1 
+92 28 
+[1] "# ** NUTSHELL **\tEffect sizes"
+[1] "trials_completed d= -0.00946038626828271 \n r= 0.00473014021663914"
+[1] "trials_attempted d= -0.0010156193367134 \n r= 0.000507809602882106"
+[1] "pc d= -0.361388688418535 \n r= 0.177814793904265"
+[1] "rt_corr d= 1.40459462910178 \n r= 0.574723410614314"

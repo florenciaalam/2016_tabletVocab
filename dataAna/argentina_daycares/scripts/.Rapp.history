@@ -1,0 +1,1338 @@
+minTrialN=9 #MINIMUM USABLE TRIALS TO BE INCLUDED IN OVERALL ANALYSES #
+minTrialNtype=4  #minimum amount of trials for each type   #notice that this means we will never look at crossing lexical type x difficulty level#
+#
+extractVwithNA<-function(allkids,res_incl){#
+#add kids with no response data so that table can be square#
+#and then return the averaged parameter#
+ 	names(res_incl)<-c("id","x")#
+	if(sum(!(allkids %in% as.character(res_incl$id)))>0){#
+	  nakids=cbind(as.character(allkids [!(allkids %in% as.character(res_incl$id))]),NA)#
+	  colnames(nakids)<-c("id","x")#
+	  res_incl=rbind(res_incl,nakids)#
+	} #
+  res_incl = res_incl[order(res_incl $id),]		#
+  as.numeric(as.character(res_incl$x))#
+}#
+#
+library(xlsx)
+dirlist = dir(path="../data")#
+#
+data=NULL#
+for(thisdir in dirlist){#
+	dir(paste("../data",thisdir,sep="/"),pattern='csv')->allcsv#
+	for(thisf in allcsv){#
+		print(thisf)#
+		read.csv(paste("../data",thisdir,thisf,sep="/"))->thiscsv#
+		data =rbind(data,cbind(thisdir,thisf,thiscsv)) #
+		}#
+}#
+dim(data)  #
+write.table(data,"../results/data.txt",row.names=F,sep="\t")#
+#*************************************************************************************************************************************#
+sumtab=NULL#
+for(thisuuid in levels(data$uuid)) sumtab=rbind(sumtab,cbind(thisuuid,sum(data$uuid==thisuuid),data[data$uuid==thisuuid,c("subject_id","config_profile","session_started_at","thisdir","thisf")][1,]))#
+write.table(sumtab,"../results/sumtabCROSSac.txt",row.names=F,quote=F,sep="\t")#
+#several IDs have two sets of data!!#
+names(table(sumtab$subject_id))[table(sumtab$subject_id)>1]
+read.table("../results/data.txt",header=T)-> data#
+#remove non-data#
+data[data$uuid!="5F3D147C2A1D4415B01AC1E67F50AB5E",] -> data #only 1 trial#
+data[data$uuid!="836FB854BE69447B879F1AD6F59E068C",] -> data #only 1 trial#
+data[data$uuid!="F5B32D20F6E54BD08F6E6F6D8AD36170",] -> data #only 1 trial, Carla confirms these were tests, Pestalozzi G47#
+data[data$uuid!="9019A95E1968432685B0E80CD57E65C2",] -> data #only 1 trial#
+data[data$uuid!="C3B83150337D4195BD744189ECDA6F15",] -> data #only 1 trial#
+#
+#fix incorrect IDs#
+data$subject_id[data$uuid=="5293068377BB4C95A353E8414D954857"]<-"514"  #checked excel & renamed due to Carla's note (Pestalozzi tab, G42)#
+data$subject_id[data$uuid=="6F24FCC2B87F4CC4A1321B79AA05B6D0"]<-"619b"  #checked excel & renamed due to Emi's note (Cayetano tab, G33-34)#
+#
+data$subject_id[data$uuid=="F12D9DF011234EEBBBF7082602FB97A9"]<-"751b" #checked excel & renamed due to Maia's note (Cayetano tab, B10-11)#
+####!!!! #
+data$subject_id[data$uuid=="25AA294A986644DF8675ED9481977215"]<-"605b" ###!!! check!! might this one be a 600? #
+data$subject_id=factor(data$subject_id)#
+#
+#*$* THROUGOUT SCRIPT, WE WILL COMPOSE A RESULTS TABLE, STARTING FROM NOTHING:#
+results=NULL
+*$* add ID info to the results table#
+results$id=sort(data$subject_id[data$trial_number_session==1])#
+#
+#*$* add backgound info to the results table#
+results$school = data$thisdir[data$trial_number_session==1][order(data$subject_id[data$trial_number_session==1])]#
+results$date = data$date[data$trial_number_session==1][order(data$subject_id[data$trial_number_session==1])]#
+#*$*profile#
+results$profile = data$config_profile[data$trial_number_session==1][order(data$subject_id[data$trial_number_session==1])]#
+#### STEP 1: CLEAN UP#
+## Take into acount only test trials #
+data[-grep("entrenamiento", data $level_name),]-> data#
+#
+#clean up names of objects#
+data$object_asked=gsub("_.*","",data$object_asked)#
+#
+dim(data) #4793 trials
+STEP 2: RESULTS COLLAPSING ACROSS TRIAL TYPES#
+#*$*trials completed#
+results$trials_completed=as.numeric(table(data$subject_id)) #
+#
+#hist(data$object_touched_at)#
+#hist(data$object_touched_at[data $object_touched_at<9000])#
+#
+## Exclusion criteria#
+#maximum time to answer#
+data[data $object_touched_at<7000,]-> data#
+#
+#dim(data) #4537 trials #
+#
+#*$* trials attempted#
+results$trials_attempted=as.numeric(table(data$subject_id))#
+#
+#apply minimum amount of trials over the whole experiment#
+bbMinOK=names(table(data $subject_id)[table(data $subject_id)>minTrialN])#
+data[data $subject_id %in% bbMinOK,]-> data#
+#
+#dim(data) #4529 trials#
+### ANALYSIS ACCURACY#
+#*$* percent correct (overall)#
+results$pc=extractVwithNA(levels(data$subject_id),	aggregate(data $correct,by=list(data $subject_id),mean))#
+###XXXXX####
+#Calculate exclusion matrix  #
+exclude = table(data$subject_id,data$correct) < minTrialNtype   #Apply minimum number of trials #
+#
+### ANALYSIS RESPONSE TIMES #
+results$rt_corr=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$correct==1],by=list(data $subject_id[data$correct==1]),median))#
+results$rt_corr[exclude[,"1"]]<-NA#
+#
+results$rt_incorr=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$correct==0],by=list(data $subject_id[data$correct==0]),median))#
+results$rt_incorr[exclude[,"0"]]<-NA
+*$* for reliability calculations, re-do proportion correct & RT corr from odd and even trials#
+data$spl=NA#
+for(each_child in levels(data$subject_id)) if(sum(data$subject_id==each_child) == length(rep(1:2,sum(data$subject_id==each_child)/2))) data$spl[data$subject_id==each_child]<-rep(1:2, sum(data$subject_id==each_child)/2) else data$spl[data$subject_id==each_child]<-c(rep(1:2, sum(data$subject_id==each_child)/2),1)#
+#
+results$pc_1=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$spl==1],by=list(data $subject_id[data$spl==1]),mean))#
+results$pc_2=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$spl==2],by=list(data $subject_id[data$spl==2]),mean))#
+#
+results$rt_1=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$spl==1],by=list(data $subject_id[data$spl==1]),median))#
+results$rt_2=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$spl==2],by=list(data $subject_id[data$spl==2]),median))#
+#
+#*$* Write in the number of left responses#
+results$propLeft=as.numeric(as.character(table(data$subject_id,data$object_touched_position)[,1]))/results$trials_attempted#
+results$bias<-ifelse(results$propLeft <.4 | results$propLeft>.6,1,0)  #this should be improved!!#
+#
+#### STEP 3: RESULTS SEPARATING DIFFERENT TRIAL TYPES#
+#
+# Read in ancillary table#
+dif=read.table("../data/wordTypeArg.txt",header=T)#
+#
+## Add useful info to the data sheet#
+#classify trials by word type & difficulty level#
+data$dif=NA#
+data$dif[as.character(data$object_asked) %in% as.character(dif$word[dif$level=="facil"])]<-"easy"#
+data$dif[as.character(data$object_asked) %in% as.character(dif$word[dif$level=="moderado"])]<-"moderate"#
+data$dif[as.character(data$object_asked) %in% as.character(dif$word[dif$level=="dificil"])]<-"difficult"#
+data$dif=factor(data$dif)#
+#
+data$lex=NA#
+data$lex[as.character(data$object_asked) %in% as.character(dif$word[dif$lex =="adj"])]<-"adj"#
+data$lex[as.character(data$object_asked) %in% as.character(dif$word[dif$lex =="sust"])]<-"noun"#
+data$lex[as.character(data$object_asked) %in% as.character(dif$word[dif$lex =="verbo"])]<-"verb"#
+#
+#### by difficulty level#
+#Ns#
+results$N_easy=as.numeric(table(data$subject_id,data$dif)[,"easy"])#
+results$N_mod=as.numeric(table(data$subject_id,data$dif)[,"moderate"])#
+results$N_diff= as.numeric(table(data$subject_id,data$dif)[,"difficult"])#
+#Calculate exclusion matrix#
+exclude = table(data$subject_id,data$dif) < minTrialNtype   #Apply minimum number of trials #
+#*$* percent correct#
+results$pc_easy=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$dif=="easy"],by=list(data $subject_id[data$dif== "easy"]),mean))#
+results$pc_easy[exclude[,"easy"]]<-NA#
+#
+results$pc_mod=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$dif=="moderate"],by=list(data $subject_id[data$dif== "moderate"]),mean))#
+results$pc_mod[exclude[,"moderate"]]<-NA#
+#
+results$pc_diff=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$dif=="difficult"],by=list(data $subject_id[data$dif== "difficult"]),mean))#
+results$pc_diff[exclude[,"difficult"]]<-NA#
+#Calculate exclusion matrix#
+exclude = table(data$subject_id[data$correct==1],data$dif[data$correct==1]) < minTrialNtype   #Apply minimum number of trials #
+#
+#*$* rt corr only#
+results$rt_easy=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$dif=="easy" & data$correct==1],by=list(data $subject_id[data$dif== "easy" & data$correct==1]), median))#
+results$rt_easy[exclude[,"easy"]]<-NA#
+#
+results$rt_mod=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$dif=="moderate" & data$correct==1],by=list(data $subject_id[data$dif== "moderate" & data$correct==1]), median))#
+results$rt_mod[exclude[,"moderate"]]<-NA#
+#
+results$rt_diff=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$dif=="difficult" & data$correct==1],by=list(data $subject_id[data$dif== "difficult" & data$correct==1]),median))#
+results$rt_diff[exclude[,"difficult"]]<-NA#
+#### by lexical type#
+#Ns#
+results$N_noun=as.numeric(table(data$subject_id,data$lex)[,"noun"])#
+results$N_adj=as.numeric(table(data$subject_id,data$lex)[,"adj"])#
+results$N_verb=as.numeric(table(data$subject_id,data$lex)[,"verb"])#
+#Calculate exclusion matrix#
+exclude = table(data$subject_id,data$lex) < minTrialNtype#
+#*$* percent correct#
+results$pc_noun=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$lex =="noun"],by=list(data $subject_id[data$lex== "noun"]),mean))#
+results$pc_noun[exclude[,"noun"]]<-NA#
+#
+results$pc_adj =extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$lex =="adj"],by=list(data $subject_id[data$lex== "adj"]),mean))#
+results$pc_adj[exclude[,"adj"]]<-NA#
+#
+results$pc_verb =extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$lex =="verb"],by=list(data $subject_id[data$lex== "verb"]),mean))#
+results$pc_verb[exclude[,"verb"]]<-NA#
+#*$* rt corr only#
+results$rt_noun=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$lex=="noun" & data$correct==1],by=list(data $subject_id[data$lex== "noun" & data$correct==1]), median))#
+results$rt_noun[exclude[,"noun"]]<-NA#
+#
+results$rt_adj=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$lex=="adj" & data$correct==1],by=list(data $subject_id[data$lex== "adj" & data$correct==1]), median))#
+results$rt_adj[exclude[,"adj"]]<-NA#
+#
+results$rt_verb=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$lex=="verb" & data$correct==1],by=list(data $subject_id[data$lex== "verb" & data$correct==1]),median))#
+results$rt_verb[exclude[,"verb"]]<-NA#
+#Squarify and write out#
+resultsdf=data.frame(results)
+write.table(resultsdf,"../results/results.txt",row.names=F,quote=F,sep="\t")#
+#
+#And also write out the final data#
+write.table(data,"../results/data_final.txt",row.names=F,quote=F,sep="\t")#
+#
+## add individual information#
+read.xlsx("../data/Vocabulario Ipad Prueba Piloto.xlsx",1,startRow=2)->cay#
+read.xlsx("../data/Vocabulario Ipad Prueba Piloto.xlsx",2,startRow=2)->pes#
+names(pes)[c(2,6)]<-c("id","dob")#
+names(cay)[c(2,10)]<-c("id","dob")#
+rbind(pes[,c(2,6)],cay[,c(2,10)])->dobs
+names(table(dobs$id))[table(dobs$id)>1]   #just a check, now no duplicates in this table, although notice that 605 and 605b remain utterly mysterious#
+#
+merge(resultsdf,dobs,all.x=T,all.y=F)->resdob # TWO PROBLEMS HERE:#
+#1) 4 children don't have DOBs: 491, 492 -- these are Ale Menti's kids; 507, who is on the excel but has no DOB, 605b the mystery child#
+#2) 605 is matched up with someone, but I'm not sure it's his true identity#
+#
+resdob$age= (as.Date(resdob$date)- as.Date(resdob$dob))/365.25#
+#
+resdob$SES=ifelse(resdob$school=="cayetano","Low","Mid")#
+#correct a couple details#
+resdob$SES[resdob$id=="491"]<-"Low"#
+resdob$SES[resdob$id=="492"]<-"Mid"#
+#
+write.table(resultsdf,"../results/results.txt",row.names=F,sep="\t")
+R analysis on word comprehension on Mandy's app#
+# Argentina#
+#
+# Base  Alex Cristia alecristia@gmail.com 2016-04-25#
+# Last edit May 2016#
+#
+# This script carries out the main analyed declared in the paper and prints out both figures included in the paper and also others not included there #
+#
+### PRELIMINARIES: LOAD PACKAGES, DECLARE FUNCTIONS, SET PARAMETERS#
+library(lme4)#
+library(car)#
+library(psych)#
+### END PRELIMINARIES#
+#
+# Read in & create tables to be used later#
+read.table("../results/results.txt",header=T)->data#
+data$type=substr(data$profile,nchar(as.character(data$profile)),nchar(as.character(data$profile)))#
+data$type<-ifelse(data$type=="g","preg","imp")#
+data$age.c=data$age-mean(data$age,na.rm=T)#
+#
+pcstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_easy","pc_mod","pc_diff")]))#
+names(pcstackdif)[4:5]<-c("pc","difficulty")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[4:5]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[4:5]<-c("pc","lexCat")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c","langdummy","school")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[6:7]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c","langdummy","school")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[6:7]<-c("pc","lexCat")#
+#
+rtstacklex=cbind(data[,c("id","SES","age.c","langdummy","school")], stack(data[,c("rt_noun","rt_adj","rt_verb")]))#
+names(rtstacklex)[6:7]<-c("rt","lexCat")#
+#CHECKS#
+#boxplot(data$age~data$type*data$SES)#
+#need to add age to the models for sure#
+#
+### 	ANALYSES START#
+sink("../results/allresults.txt")#
+print(date())#
+print(dim(data))#
+print(summary(data))
+data$age.c=data$age-mean(data$age,na.rm=T)
+names(data)
+sink()
+names(data)
+resdob$age
+R analysis on word comprehension on Mandy's app#
+# Argentina#
+#
+# Base  Alex Cristia alecristia@gmail.com 2016-04-25#
+# Last edit May 2016#
+#
+# This script puts together the dataset that will be analyzed in subsequent scripts#
+#
+### PRELIMINARIES: LOAD PACKAGES, DECLARE FUNCTIONS, SET PARAMETERS#
+minTrialN=9 #MINIMUM USABLE TRIALS TO BE INCLUDED IN OVERALL ANALYSES #
+minTrialNtype=4  #minimum amount of trials for each type   #notice that this means we will never look at crossing lexical type x difficulty level#
+#
+extractVwithNA<-function(allkids,res_incl){#
+#add kids with no response data so that table can be square#
+#and then return the averaged parameter#
+ 	names(res_incl)<-c("id","x")#
+	if(sum(!(allkids %in% as.character(res_incl$id)))>0){#
+	  nakids=cbind(as.character(allkids [!(allkids %in% as.character(res_incl$id))]),NA)#
+	  colnames(nakids)<-c("id","x")#
+	  res_incl=rbind(res_incl,nakids)#
+	} #
+  res_incl = res_incl[order(res_incl $id),]		#
+  as.numeric(as.character(res_incl$x))#
+}#
+#
+library(xlsx)#
+### END PRELIMINARIES#
+#
+#*************************************************************************************************************************************#
+#### CSV DATA#
+## Read in the CSV#
+dirlist = dir(path="../data")#
+#
+data=NULL#
+for(thisdir in dirlist){#
+	dir(paste("../data",thisdir,sep="/"),pattern='csv')->allcsv#
+	for(thisf in allcsv){#
+		print(thisf)#
+		read.csv(paste("../data",thisdir,thisf,sep="/"))->thiscsv#
+		data =rbind(data,cbind(thisdir,thisf,thiscsv)) #
+		}#
+}#
+dim(data)  #
+write.table(data,"../results/data.txt",row.names=F,sep="\t")#
+#*************************************************************************************************************************************#
+sumtab=NULL#
+for(thisuuid in levels(data$uuid)) sumtab=rbind(sumtab,cbind(thisuuid,sum(data$uuid==thisuuid),data[data$uuid==thisuuid,c("subject_id","config_profile","session_started_at","thisdir","thisf")][1,]))#
+write.table(sumtab,"../results/sumtabCROSSac.txt",row.names=F,quote=F,sep="\t")#
+#several IDs have two sets of data!!#
+names(table(sumtab$subject_id))[table(sumtab$subject_id)>1]#
+#
+#*************************************************************************************************************************************#
+#
+read.table("../results/data.txt",header=T)-> data#
+#remove non-data#
+data[data$uuid!="5F3D147C2A1D4415B01AC1E67F50AB5E",] -> data #only 1 trial#
+data[data$uuid!="836FB854BE69447B879F1AD6F59E068C",] -> data #only 1 trial#
+data[data$uuid!="F5B32D20F6E54BD08F6E6F6D8AD36170",] -> data #only 1 trial, Carla confirms these were tests, Pestalozzi G47#
+data[data$uuid!="9019A95E1968432685B0E80CD57E65C2",] -> data #only 1 trial#
+data[data$uuid!="C3B83150337D4195BD744189ECDA6F15",] -> data #only 1 trial#
+#
+#fix incorrect IDs#
+data$subject_id[data$uuid=="5293068377BB4C95A353E8414D954857"]<-"514"  #checked excel & renamed due to Carla's note (Pestalozzi tab, G42)#
+data$subject_id[data$uuid=="6F24FCC2B87F4CC4A1321B79AA05B6D0"]<-"619b"  #checked excel & renamed due to Emi's note (Cayetano tab, G33-34)#
+#
+data$subject_id[data$uuid=="F12D9DF011234EEBBBF7082602FB97A9"]<-"751b" #checked excel & renamed due to Maia's note (Cayetano tab, B10-11)#
+####!!!! #
+data$subject_id[data$uuid=="25AA294A986644DF8675ED9481977215"]<-"605b" ###!!! check!! might this one be a 600? #
+data$subject_id=factor(data$subject_id)#
+#
+#*$* THROUGOUT SCRIPT, WE WILL COMPOSE A RESULTS TABLE, STARTING FROM NOTHING:#
+results=NULL#
+#*$* add ID info to the results table#
+results$id=sort(data$subject_id[data$trial_number_session==1])#
+#
+#*$* add backgound info to the results table#
+results$school = data$thisdir[data$trial_number_session==1][order(data$subject_id[data$trial_number_session==1])]#
+results$date = data$date[data$trial_number_session==1][order(data$subject_id[data$trial_number_session==1])]#
+#*$*profile#
+results$profile = data$config_profile[data$trial_number_session==1][order(data$subject_id[data$trial_number_session==1])]#
+#### STEP 1: CLEAN UP#
+## Take into acount only test trials #
+data[-grep("entrenamiento", data $level_name),]-> data#
+#
+#clean up names of objects#
+data$object_asked=gsub("_.*","",data$object_asked)#
+#
+dim(data) #4793 trials #
+#### STEP 2: RESULTS COLLAPSING ACROSS TRIAL TYPES#
+#*$*trials completed#
+results$trials_completed=as.numeric(table(data$subject_id)) #
+#
+#hist(data$object_touched_at)#
+#hist(data$object_touched_at[data $object_touched_at<9000])#
+#
+## Exclusion criteria#
+#maximum time to answer#
+data[data $object_touched_at<7000,]-> data#
+#
+#dim(data) #4537 trials #
+#
+#*$* trials attempted#
+results$trials_attempted=as.numeric(table(data$subject_id))#
+#
+#apply minimum amount of trials over the whole experiment#
+bbMinOK=names(table(data $subject_id)[table(data $subject_id)>minTrialN])#
+data[data $subject_id %in% bbMinOK,]-> data#
+#
+#dim(data) #4529 trials#
+### ANALYSIS ACCURACY#
+#*$* percent correct (overall)#
+results$pc=extractVwithNA(levels(data$subject_id),	aggregate(data $correct,by=list(data $subject_id),mean))#
+###XXXXX####
+#Calculate exclusion matrix  #
+exclude = table(data$subject_id,data$correct) < minTrialNtype   #Apply minimum number of trials #
+#
+### ANALYSIS RESPONSE TIMES #
+results$rt_corr=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$correct==1],by=list(data $subject_id[data$correct==1]),median))#
+results$rt_corr[exclude[,"1"]]<-NA#
+#
+results$rt_incorr=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$correct==0],by=list(data $subject_id[data$correct==0]),median))#
+results$rt_incorr[exclude[,"0"]]<-NA#
+#*$* for reliability calculations, re-do proportion correct & RT corr from odd and even trials#
+data$spl=NA#
+for(each_child in levels(data$subject_id)) if(sum(data$subject_id==each_child) == length(rep(1:2,sum(data$subject_id==each_child)/2))) data$spl[data$subject_id==each_child]<-rep(1:2, sum(data$subject_id==each_child)/2) else data$spl[data$subject_id==each_child]<-c(rep(1:2, sum(data$subject_id==each_child)/2),1)#
+#
+results$pc_1=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$spl==1],by=list(data $subject_id[data$spl==1]),mean))#
+results$pc_2=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$spl==2],by=list(data $subject_id[data$spl==2]),mean))#
+#
+results$rt_1=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$spl==1],by=list(data $subject_id[data$spl==1]),median))#
+results$rt_2=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$spl==2],by=list(data $subject_id[data$spl==2]),median))#
+#
+#*$* Write in the number of left responses#
+results$propLeft=as.numeric(as.character(table(data$subject_id,data$object_touched_position)[,1]))/results$trials_attempted#
+results$bias<-ifelse(results$propLeft <.4 | results$propLeft>.6,1,0)  #this should be improved!!#
+#
+#### STEP 3: RESULTS SEPARATING DIFFERENT TRIAL TYPES#
+#
+# Read in ancillary table#
+dif=read.table("../data/wordTypeArg.txt",header=T)#
+#
+## Add useful info to the data sheet#
+#classify trials by word type & difficulty level#
+data$dif=NA#
+data$dif[as.character(data$object_asked) %in% as.character(dif$word[dif$level=="facil"])]<-"easy"#
+data$dif[as.character(data$object_asked) %in% as.character(dif$word[dif$level=="moderado"])]<-"moderate"#
+data$dif[as.character(data$object_asked) %in% as.character(dif$word[dif$level=="dificil"])]<-"difficult"#
+data$dif=factor(data$dif)#
+#
+data$lex=NA#
+data$lex[as.character(data$object_asked) %in% as.character(dif$word[dif$lex =="adj"])]<-"adj"#
+data$lex[as.character(data$object_asked) %in% as.character(dif$word[dif$lex =="sust"])]<-"noun"#
+data$lex[as.character(data$object_asked) %in% as.character(dif$word[dif$lex =="verbo"])]<-"verb"#
+#
+#### by difficulty level#
+#Ns#
+results$N_easy=as.numeric(table(data$subject_id,data$dif)[,"easy"])#
+results$N_mod=as.numeric(table(data$subject_id,data$dif)[,"moderate"])#
+results$N_diff= as.numeric(table(data$subject_id,data$dif)[,"difficult"])#
+#Calculate exclusion matrix#
+exclude = table(data$subject_id,data$dif) < minTrialNtype   #Apply minimum number of trials #
+#*$* percent correct#
+results$pc_easy=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$dif=="easy"],by=list(data $subject_id[data$dif== "easy"]),mean))#
+results$pc_easy[exclude[,"easy"]]<-NA#
+#
+results$pc_mod=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$dif=="moderate"],by=list(data $subject_id[data$dif== "moderate"]),mean))#
+results$pc_mod[exclude[,"moderate"]]<-NA#
+#
+results$pc_diff=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$dif=="difficult"],by=list(data $subject_id[data$dif== "difficult"]),mean))#
+results$pc_diff[exclude[,"difficult"]]<-NA#
+#Calculate exclusion matrix#
+exclude = table(data$subject_id[data$correct==1],data$dif[data$correct==1]) < minTrialNtype   #Apply minimum number of trials #
+#
+#*$* rt corr only#
+results$rt_easy=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$dif=="easy" & data$correct==1],by=list(data $subject_id[data$dif== "easy" & data$correct==1]), median))#
+results$rt_easy[exclude[,"easy"]]<-NA#
+#
+results$rt_mod=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$dif=="moderate" & data$correct==1],by=list(data $subject_id[data$dif== "moderate" & data$correct==1]), median))#
+results$rt_mod[exclude[,"moderate"]]<-NA#
+#
+results$rt_diff=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$dif=="difficult" & data$correct==1],by=list(data $subject_id[data$dif== "difficult" & data$correct==1]),median))#
+results$rt_diff[exclude[,"difficult"]]<-NA#
+#### by lexical type#
+#Ns#
+results$N_noun=as.numeric(table(data$subject_id,data$lex)[,"noun"])#
+results$N_adj=as.numeric(table(data$subject_id,data$lex)[,"adj"])#
+results$N_verb=as.numeric(table(data$subject_id,data$lex)[,"verb"])#
+#Calculate exclusion matrix#
+exclude = table(data$subject_id,data$lex) < minTrialNtype#
+#*$* percent correct#
+results$pc_noun=extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$lex =="noun"],by=list(data $subject_id[data$lex== "noun"]),mean))#
+results$pc_noun[exclude[,"noun"]]<-NA#
+#
+results$pc_adj =extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$lex =="adj"],by=list(data $subject_id[data$lex== "adj"]),mean))#
+results$pc_adj[exclude[,"adj"]]<-NA#
+#
+results$pc_verb =extractVwithNA(levels(data$subject_id),aggregate(data $correct[data$lex =="verb"],by=list(data $subject_id[data$lex== "verb"]),mean))#
+results$pc_verb[exclude[,"verb"]]<-NA#
+#*$* rt corr only#
+results$rt_noun=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$lex=="noun" & data$correct==1],by=list(data $subject_id[data$lex== "noun" & data$correct==1]), median))#
+results$rt_noun[exclude[,"noun"]]<-NA#
+#
+results$rt_adj=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$lex=="adj" & data$correct==1],by=list(data $subject_id[data$lex== "adj" & data$correct==1]), median))#
+results$rt_adj[exclude[,"adj"]]<-NA#
+#
+results$rt_verb=extractVwithNA(levels(data$subject_id),aggregate(data $object_touched_at[data$lex=="verb" & data$correct==1],by=list(data $subject_id[data$lex== "verb" & data$correct==1]),median))#
+results$rt_verb[exclude[,"verb"]]<-NA#
+#Squarify and write out#
+resultsdf=data.frame(results)#
+write.table(resultsdf,"../results/results.txt",row.names=F,quote=F,sep="\t")#
+#
+#And also write out the final data#
+write.table(data,"../results/data_final.txt",row.names=F,quote=F,sep="\t")#
+#
+## add individual information#
+read.xlsx("../data/Vocabulario Ipad Prueba Piloto.xlsx",1,startRow=2)->cay#
+read.xlsx("../data/Vocabulario Ipad Prueba Piloto.xlsx",2,startRow=2)->pes#
+names(pes)[c(2,6)]<-c("id","dob")#
+names(cay)[c(2,10)]<-c("id","dob")#
+rbind(pes[,c(2,6)],cay[,c(2,10)])->dobs#
+#
+#names(table(dobs$id))[table(dobs$id)>1]   #just a check, now no duplicates in this table, although notice that 605 and 605b remain utterly mysterious#
+#
+merge(resultsdf,dobs,all.x=T,all.y=F)->resdob # TWO PROBLEMS HERE:#
+#1) 4 children don't have DOBs: 491, 492 -- these are Ale Menti's kids; 507, who is on the excel but has no DOB, 605b the mystery child#
+#2) 605 is matched up with someone, but I'm not sure it's his true identity#
+#
+resdob$age= (as.Date(resdob$date)- as.Date(resdob$dob))/365.25#
+#
+resdob$SES=ifelse(resdob$school=="cayetano","Low","Mid")#
+#correct a couple details#
+resdob$SES[resdob$id=="491"]<-"Low"#
+resdob$SES[resdob$id=="492"]<-"Mid"#
+#
+write.table(resdob,"../results/results.txt",row.names=F,sep="\t")
+Read in & create tables to be used later#
+read.table("../results/results.txt",header=T)->data#
+data$type=substr(data$profile,nchar(as.character(data$profile)),nchar(as.character(data$profile)))#
+data$type<-ifelse(data$type=="g","preg","imp")#
+data$age.c=data$age-mean(data$age,na.rm=T)#
+#
+pcstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_easy","pc_mod","pc_diff")]))#
+names(pcstackdif)[4:5]<-c("pc","difficulty")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[4:5]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[4:5]<-c("pc","lexCat")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c","langdummy","school")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[6:7]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c","langdummy","school")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[6:7]<-c("pc","lexCat")#
+#
+rtstacklex=cbind(data[,c("id","SES","age.c","langdummy","school")], stack(data[,c("rt_noun","rt_adj","rt_verb")]))#
+names(rtstacklex)[6:7]<-c("rt","lexCat")#
+#CHECKS#
+#boxplot(data$age~data$type*data$SES)#
+#need to add age to the models for sure#
+#
+### 	ANALYSES START#
+sink("../results/allresults.txt")#
+print(date())#
+print(dim(data))#
+print(summary(data))#
+#
+print("CHECK EFFECT OF INSTRUCTIONS")#
+#
+# ** check ** effect of instructions#
+print(summary(lm((pc - .5)~type*SES+age.c,data=data)))#
+#boxplot(data$pc~data$type*data$SES)#
+#
+#hist(log(data$rt_corr))#log looks ND#
+print(summary(lm(log(rt_corr)~type*SES+age.c,data=data)))#
+#boxplot(log(data$rt_corr) ~data$type*data$SES)#
+#
+print("# ** planned analysis 1 **	total number of trials completed")#
+print(summary(lm(trials_completed ~SES+age.c,data=data))) #no difference across groups, ages #
+#
+print("trials_completed, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $trials_completed ,by=list(data$SES),mean)$x,#
+aggregate(data $trials_completed ,by=list(data$SES),sd)$x),#
+	3)))#
+print("trials_completed, range")#
+print(aggregate(data $trials_completed ,by=list(data$SES),range))#
+print("# ** planned analysis 2 **	total number of trials attempted")#
+summary(lm(trials_attempted ~SES+age.c,data=data)) #no difference across groups, ages #
+#
+print("trials_attempted, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $trials_attempted ,by=list(data$SES),mean)$x,#
+aggregate(data $trials_attempted ,by=list(data$SES),sd)$x),#
+	3)))#
+#
+print("trials_attempted, range")#
+print(aggregate(data $trials_attempted ,by=list(data$SES),range))#
+#
+print("trials_attempted, distribution")#
+print(table(data $trials_attempted,data$SES))#
+#
+print("# ** planned analysis 3 **	%correct & RT per group")#
+print(summary(lm((pc - .5)~SES+age.c,data=data)))  #difference in percent correct#
+print(summary(lm(log(rt_corr)~SES+age.c,data=data)))  #no difference in RT#
+#
+print("# ** not planned **	RT per group * corr")#
+mixedRTr=lmer(log(rt) ~ SES*resp+age.c  + (1|id),data= rtstackcor)  #marginal age & sig difficulty, but no ed & no interaction#
+print(Anova(mixedRTr))#
+summary(mixedRTr)#
+print("# ** analysis 4 **	%correct & RT per group * difficulty (check - not sure if we declared it)#
+")#
+mixedPCdif=lmer((pc - .5)~SES*difficulty+age.c + (1|id),data= pcstackdif) #SES, age & difficulty, AND interaction#
+print(Anova(mixedPCdif))#
+print(summary(mixedPCdif))#
+#
+mixedRTdif=lmer(log(rt) ~ SES*difficulty+age.c + (1|id),data= rtstackdif)  #age & difficulty, but no interaction#
+print(Anova(mixedRTdif))#
+print(summary(mixedRTdif))#
+#
+print("# ** analysis 5 **	compare different conceptualizations of SES (maternal education, etc.)")#
+print("##TO DO")#
+#
+print("# ** analysis ** Differences by word type")#
+mixedPClex=lmer((pc - .5)~SES* lexCat +age.c + (1|id),data= pcstacklex) #SES, age & lex cat, AND SES*lex interaction#
+print(Anova(mixedPClex))#
+#
+mixedRTlex=lmer(log(rt) ~ SES* lexCat +age.c + (1|id),data= rtstacklex)  #age & lex cat, but no interaction#
+print(Anova(mixedRTlex))#
+print(summary(mixedRTlex))#
+print("# ** planned analysis **	Internal validity with cronbach alpha, using split trial") #
+# (we had also planned for a retest reliability but we didn't include those extra 13 trials)#
+# Santos, J. R. A. (1999). Cronbachs alpha: A tool for asedsing the reliability of scales. Journal of Extension, 37, 1–5.#
+print(alpha(cbind(data$pc_1,data$pc_2)))#
+print(alpha(cbind(data$rt_1,data$rt_2)))#
+# ** minor analyses **	#
+print("# Test potential presence of side bias")#
+print(table(data$bias))  #19!!! out of 51 kids have a bias according to a crude measure that should be improved!!#
+print("# ** NUTSHELL **	Spearman correlations")#
+print((cor.test(data $trials_completed , data $SES, method="spearman")))#
+print((cor.test(data $trials_attempted , data $SES, method="spearman")))#
+print((cor.test(data $pc , data $SES, method="spearman")))#
+print((cor.test(log(data $rt_corr) , data $SES, method="spearman")))#
+sink()
+pcstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_easy","pc_mod","pc_diff")]))#
+names(pcstackdif)[4:5]<-c("pc","difficulty")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[4:5]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[4:5]<-c("pc","lexCat")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c","school")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[6:7]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c","school")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[6:7]<-c("pc","lexCat")#
+#
+rtstacklex=cbind(data[,c("id","SES","age.c","school")], stack(data[,c("rt_noun","rt_adj","rt_verb")]))#
+names(rtstacklex)[6:7]<-c("rt","lexCat")
+pcstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_easy","pc_mod","pc_diff")]))
+pcstackdif
+summary(pcstackdif)
+pcstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_easy","pc_mod","pc_diff")]))#
+names(pcstackdif)[4:5]<-c("pc","difficulty")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[4:5]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[4:5]<-c("pc","lexCat")
+pcstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_easy","pc_mod","pc_diff")]))#
+names(pcstackdif)[4:5]<-c("pc","difficulty")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[4:5]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[4:5]<-c("pc","lexCat")#
+#
+rtstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_noun","rt_adj","rt_verb")]))#
+names(rtstackdif)[4:5]<-c("rt","difficulty")
+print(date())#
+print(dim(data))#
+print(summary(data))#
+#
+print("CHECK EFFECT OF INSTRUCTIONS")#
+#
+# ** check ** effect of instructions#
+print(summary(lm((pc - .5)~type*SES+age.c,data=data)))#
+#boxplot(data$pc~data$type*data$SES)#
+#
+#hist(log(data$rt_corr))#log looks ND#
+print(summary(lm(log(rt_corr)~type*SES+age.c,data=data)))#
+#boxplot(log(data$rt_corr) ~data$type*data$SES)#
+#
+print("# ** planned analysis 1 **	total number of trials completed")#
+print(summary(lm(trials_completed ~SES+age.c,data=data))) #no difference across groups, ages #
+#
+print("trials_completed, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $trials_completed ,by=list(data$SES),mean)$x,#
+aggregate(data $trials_completed ,by=list(data$SES),sd)$x),#
+	3)))#
+print("trials_completed, range")#
+print(aggregate(data $trials_completed ,by=list(data$SES),range))#
+print("# ** planned analysis 2 **	total number of trials attempted")#
+summary(lm(trials_attempted ~SES+age.c,data=data)) #no difference across groups, ages #
+#
+print("trials_attempted, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $trials_attempted ,by=list(data$SES),mean)$x,#
+aggregate(data $trials_attempted ,by=list(data$SES),sd)$x),#
+	3)))#
+#
+print("trials_attempted, range")#
+print(aggregate(data $trials_attempted ,by=list(data$SES),range))#
+#
+print("trials_attempted, distribution")#
+print(table(data $trials_attempted,data$SES))#
+#
+print("# ** planned analysis 3 **	%correct & RT per group")#
+print(summary(lm((pc - .5)~SES+age.c,data=data)))  #difference in percent correct#
+print(summary(lm(log(rt_corr)~SES+age.c,data=data)))  #no difference in RT#
+#
+print("# ** not planned **	RT per group * corr")#
+mixedRTr=lmer(log(rt) ~ SES*resp+age.c  + (1|id),data= rtstackcor)  #marginal age & sig difficulty, but no ed & no interaction#
+print(Anova(mixedRTr))#
+summary(mixedRTr)#
+print("# ** analysis 4 **	%correct & RT per group * difficulty (check - not sure if we declared it)#
+")#
+mixedPCdif=lmer((pc - .5)~SES*difficulty+age.c + (1|id),data= pcstackdif) #SES, age & difficulty, AND interaction#
+print(Anova(mixedPCdif))#
+print(summary(mixedPCdif))#
+#
+mixedRTdif=lmer(log(rt) ~ SES*difficulty+age.c + (1|id),data= rtstackdif)  #age & difficulty, but no interaction#
+print(Anova(mixedRTdif))#
+print(summary(mixedRTdif))#
+#
+print("# ** analysis 5 **	compare different conceptualizations of SES (maternal education, etc.)")#
+print("##TO DO")#
+#
+print("# ** analysis ** Differences by word type")#
+mixedPClex=lmer((pc - .5)~SES* lexCat +age.c + (1|id),data= pcstacklex) #SES, age & lex cat, AND SES*lex interaction#
+print(Anova(mixedPClex))#
+#
+mixedRTlex=lmer(log(rt) ~ SES* lexCat +age.c + (1|id),data= rtstacklex)  #age & lex cat, but no interaction#
+print(Anova(mixedRTlex))#
+print(summary(mixedRTlex))#
+print("# ** planned analysis **	Internal validity with cronbach alpha, using split trial") #
+# (we had also planned for a retest reliability but we didn't include those extra 13 trials)#
+# Santos, J. R. A. (1999). Cronbachs alpha: A tool for asedsing the reliability of scales. Journal of Extension, 37, 1–5.#
+print(alpha(cbind(data$pc_1,data$pc_2)))#
+print(alpha(cbind(data$rt_1,data$rt_2)))#
+# ** minor analyses **	#
+print("# Test potential presence of side bias")#
+print(table(data$bias))  #19!!! out of 51 kids have a bias according to a crude measure that should be improved!!#
+print("# ** NUTSHELL **	Spearman correlations")#
+print((cor.test(data $trials_completed , data $SES, method="spearman")))#
+print((cor.test(data $trials_attempted , data $SES, method="spearman")))#
+print((cor.test(data $pc , data $SES, method="spearman")))#
+print((cor.test(log(data $rt_corr) , data $SES, method="spearman")))
+summary(rtstacklex)
+pcstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_easy","pc_mod","pc_diff")]))#
+names(pcstackdif)[4:5]<-c("pc","difficulty")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[4:5]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[4:5]<-c("pc","lexCat")#
+#
+rtstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_noun","rt_adj","rt_verb")]))#
+names(rtstacklex)[4:5]<-c("rt","lexCat")
+print("# ** not planned **	RT per group * corr")#
+mixedRTr=lmer(log(rt) ~ SES*resp+age.c  + (1|id),data= rtstackcor)  #marginal age & sig difficulty, but no ed & no interaction#
+print(Anova(mixedRTr))#
+summary(mixedRTr)#
+print("# ** analysis 4 **	%correct & RT per group * difficulty (check - not sure if we declared it)#
+")#
+mixedPCdif=lmer((pc - .5)~SES*difficulty+age.c + (1|id),data= pcstackdif) #SES, age & difficulty, AND interaction#
+print(Anova(mixedPCdif))#
+print(summary(mixedPCdif))#
+#
+mixedRTdif=lmer(log(rt) ~ SES*difficulty+age.c + (1|id),data= rtstackdif)  #age & difficulty, but no interaction#
+print(Anova(mixedRTdif))#
+print(summary(mixedRTdif))#
+#
+print("# ** analysis 5 **	compare different conceptualizations of SES (maternal education, etc.)")#
+print("##TO DO")#
+#
+print("# ** analysis ** Differences by word type")#
+mixedPClex=lmer((pc - .5)~SES* lexCat +age.c + (1|id),data= pcstacklex) #SES, age & lex cat, AND SES*lex interaction#
+print(Anova(mixedPClex))#
+#
+mixedRTlex=lmer(log(rt) ~ SES* lexCat +age.c + (1|id),data= rtstacklex)  #age & lex cat, but no interaction#
+print(Anova(mixedRTlex))#
+print(summary(mixedRTlex))
+print("# ** planned analysis **	Internal validity with cronbach alpha, using split trial") #
+# (we had also planned for a retest reliability but we didn't include those extra 13 trials)#
+# Santos, J. R. A. (1999). Cronbachs alpha: A tool for asedsing the reliability of scales. Journal of Extension, 37, 1–5.#
+print(alpha(cbind(data$pc_1,data$pc_2)))#
+print(alpha(cbind(data$rt_1,data$rt_2)))#
+# ** minor analyses **	#
+print("# Test potential presence of side bias")#
+print(table(data$bias))  #19!!! out of 51 kids have a bias according to a crude measure that should be improved!!#
+print("# ** NUTSHELL **	Spearman correlations")#
+print((cor.test(data $trials_completed , data $SES, method="spearman")))#
+print((cor.test(data $trials_attempted , data $SES, method="spearman")))#
+print((cor.test(data $pc , data $SES, method="spearman")))#
+print((cor.test(log(data $rt_corr) , data $SES, method="spearman")))
+names(data)
+print((cor.test(data $trials_completed , data $SES)))
+data $SES
+sink("../results/allresults.txt")#
+print(date())#
+print(dim(data))#
+print(summary(data))#
+#
+print("CHECK EFFECT OF INSTRUCTIONS")#
+#
+# ** check ** effect of instructions#
+print(summary(lm((pc - .5)~type*SES+age.c,data=data)))#
+#boxplot(data$pc~data$type*data$SES)#
+#
+#hist(log(data$rt_corr))#log looks ND#
+print(summary(lm(log(rt_corr)~type*SES+age.c,data=data)))#
+#boxplot(log(data$rt_corr) ~data$type*data$SES)#
+#
+print("# ** planned analysis 1 **	total number of trials completed")#
+print(summary(lm(trials_completed ~SES+age.c,data=data))) #no difference across groups, ages #
+#
+print("trials_completed, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $trials_completed ,by=list(data$SES),mean)$x,#
+aggregate(data $trials_completed ,by=list(data$SES),sd)$x),#
+	3)))#
+print("trials_completed, range")#
+print(aggregate(data $trials_completed ,by=list(data$SES),range))#
+print("# ** planned analysis 2 **	total number of trials attempted")#
+summary(lm(trials_attempted ~SES+age.c,data=data)) #no difference across groups, ages #
+#
+print("trials_attempted, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $trials_attempted ,by=list(data$SES),mean)$x,#
+aggregate(data $trials_attempted ,by=list(data$SES),sd)$x),#
+	3)))#
+#
+print("trials_attempted, range")#
+print(aggregate(data $trials_attempted ,by=list(data$SES),range))#
+#
+print("trials_attempted, distribution")#
+print(table(data $trials_attempted,data$SES))#
+#
+print("# ** planned analysis 3 **	%correct & RT per group")#
+print(summary(lm((pc - .5)~SES+age.c,data=data)))  #difference in percent correct#
+print(summary(lm(log(rt_corr)~SES+age.c,data=data)))  #no difference in RT#
+#
+print("# ** not planned **	RT per group * corr")#
+mixedRTr=lmer(log(rt) ~ SES*resp+age.c  + (1|id),data= rtstackcor)  #marginal age & sig difficulty, but no ed & no interaction#
+print(Anova(mixedRTr))#
+summary(mixedRTr)#
+print("# ** analysis 4 **	%correct & RT per group * difficulty (check - not sure if we declared it)#
+")#
+mixedPCdif=lmer((pc - .5)~SES*difficulty+age.c + (1|id),data= pcstackdif) #SES, age & difficulty, AND interaction#
+print(Anova(mixedPCdif))#
+print(summary(mixedPCdif))#
+#
+mixedRTdif=lmer(log(rt) ~ SES*difficulty+age.c + (1|id),data= rtstackdif)  #age & difficulty, but no interaction#
+print(Anova(mixedRTdif))#
+print(summary(mixedRTdif))#
+#
+print("# ** analysis 5 **	compare different conceptualizations of SES (maternal education, etc.)")#
+print("##TO DO")#
+#
+print("# ** analysis ** Differences by word type")#
+mixedPClex=lmer((pc - .5)~SES* lexCat +age.c + (1|id),data= pcstacklex) #SES, age & lex cat, AND SES*lex interaction#
+print(Anova(mixedPClex))#
+#
+mixedRTlex=lmer(log(rt) ~ SES* lexCat +age.c + (1|id),data= rtstacklex)  #age & lex cat, but no interaction#
+print(Anova(mixedRTlex))#
+print(summary(mixedRTlex))#
+print("# ** planned analysis **	Internal validity with cronbach alpha, using split trial") #
+# (we had also planned for a retest reliability but we didn't include those extra 13 trials)#
+# Santos, J. R. A. (1999). Cronbachs alpha: A tool for asedsing the reliability of scales. Journal of Extension, 37, 1–5.#
+print(alpha(cbind(data$pc_1,data$pc_2)))#
+print(alpha(cbind(data$rt_1,data$rt_2)))#
+# ** minor analyses **	#
+print("# Test potential presence of side bias")#
+print(table(data$bias))  #19!!! out of 51 kids have a bias according to a crude measure that should be improved!!
+cohensd<-function(dv,iv){#
+	means=aggregate(dv,by=list(iv),mean,na.rm=T)#
+	sds=aggregate(dv,by=list(iv),sd,na.rm=T)#
+	(means[1]-means[2])/sqrt(sum(sds)/2)#
+	}
+print((cohensd(data $trials_completed , data $SES)))
+data $trials_completed->dv
+data $SES ->iv
+means=aggregate(dv,by=list(iv),mean,na.rm=T)
+means
+sink()
+means
+sds=aggregate(dv,by=list(iv),sd,na.rm=T)
+sds
+means[1]
+means[,1]
+means[1,]
+means[1,1]
+means[1,2]
+(means[1,2]-means[2,2])/sqrt(sum(sds)/2)
+means[2,2]
+sum(sds)
+sds[1:2,2]
+sum(sds[1:2,2])
+(means[1,2]-means[2,2])/sqrt(sum(sds[1:2,2])/2)
+print(cohensd(data $trials_completed , data $SES))
+cohensd<-function(dv,iv){#
+	means=aggregate(dv,by=list(iv),mean,na.rm=T)#
+	sds=aggregate(dv,by=list(iv),sd,na.rm=T)#
+	(means[1,2]-means[2,2])/sqrt(sum(sds[1:2,2])/2)#
+	}
+print(cohensd(data $trials_completed , data $SES))
+dvs=c("trials_completed","trials_attempted","pc","rt_corr")
+cohensd<-function(dv,iv){#
+	means=aggregate(dv,by=list(iv),mean,na.rm=T)#
+	sds=aggregate(dv,by=list(iv),sd,na.rm=T)#
+	(means[1,2]-means[2,2])/sqrt(sum(sds[1:2,2])/2)#
+	}#
+d2r<-function(d){sqrt( ( d ^2 )/(d ^2 + 4))}	#
+#
+dvs=c("trials_completed","trials_attempted","pc","rt_corr")#
+for(thisdv in dvs){#
+	print(paste(thisdv,"d=",cohensd(data[,thisdv], data $SES),"\n","r=",d2r(cohensd(data[,thisdv], data $SES))))#
+#
+}
+r2d<-function(r){(2*abs(r))/sqrt(1-abs(r)^2)}
+library(lme4)#
+library(car)#
+library(psych)#
+#
+cohensd<-function(dv,iv){#
+	means=aggregate(dv,by=list(iv),mean,na.rm=T)#
+	sds=aggregate(dv,by=list(iv),sd,na.rm=T)#
+	(means[1,2]-means[2,2])/sqrt(sum(sds[1:2,2])/2)#
+	}#
+d2r<-function(d){sqrt( ( d ^2 )/(d ^2 + 4))}	#
+#
+### END PRELIMINARIES#
+#
+# Read in & create tables to be used later#
+read.table("../results/results.txt",header=T)->data#
+data$type=substr(data$profile,nchar(as.character(data$profile)),nchar(as.character(data$profile)))#
+data$type<-ifelse(data$type=="g","preg","imp")#
+data$age.c=data$age-mean(data$age,na.rm=T)#
+#
+pcstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_easy","pc_mod","pc_diff")]))#
+names(pcstackdif)[4:5]<-c("pc","difficulty")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[4:5]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[4:5]<-c("pc","lexCat")#
+#
+rtstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_noun","rt_adj","rt_verb")]))#
+names(rtstacklex)[4:5]<-c("rt","lexCat")#
+#CHECKS#
+#boxplot(data$age~data$type*data$SES)#
+#need to add age to the models for sure#
+#
+### 	ANALYSES START#
+sink("../results/allresults.txt")#
+print(date())#
+print(dim(data))#
+print(summary(data))#
+#
+print("CHECK EFFECT OF INSTRUCTIONS")#
+#
+# ** check ** effect of instructions#
+print(summary(lm((pc - .5)~type*SES+age.c,data=data)))#
+#boxplot(data$pc~data$type*data$SES)#
+#
+#hist(log(data$rt_corr))#log looks ND#
+print(summary(lm(log(rt_corr)~type*SES+age.c,data=data)))#
+#boxplot(log(data$rt_corr) ~data$type*data$SES)#
+#
+print("# ** planned analysis 1 **	total number of trials completed")#
+print(summary(lm(trials_completed ~SES+age.c,data=data))) #no difference across groups, ages #
+#
+print("trials_completed, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $trials_completed ,by=list(data$SES),mean)$x,#
+aggregate(data $trials_completed ,by=list(data$SES),sd)$x),#
+	3)))#
+print("trials_completed, range")#
+print(aggregate(data $trials_completed ,by=list(data$SES),range))#
+print("# ** planned analysis 2 **	total number of trials attempted")#
+summary(lm(trials_attempted ~SES+age.c,data=data)) #no difference across groups, ages #
+#
+print("trials_attempted, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $trials_attempted ,by=list(data$SES),mean)$x,#
+aggregate(data $trials_attempted ,by=list(data$SES),sd)$x),#
+	3)))#
+#
+print("trials_attempted, range")#
+print(aggregate(data $trials_attempted ,by=list(data$SES),range))#
+#
+print("trials_attempted, distribution")#
+print(table(data $trials_attempted,data$SES))#
+#
+print("# ** planned analysis 3 **	%correct & RT per group")#
+print(summary(lm((pc - .5)~SES+age.c,data=data)))  #difference in percent correct#
+print(summary(lm(log(rt_corr)~SES+age.c,data=data)))  #no difference in RT#
+#
+print("# ** not planned **	RT per group * corr")#
+mixedRTr=lmer(log(rt) ~ SES*resp+age.c  + (1|id),data= rtstackcor)  #marginal age & sig difficulty, but no ed & no interaction#
+print(Anova(mixedRTr))#
+summary(mixedRTr)#
+print("# ** analysis 4 **	%correct & RT per group * difficulty (check - not sure if we declared it)#
+")#
+mixedPCdif=lmer((pc - .5)~SES*difficulty+age.c + (1|id),data= pcstackdif) #SES, age & difficulty, AND interaction#
+print(Anova(mixedPCdif))#
+print(summary(mixedPCdif))#
+#
+mixedRTdif=lmer(log(rt) ~ SES*difficulty+age.c + (1|id),data= rtstackdif)  #age & difficulty, but no interaction#
+print(Anova(mixedRTdif))#
+print(summary(mixedRTdif))#
+#
+print("# ** analysis 5 **	compare different conceptualizations of SES (maternal education, etc.)")#
+print("##TO DO")#
+#
+print("# ** analysis ** Differences by word type")#
+mixedPClex=lmer((pc - .5)~SES* lexCat +age.c + (1|id),data= pcstacklex) #SES, age & lex cat, AND SES*lex interaction#
+print(Anova(mixedPClex))#
+#
+mixedRTlex=lmer(log(rt) ~ SES* lexCat +age.c + (1|id),data= rtstacklex)  #age & lex cat, but no interaction#
+print(Anova(mixedRTlex))#
+print(summary(mixedRTlex))#
+print("# ** planned analysis **	Internal validity with cronbach alpha, using split trial") #
+# (we had also planned for a retest reliability but we didn't include those extra 13 trials)#
+# Santos, J. R. A. (1999). Cronbachs alpha: A tool for asedsing the reliability of scales. Journal of Extension, 37, 1–5.#
+print(alpha(cbind(data$pc_1,data$pc_2)))#
+print(alpha(cbind(data$rt_1,data$rt_2)))#
+# ** minor analyses **	#
+print("# Test potential presence of side bias")#
+print(table(data$bias))  #19!!! out of 51 kids have a bias according to a crude measure that should be improved!!#
+print("# ** NUTSHELL **	Effect sizes")#
+dvs=c("trials_completed","trials_attempted","pc","rt_corr")#
+for(thisdv in dvs){#
+	print(paste(thisdv,"d=",cohensd(data[,thisdv], data $SES),"\n","r=",d2r(cohensd(data[,thisdv], data $SES))))#
+}#
+sink()
+rtstackcor=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_corr","rt_incorr")]))#
+names(rtstackcor)[4:5]<-c("rt","resp")
+mixedRTr=lmer(log(rt) ~ SES*resp+age.c  + (1|id),data= rtstackcor)  #marginal age & sig difficulty, but no ed & no interaction#
+print(Anova(mixedRTr))#
+summary(mixedRTr)
+print(alpha(cbind(data$pc_1,data$pc_2)))
+data$pc_1
+data$pc_2
+print(alpha(cbind(data$pc_1[!is.na(data$pc_1)],data$pc_2[!is.na(data$pc_1)])))
+alpha
+print(alpha(cbind(data$pc_1[!is.na(data$pc_1) & !is.na(data$pc_2)],data$pc_2[!is.na(data$pc_1) & !is.na(data$pc_2)])))
+cohensd<-function(dv,iv){#
+	means=aggregate(dv,by=list(iv),mean,na.rm=T)#
+	sds=aggregate(dv,by=list(iv),sd,na.rm=T)#
+	(means[1,2]-means[2,2])/sqrt(sum(sds[1:2,2])/2)#
+	}#
+d2r<-function(d){sqrt( ( d ^2 )/(d ^2 + 4))}	#
+#
+### END PRELIMINARIES#
+#
+# Read in & create tables to be used later#
+read.table("../results/results.txt",header=T)->data#
+data$type=substr(data$profile,nchar(as.character(data$profile)),nchar(as.character(data$profile)))#
+data$type<-ifelse(data$type=="g","preg","imp")#
+data$age.c=data$age-mean(data$age,na.rm=T)#
+#
+pcstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_easy","pc_mod","pc_diff")]))#
+names(pcstackdif)[4:5]<-c("pc","difficulty")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[4:5]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[4:5]<-c("pc","lexCat")#
+#
+rtstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_noun","rt_adj","rt_verb")]))#
+names(rtstacklex)[4:5]<-c("rt","lexCat")#
+#
+rtstackcor=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_corr","rt_incorr")]))#
+names(rtstackcor)[4:5]<-c("rt","resp")#
+#CHECKS#
+#boxplot(data$age~data$type*data$SES)#
+#need to add age to the models for sure#
+#
+### 	ANALYSES START#
+sink("../results/allresults.txt")#
+print(date())#
+print(dim(data))#
+print(summary(data))#
+#
+print("CHECK EFFECT OF INSTRUCTIONS")#
+#
+# ** check ** effect of instructions#
+print(summary(lm((pc - .5)~type*SES+age.c,data=data)))#
+#boxplot(data$pc~data$type*data$SES)#
+#
+#hist(log(data$rt_corr))#log looks ND#
+print(summary(lm(log(rt_corr)~type*SES+age.c,data=data)))#
+#boxplot(log(data$rt_corr) ~data$type*data$SES)#
+#
+print("# ** planned analysis 1 **	total number of trials completed")#
+print(summary(lm(trials_completed ~SES+age.c,data=data))) #no difference across groups, ages #
+#
+print("trials_completed, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $trials_completed ,by=list(data$SES),mean)$x,#
+aggregate(data $trials_completed ,by=list(data$SES),sd)$x),#
+	3)))#
+print("trials_completed, range")#
+print(aggregate(data $trials_completed ,by=list(data$SES),range))#
+print("# ** planned analysis 2 **	total number of trials attempted")#
+summary(lm(trials_attempted ~SES+age.c,data=data)) #no difference across groups, ages #
+#
+print("trials_attempted, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $trials_attempted ,by=list(data$SES),mean)$x,#
+aggregate(data $trials_attempted ,by=list(data$SES),sd)$x),#
+	3)))#
+#
+print("trials_attempted, range")#
+print(aggregate(data $trials_attempted ,by=list(data$SES),range))#
+#
+print("trials_attempted, distribution")#
+print(table(data $trials_attempted,data$SES))#
+#
+print("# ** planned analysis 3 **	%correct & RT per group")#
+print(summary(lm((pc - .5)~SES+age.c,data=data)))  #difference in percent correct#
+print(summary(lm(log(rt_corr)~SES+age.c,data=data)))  #no difference in RT#
+#
+print("# ** not planned **	RT per group * corr")#
+mixedRTr=lmer(log(rt) ~ SES*resp+age.c  + (1|id),data= rtstackcor)  #marginal age & sig difficulty, but no ed & no interaction#
+print(Anova(mixedRTr))#
+summary(mixedRTr)#
+print("# ** analysis 4 **	%correct & RT per group * difficulty (check - not sure if we declared it)#
+")#
+mixedPCdif=lmer((pc - .5)~SES*difficulty+age.c + (1|id),data= pcstackdif) #SES, age & difficulty, AND interaction#
+print(Anova(mixedPCdif))#
+print(summary(mixedPCdif))#
+#
+mixedRTdif=lmer(log(rt) ~ SES*difficulty+age.c + (1|id),data= rtstackdif)  #age & difficulty, but no interaction#
+print(Anova(mixedRTdif))#
+print(summary(mixedRTdif))#
+#
+print("# ** analysis 5 **	compare different conceptualizations of SES (maternal education, etc.)")#
+print("##TO DO")#
+#
+print("# ** analysis ** Differences by word type")#
+mixedPClex=lmer((pc - .5)~SES* lexCat +age.c + (1|id),data= pcstacklex) #SES, age & lex cat, AND SES*lex interaction#
+print(Anova(mixedPClex))#
+#
+mixedRTlex=lmer(log(rt) ~ SES* lexCat +age.c + (1|id),data= rtstacklex)  #age & lex cat, but no interaction#
+print(Anova(mixedRTlex))#
+print(summary(mixedRTlex))#
+print("# ** planned analysis **	Internal validity with cronbach alpha, using split trial") #
+# (we had also planned for a retest reliability but we didn't include those extra 13 trials)#
+# Santos, J. R. A. (1999). Cronbachs alpha: A tool for asedsing the reliability of scales. Journal of Extension, 37, 1–5.#
+print(alpha(cbind(data$pc_1,data$pc_2)))#
+print(alpha(cbind(data$rt_1,data$rt_2)))#
+# I'm getting an error in the Span data - not sure why!#
+#print(alpha(cbind(data$pc_1[!is.na(data$pc_1) & !is.na(data$pc_2)],data$pc_2[!is.na(data$pc_1) & !is.na(data$pc_2)])))#
+#
+# ** minor analyses **	#
+print("# Test potential presence of side bias")#
+print(table(data$bias))  #19!!! out of 51 kids have a bias according to a crude measure that should be improved!!#
+print("# ** NUTSHELL **	Effect sizes")#
+dvs=c("trials_completed","trials_attempted","pc","rt_corr")#
+for(thisdv in dvs){#
+	print(paste(thisdv,"d=",cohensd(data[,thisdv], data $SES),"\n","r=",d2r(cohensd(data[,thisdv], data $SES))))#
+}#
+sink()
+setwd("/Users/caofrance/Dropbox/2016_tabletVocab/dataAna/argentina_daycares/scripts")
+source("2B_genAllFigs.R")
+pdf("../results/attempted_age.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(trials_attempted ~age,data=data,pch=20,xlab="Age (years)",ylab='Trials attempted',type="n")#
+points(data$age[data$school=="pestalozzi"], data$trials_attempted[dataschool=="pestalozzi"],pch=20,col="red")#
+points(data$age[data$school=="cayetano"], data$trials_attempted[data$school=="cayetano"],pch=20,col="black")#
+abline(lm(trials_attempted ~age,data=data,subset=c(data$school=="pestalozzi")))#
+abline(lm(trials_attempted ~age,data=data,subset=c(data$school=="cayetano")),col="red")#
+text(4,0.45,"Higher SES",col="red")#
+text(4,0.4,"Lower SES")#
+dev.off()
+summary(data)
+pdf("../results/attempted_age.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(trials_attempted ~age,data=data,pch=20,xlab="Age (years)",ylab='Trials attempted',type="n")#
+points(data$age[data$SES=="Mid"], data$trials_attempted[dataSES=="Mid"],pch=20,col="red")#
+points(data$age[data$SES=="Low"], data$trials_attempted[data$SES=="Low"],pch=20,col="black")#
+abline(lm(trials_attempted ~age,data=data,subset=c(data$SES=="Mid")))#
+abline(lm(trials_attempted ~age,data=data,subset=c(data$SES=="Low")),col="red")#
+text(4,0.45,"Higher SES",col="red")#
+text(4,0.4,"Lower SES")#
+dev.off()
+pdf("../results/attempted_age.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(trials_attempted ~age,data=data,pch=20,xlab="Age (years)",ylab='Trials attempted',type="n")#
+points(data$age[data$SES=="Mid"], data$trials_attempted[dataSES=="Mid"],pch=20,col="red")#
+points(data$age[data$SES=="Low"], data$trials_attempted[data$SES=="Low"],pch=20,col="black")#
+abline(lm(trials_attempted ~age,data=data,subset=c(SES=="Mid")))#
+abline(lm(trials_attempted ~age,data=data,subset=c(SES=="Low")),col="red")#
+text(4,0.45,"Higher SES",col="red")#
+text(4,0.4,"Lower SES")#
+dev.off()
+pdf("../results/attempted_age.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(trials_attempted ~age,data=data,pch=20,xlab="Age (years)",ylab='Trials attempted',type="n")#
+points(data$age[data$SES=="Mid"], data$trials_attempted[data$SES=="Mid"],pch=20,col="red")#
+points(data$age[data$SES=="Low"], data$trials_attempted[data$SES=="Low"],pch=20,col="black")#
+abline(lm(trials_attempted ~age,data=data,subset=c(SES=="Mid")))#
+abline(lm(trials_attempted ~age,data=data,subset=c(SES=="Low")),col="red")#
+text(4,0.45,"Higher SES",col="red")#
+text(4,0.4,"Lower SES")#
+dev.off()
+pdf("../results/reliab_pc.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc_1 ~pc_2,data=data,pch=20,xlab="% correct odd",ylab='% correct even',xlim=c(0,1),ylim=c(0,1))#
+abline(lm(pc_1 ~ pc_2,data=data))#
+text(.7,.2,paste("r=",round(cor.test(data $rt_1 , data $rt_2)$est,3)))#
+dev.off()
+pdf("../results/reliab_rt.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(rt_1 ~rt_2,data=data,pch=20,xlab="RT odd",ylab='RT even',xlim=c(1000,4500),ylim=c(1000,4500))#
+abline(lm(rt_1 ~ rt_2,data=data))#
+text(4000,1000,paste("r=",round(cor.test(data $rt_1 , data $rt_2)$est,3)))#
+dev.off()
+pdf("../results/pc_age.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc~age,data=data,pch=20,xlab="Age (years)",ylab='Percent correct',type="n")#
+lines(c(-1,3),c(.5,.5),lty=3,col="gray")#
+points(data$age[data$SES=="Mid"], data$pc[data$SES=="Mid"],pch=20,col="red")#
+points(data$age[data$SES=="Low"], data$pc[data$SES=="Low"],pch=20,col="black")#
+abline(lm(pc~age,data=data,subset=c(SES=="Low")))#
+abline(lm(pc~age,data=data,subset=c(SES=="Mid")),col="red")#
+text(4,0.45,"Higher SES",col="red")#
+text(4,0.4,"Lower SES")#
+dev.off()
+pdf("../results/rt_age.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(log(rt_corr)~age,data=data,pch=20,xlab="Age (years)",ylab='Percent correct',type="n")#
+points(data$age[data$SES=="Mid"], log(data$rt_corr[data$SES=="Mid"]),pch=20,col="red")#
+points(data$age[data$SES=="Low"], log(data$rt_corr[data$SES=="Low"]),pch=20,col="black")#
+abline(lm(log(rt_corr)~age,data=data,subset=c(SES=="Low")))#
+abline(lm(log(rt_corr)~age,data=data,subset=c(SES=="Mid")),col="red")#
+text(4,8.2,"Higher SES",col="red")#
+text(4,8.15,"Lower SES")#
+dev.off()
+myjitter=jitter(as.numeric(as.factor(data$type)))#
+pdf("../results/pc_type.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(myjitter, data$pc,pch=20,ylim=c(0,1),xaxt="n",xlab="Test",ylab="Proportion correct",type="n")#
+axis(1,at=c(1,2),labels=c("Imperative","Question"))#
+lines(c(-1,3),c(.5,.5),lty=3,col="gray")#
+points(myjitter[data$SES=="Mid"], data$pc[data$SES=="Mid"],pch=20,col="red")#
+points(myjitter[data$SES=="Low"], data$pc[data$SES=="Low"],pch=20,col="black")#
+text(1.5,0,"Higher SES",col="red")#
+text(1.5,0.05,"Lower SES")#
+dev.off()
+myjitter=jitter(rep(1,length(data$pc_easy)))#
+myjitter=c(myjitter,myjitter+0.2,myjitter+0.4)#
+pdf("../results/pc_diff.pdf")#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(myjitter, c(data$pc_easy,data$pc_mod,data$pc_diff),pch=20,ylim=c(0,1),xlab="Frequency group",ylab="Proportion correct",xaxt="n",type="n",xlim=c(0.95,1.45))#
+	lines(c(-1,3),c(.5,.5),lty=3,col="gray")#
+axis(1,at=c(1,1.2,1.4),labels=c("Highest","Moderate","Lowest"))#
+points(myjitter[data$SES=="Mid"], c(data$pc_easy[data$SES=="Mid"], data$pc_mod[data$SES=="Mid"], data$pc_diff[data$SES=="Mid"]),pch=20,col="red")
+points(c(1.05,1.235, 1.45),c(mean(data$pc_easy[data$SES=="Mid"],na.rm=T), mean(data$pc_mod[data$SES=="Mid"],na.rm=T), mean(data$pc_diff[data$SES=="Mid"],na.rm=T)),pch=3,cex=3,col="red")
+points(myjitter[data$SES=="Low"], c(data$pc_easy[data$SES=="Low"], data$pc_mod[data$SES=="Low"], data$pc_diff[data$SES=="Low"]),pch=20,col="black")#
+points(c(1.05,1.235, 1.45),c(mean(data$pc_easy[data$SES=="Low"],na.rm=T), mean(data$pc_mod[data$SES=="Low"],na.rm=T), mean(data$pc_diff[data$SES=="Low"],na.rm=T)),pch=3,cex=3,col="black")
+text(1.2,0.1,"Higher SES",col="red")
+text(1.2,0.05,"Lower SES")
+dev.off()
+pdf("../results/pc_lex.pdf")#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(myjitter, c(data$pc_noun,data$pc_verb,data$pc_adj),pch=20,ylim=c(0,1),xlab="Lexical category",ylab="Proportion correct",xaxt="n",type="n",xlim=c(0.95,1.45))#
+	lines(c(-1,3),c(.5,.5),lty=3,col="gray")#
+axis(1,at=c(1,1.2,1.4),labels=c("Noun","Verb","Adjective"))#
+points(myjitter[data$SES=="Mid"], c(data$pc_noun[data$SES=="Mid"], data$pc_verb[data$SES=="Mid"], data$pc_adj[data$SES=="Mid"]),pch=20,col="red")#
+#
+points(c(1.05,1.235, 1.45),c(mean(data$pc_noun[data$SES=="Mid"],na.rm=T), mean(data$pc_verb[data$SES=="Mid"],na.rm=T), mean(data$pc_adj[data$SES=="Mid"],na.rm=T)),pch=3,cex=3,col="red")#
+#
+points(myjitter[data$SES=="Low"], c(data$pc_noun[data$SES=="Low"], data$pc_verb[data$SES=="Low"], data$pc_adj[data$SES=="Low"]),pch=20,col="black")#
+points(c(1.05,1.235, 1.45),c(mean(data$pc_noun[data$SES=="Low"],na.rm=T), mean(data$pc_verb[data$SES=="Low"],na.rm=T), mean(data$pc_adj[data$SES=="Low"],na.rm=T)),pch=3,cex=3,col="black")#
+#
+text(1.2,0.1,"Higher SES",col="red")#
+text(1.2,0.05,"Lower SES")#
+#
+dev.off()
+pdf("../results/rt_diff.pdf")#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot( (data $rt_easy)/1000,(data $rt_diff)/1000,pch=20,xlim=c(1,4.5),ylim=c(1,4.5),xlab="Response time to words with highest frequencies",ylab="Response time to words with lowest frequencies",type="n")#
+lines(c(-1,5),c(-1,5),lty=2)#
+points((data $rt_easy[data$SES=="Mid"])/1000,(data $rt_diff[data$SES=="Mid"])/1000,pch=20,col="red")#
+points((data $rt_easy[data$SES=="Low"])/1000,(data $rt_diff[data$SES=="Low"])/1000,pch=20,col="black")#
+#
+text(4,1.2,"Higher SES",col="red")#
+text(4,1.05,"Lower SES")#
+#
+dev.off()
+read.table("../results/results.txt",header=T)->data#
+data$type=substr(data$profile,nchar(as.character(data$profile)),nchar(as.character(data$profile)))#
+data$type<-ifelse(data$type=="g","preg","imp")#
+data$age.c=data$age-mean(data$age,na.rm=T)#
+#
+pcstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_easy","pc_mod","pc_diff")]))#
+names(pcstackdif)[4:5]<-c("pc","difficulty")#
+#
+rtstackdif=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_easy","rt_mod","rt_diff")]))#
+names(rtstackdif)[4:5]<-c("rt","difficulty")#
+#
+pcstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("pc_noun","pc_adj","pc_verb")]))#
+names(pcstacklex)[4:5]<-c("pc","lexCat")#
+#
+rtstacklex=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_noun","rt_adj","rt_verb")]))#
+names(rtstacklex)[4:5]<-c("rt","lexCat")#
+#
+rtstackcor=cbind(data[,c("id","SES","age.c")], stack(data[,c("rt_corr","rt_incorr")]))#
+names(rtstackcor)[4:5]<-c("rt","resp")
+library(psych)
+install.packages("psych")
+library(psych)
+print(alpha(cbind(data$pc_1,data$pc_2)))
+data$pc_1
+data$pc_2
+cbind(data$pc_1,data$pc_2))
+cbind(data$pc_1,data$pc_2)
+alpha(cbind(data$pc_1,data$pc_2))
+?alpha
+print(alpha(cbind(data$pc_1,data$pc_2),keys=c("odd","even")))
+cor.test(data$pc_1,data$pc_2)
+names(data)
+table(data$profile)
+for(thisprof in levels(data$profile) ) cor.test(data$pc_1[data$profile==thisprof],data$pc_2[data$profile==thisprof])
+for(thisprof in levels(data$profile) ) print(cor.test(data$pc_1[data$profile==thisprof],data$pc_2[data$profile==thisprof]))
+for(thisprof in levels(data$profile) ) print(thisprof) ; print(cor.test(data$pc_1[data$profile==thisprof],data$pc_2[data$profile==thisprof]))
+for(thisprof in levels(data$profile) ) {print(thisprof) ; print(cor.test(data$pc_1[data$profile==thisprof],data$pc_2[data$profile==thisprof]))}
+read.table("results/results.txt",header=T)->data#
+data$type=substr(data$profile,nchar(as.character(data$profile)),nchar(as.character(data$profile)))#
+data$type<-ifelse(data$type=="g","preg","imp")#
+data$age.c=data$age-mean(data$age,na.rm=T)
+read.table("../results/results.txt",header=T)->data
+data$type=substr(data$profile,nchar(as.character(data$profile)),nchar(as.character(data$profile)))
+data$type<-ifelse(data$type=="g","preg","imp")
+data$age.c=data$age-mean(data$age,na.rm=T)
+print("pc, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $pc ,by=list(data$SES),mean)$x,#
+aggregate(data $pc ,by=list(data$SES),sd)$x),#
+	3)))
+print("pc, mean & SD")#
+print(cbind(c("Low","Mid"),round(cbind(#
+aggregate(data $pc ,by=list(data$SES),mean, na.rm=T)$x,#
+aggregate(data $pc ,by=list(data$SES),sd, na.rm=T)$x),#
+	3)))
+d2r<-function(d){sqrt( ( d ^2 )/(d ^2 + 4))}
+d2r(.24)

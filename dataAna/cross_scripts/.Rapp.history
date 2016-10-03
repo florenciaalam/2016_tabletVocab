@@ -1,0 +1,827 @@
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-12#
+arg$edMom=jitter(arg$edMom)#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+#
+all <- rbind(arg[,c(names(arg)[names(arg) %in% names(fr)])],fr[,c(names(arg)[names(arg) %in% names(fr)])])
+plot(all$pc ~ all$momEd)
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-12#
+arg$edMom=jitter(arg$edMom)#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+#
+all <- rbind(arg[,c(names(arg)[names(arg) %in% names(fr)])],fr[,c(names(arg)[names(arg) %in% names(fr)])])#
+#
+plot(all$pc ~ all$momEd)
+plot(all$pc ~ all$edMom)
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-14#
+arg$edMom=jitter(arg$edMom)#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+fr$edMom[fr$edMom==20]<-jitter(fr$edMom[fr$edMom==20],.1)#
+#
+all <- rbind(cbind(arg[,c(names(arg)[names(arg) %in% names(fr)])],"arg"),#
+	cbind(fr[,c(names(arg)[names(arg) %in% names(fr)])],"fr"))
+fr$edMom[fr$edMom==20 & !is.na(fr$edMom)]<-jitter(fr$edMom[fr$edMom==20 & !is.na(fr$edMom)],.1)
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-14#
+arg$edMom=jitter(arg$edMom)#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+fr$edMom[fr$edMom==20 & !is.na(fr$edMom)]<-jitter(fr$edMom[fr$edMom==20 & !is.na(fr$edMom)],.1)#
+arg=cbind("arg",arg[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(arg)[1]<-country#
+fr=cbind("fr",fr[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(fr)[1]<-country
+names(arg)[1]<-"country"
+names(fr)[1]<-"country"
+all <- rbind(arg,fr)
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=6)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=20)
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3)
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=20)
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-14#
+arg$edMom=jitter(arg$edMom)#
+arg$langdummy=0#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+fr$edMom[fr$edMom==20 & !is.na(fr$edMom)]<-jitter(fr$edMom[fr$edMom==20 & !is.na(fr$edMom)],.1)#
+arg=cbind("arg",arg[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(arg)[1]<-"country"#
+fr=cbind("fr",fr[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(fr)[1]<-"country"#
+#
+all <- rbind(arg,fr)
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & langdummy==0),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & langdummy==1),pch=20,col="red")#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")))
+names(all)
+read.table("../france/results/results.txt",header=T)->fr
+names(fr)
+table(fr$lang)
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")))
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-14#
+arg$edMom=jitter(arg$edMom)#
+arg$lang="monolingual"#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+fr$edMom[fr$edMom==20 & !is.na(fr$edMom)]<-jitter(fr$edMom[fr$edMom==20 & !is.na(fr$edMom)],.1)#
+arg=cbind("arg",arg[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(arg)[1]<-"country"#
+fr=cbind("fr",fr[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(fr)[1]<-"country"#
+#
+all <- rbind(arg,fr)
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")))
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual"),lty=2))
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+?abline
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),lty=2,xlim=c(5,15))
+?lowess
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+abline(lowess(pc ~ edMom,data=all,subset=c(country=="arg")),lty=2,xlim=c(5,15))
+abline(lowess(all $pc[all$country=="arg"] ~ all $edMom[all$country=="arg"]),lty=2,xlim=c(5,15))
+lowess(all $pc[all$country=="arg"] ~ all $edMom[all$country=="arg"])
+lines(lowess(all $pc[all$country=="arg"] ~ all $edMom[all$country=="arg"]),lty=2,xlim=c(5,15))
+lines(lowess(all $pc[all$country=="arg"] ~ all $edMom[all$country=="arg"],f=.2),lty=2,xlim=c(5,15))
+lines(lowess(all $pc[all$country=="arg"] ~ all $edMom[all$country=="arg"],f=.1),lty=2,xlim=c(5,15))
+lines(lowess(all $pc[all$country=="arg"] ~ all $edMom[all$country=="arg"],f=.0),lty=2,xlim=c(5,15))
+lines(lowess(all $pc[all$country=="arg"] ~ all $edMom[all$country=="arg"],f=.00001),lty=2,xlim=c(5,15))
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+lines(lowess(all $pc[all$country=="arg"] ~ all $edMom[all$country=="arg"],f=.00001),lty=2,xlim=c(5,15))
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+lines(lowess(all $pc[all$country=="arg"] ~ all $edMom[all$country=="arg"],f=1001),lty=2,xlim=c(5,15))
+lines(loess(all $pc[all$country=="arg"] ~ all $edMom[all$country=="arg"],degree=0),lty=2,xlim=c(5,15))
+lines(loess(all $pc[all$country=="fr" & all$lang=="monolingual"] ~ all $edMom[all$country=="fr" & all$lang=="monolingual"],degree=0))
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),lty=2,xlim=c(5,15))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+pdf("pc_country.pdf",width=5,height=5,ylim=c(0,1))#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),lty=2,xlim=c(5,15))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+pdf("pc_country.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0,1))#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),lty=2,xlim=c(5,15))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-14#
+arg$edMom=jitter(arg$edMom)#
+arg$lang="monolingual"#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+fr$edMom[fr$edMom==20 & !is.na(fr$edMom)]<-jitter(fr$edMom[fr$edMom==20 & !is.na(fr$edMom)],.1)#
+arg=cbind("arg",arg[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(arg)[1]<-"country"#
+fr=cbind("fr",fr[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(fr)[1]<-"country"#
+#
+all <- rbind(arg,fr)
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.2,1),xlab="Maternal years of education", ylab="Percent correct")#
+lines(c(-1,3),c(.5,.5),lty=3,col="gray")#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),lty=2,xlim=c(5,15))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct")#
+lines(c(4,30),c(.5,.5),lty=3,col="gray")#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),lty=2,xlim=c(5,15))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+lines(c(4,30),c(.5,.5),lty=3,col="black")
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct")#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="blue")#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+pdf("pc_country.pdf",width=5,height=5)#
+par(mar=c(2.5,2.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct")#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="blue")#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct",cex.lab=2)
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct",cex.lab=2,cex.axis=2)
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct",cex.lab=2,cex.axis=2)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct",cex.lab=2,cex.axis=1.5)
+pdf("pc_country.pdf",width=5,height=5)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg"),pch=3,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang=="monolingual"),pch=20,col="black")#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="blue")#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+names(all)
+table(all$school)
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch=16,col="blue")
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch=12,col="blue")
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch=12,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black")#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple")#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black")#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch=18,col="blue")
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch=22,col="blue")
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct",cex.lab=2,cex.axis=1.5)
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch=15,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black")#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple")#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black")#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+pdf("pc_country.pdf",width=5,height=5)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red")#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch=15,col="blue")#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black")#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple")#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black")#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+pdf("pc_country.pdf",width=5,height=5)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(1.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Maternal years of education", ylab="Percent correct",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple")#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black")#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex.2)
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=3)
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6)
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-14#
+arg$edMom=jitter(arg$edMom)#
+arg$lang="monolingual"#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+fr$edMom[fr$edMom==20 & !is.na(fr$edMom)]<-jitter(fr$edMom[fr$edMom==20 & !is.na(fr$edMom)],.1)#
+arg=cbind("arg",arg[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(arg)[1]<-"country"#
+fr=cbind("fr",fr[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(fr)[1]<-"country"#
+#
+all <- rbind(arg,fr)#
+#
+pdf("pc_country.pdf",width=5,height=5)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="Años de educación de la madre", ylab="Porcentaje correcto",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black")#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+pdf("pc_country.pdf",width=5,height=5)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2)#
+mtext("Porcentaje correcto",2,line=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black")#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+pdf("pc_country.pdf",width=5,height=5)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black")#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+pdf("pc_country.pdf",width=5,height=5,encoding="ISOLatin9.enc")#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=2)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=2)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+pdf("pc_country.pdf",width=5,height=5,encoding="ISOLatin9.enc")#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=3)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=3)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+pdf("pc_country.pdf",width=5,height=5,encoding="ISOLatin9.enc")#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+jpeg("pc_country.jpg",width=5,height=5,encoding="ISOLatin9.enc")#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+jpeg("pc_country.jpg",width=5,height=5)
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+jpeg("pc_country.jpg",width=5,height=5,units="cm")#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+jpeg("pc_country.jpg",width=5,height=5,units="cm",res=300)
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+jpeg("pc_country.jpg",width=5,height=5,units="cm",res=150)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+jpeg("pc_country.jpg",width=30,height=30,units="cm",res=300)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+jpeg("pc_country.jpg",width=15,height=15,units="cm",res=300)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Años de educación de la madre",1,line=2,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+?jpeg
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Anos de educacion de la madre",1,line=2,cex=2)#
+mtext(" ~",1,line=1.5,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+mtext(" ~           ",1,line=1.5,cex=2)
+mtext(" ~                  ",1,line=1.5,cex=2)
+mtext(" ~                                     ",1,line=1.5,cex=2)
+mtext(" ~                                        ",1,line=1.5,cex=2)
+mtext(" ~                                                    ",1,line=1.5,cex=2)
+mtext(" ~                                                  ",1,line=1.5,cex=2)
+mtext(" ~                                                    ",1,line=1.5,cex=2)
+mtext(" ~                                                  ",1,line=1.5,cex=2)
+mtext(" ~                                                ",1,line=1.5,cex=2)
+mtext(" ~                                              ",1,line=1.5,cex=2)
+mtext(" ~                                            ",1,line=1.5,cex=2)
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Anos de educacion de la madre",1,line=2,cex=2)#
+mtext(" ~                                             ",1,line=1.5,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+jpeg("pc_country.jpg",width=15,height=15,units="cm",res=300)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Anos de educacion de la madre",1,line=2,cex=2)#
+mtext(" ~                                             ",1,line=1.5,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Anos de educacion de la madre",1,line=2,cex=2)#
+mtext(" ~                                      ´      ",1,line=1.5,cex=2)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+mtext(" ~                                            ",1,line=1.5,cex=2)
+mtext(" ~                                             ",1,line=1.5,cex=2)
+mtext("                                 ´             ",1,line=1.5,cex=2)
+mtext("                                 ´             ",1,line=1,cex=2)
+mtext("                                 /             ",1,line=1,cex=1)
+mtext("                               /             ",1,line=1,cex=1)
+mtext("                          /             ",1,line=1,cex=1)
+mtext("                          /             ",1,line=1.2,cex=0.5)
+mtext("                          /             ",1,line=1.2,cex=1)
+jpeg("pc_pais.jpg",width=15,height=15,units="cm",res=300)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Anos de educacion de la madre",1,line=2,cex=2)#
+mtext(" ~                                             ",1,line=1.5,cex=2)#
+mtext("                          /             ",1,line=1.2,cex=1)#
+mtext("                          /             ",1,line=1.2,cex=1)#
+mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"),pch=16,col="black",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr")),xlim=c(5,15),col="black",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-14#
+arg$edMom=jitter(arg$edMom)#
+arg$lang="monolingual"#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+fr$edMom[fr$edMom==20 & !is.na(fr$edMom)]<-jitter(fr$edMom[fr$edMom==20 & !is.na(fr$edMom)],.1)#
+arg=cbind("arg",arg[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(arg)[1]<-"country"#
+fr=cbind("fr",fr[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(fr)[1]<-"country"#
+#
+all <- rbind(arg,fr)
+aggregate(all$pc,by=list(all$school),mean,na.rm=T)
+aggregate(all$pc,by=list(all$school),sd,na.rm=T)
+(aggregate(all$pc,by=list(all$school),mean,na.rm=T)-.5)/#
+aggregate(all$pc,by=list(all$school),sd,na.rm=T)
+(aggregate(all$pc,by=list(all$school),mean,na.rm=T)$x-.5)/#
+aggregate(all$pc,by=list(all$school),sd,na.rm=T)$x
+cbind(as.character(levels(all$school)),(aggregate(all$pc,by=list(all$school),mean,na.rm=T)$x-.5)/
+aggregate(all$pc,by=list(all$school),sd,na.rm=T)$x)
+names(all)
+table(all$lang)
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Maternal years of education",1,line=2,cex=2)#
+mtext("Percent correct",2,line=2,cex=2)#
+#
+#mtext("Anos de educacion de la madre",1,line=2,cex=2)#
+#mtext(" ~                                             ",1,line=1.5,cex=2)#
+#mtext("                          /             ",1,line=1.2,cex=1)#
+#mtext("                          /             ",1,line=1.2,cex=1)#
+#mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"& (lang=="monolingual" & !is.na(lang))),pch=16,col="black",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & (lang!="monolingual" | is.na(lang)) ),pch=16,col="gray",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr" & (lang=="monolingual" & !is.na(lang)))),xlim=c(5,15),col="black",lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr" & (lang!="monolingual" | is.na(lang)))),xlim=c(5,15),col="gray",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")
+pdf("pc_eng.pdf",width=5,height=5)#
+par(mar=c(3.5,3.5,1,1)+0.1,mgp=c(0.5,0.5,0))#
+plot(pc ~ edMom,data=all,type="n",ylim=c(0.3,1),xlab="", ylab="",cex.lab=2,cex.axis=1.5)#
+lines(c(4,30),c(.5,.5),lty=3,col="black")#
+mtext("Maternal years of education",1,line=2,cex=2)#
+mtext("Percent correct",2,line=2,cex=2)#
+#
+#mtext("Anos de educacion de la madre",1,line=2,cex=2)#
+#mtext(" ~                                             ",1,line=1.5,cex=2)#
+#mtext("                          /             ",1,line=1.2,cex=1)#
+#mtext("                          /             ",1,line=1.2,cex=1)#
+#mtext("Porcentaje correcto",2,line=2,cex=2)#
+#
+points(pc ~ edMom,data=all,subset=c(country=="arg" & school=="pestalozzi"),pch=16,col="red",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="arg"& school=="cayetano"),pch="+",col="blue",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr"& (lang=="monolingual" & !is.na(lang))),pch=16,col="black",cex=1.5)#
+points(pc ~ edMom,data=all,subset=c(country=="fr" & (lang!="monolingual" | is.na(lang)) ),pch=16,col="gray",cex=1.5)#
+#points(pc ~ edMom,data=all,subset=c(country=="fr" & lang != "monolingual"),pch=20,col="red")#
+#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="arg")),xlim=c(5,15),col="purple",cex=6,lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr" & (lang=="monolingual" & !is.na(lang)))),xlim=c(5,15),col="black",lwd=4)#
+abline(lm(pc ~ edMom,data=all,subset=c(country=="fr" & (lang!="monolingual" | is.na(lang)))),xlim=c(5,15),col="gray",lwd=4)#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang=="monolingual")))#
+#abline(lm(pc ~ edMom,data=all,subset=c(country=="fr"& lang!="monolingual")),col="red")#
+#
+dev.off()
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-14#
+arg$edMom=jitter(arg$edMom)#
+arg$lang="monolingual"#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+fr$edMom[fr$edMom==20 & !is.na(fr$edMom)]<-jitter(fr$edMom[fr$edMom==20 & !is.na(fr$edMom)],.1)#
+arg=cbind("arg",arg[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(arg)[1]<-"country"#
+fr=cbind("fr",fr[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(fr)[1]<-"country"#
+#
+all <- rbind(arg,fr)
+aggregate(all$age,by=list(all$school),sd,na.rm=T)
+aggregate(all$age,by=list(all$school),mean,na.rm=T)
+cbind(as.character(levels(all$school)),(aggregate(all$pc,by=list(all$school),mean,na.rm=T)$x-.5)/#
+aggregate(all$pc,by=list(all$school),sd,na.rm=T)$x)
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-14#
+arg$edMom=jitter(arg$edMom)#
+arg$lang="monolingual"#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+fr$edMom[fr$edMom==20 & !is.na(fr$edMom)]<-jitter(fr$edMom[fr$edMom==20 & !is.na(fr$edMom)],.1)#
+arg=cbind("arg",arg[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(arg)[1]<-"country"#
+fr=cbind("fr",fr[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(fr)[1]<-"country"#
+#
+all <- rbind(arg,fr)
+aggregate(all$age,by=list(all$school),range,na.rm=T)
+read.table("../argentina_daycares/results/results.txt",header=T)->arg#
+arg$edMom <-7#
+arg$edMom[arg$SES=="Mid"] <-14#
+arg$edMom=jitter(arg$edMom)#
+arg$lang="monolingual"#
+#
+read.table("../france/results/results.txt",header=T)->fr#
+fr$edMom=fr$edMom+12#
+fr$edMom[fr$edMom==20 & !is.na(fr$edMom)]<-jitter(fr$edMom[fr$edMom==20 & !is.na(fr$edMom)],.1)#
+arg=cbind("arg",arg[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(arg)[1]<-"country"#
+fr=cbind("fr",fr[,c(names(arg)[names(arg) %in% names(fr)])])#
+names(fr)[1]<-"country"#
+#
+all <- rbind(arg,fr)
+all$l=if(all$lang=="monolingual",1,0)
+all$l=ifelse(all$lang=="monolingual",1,0)
+all$l
+all$l=ifelse(all$lang=="monolingual" | is.na(all$lang),1,0)
+all$l
+cbind((aggregate(all$pc,by=list(all$country,all$l),mean,na.rm=T),(aggregate(all$pc,by=list(all$country,all$l),mean,na.rm=T)$x-.5)/#
+aggregate(all$pc,by=list(all$country,all$l),sd,na.rm=T)$x)
+cbind(aggregate(all$pc,by=list(all$country,all$l),mean,na.rm=T),(aggregate(all$pc,by=list(all$country,all$l),mean,na.rm=T)$x-.5)/#
+aggregate(all$pc,by=list(all$country,all$l),sd,na.rm=T)$x)
+aggregate(all$age,by=list(all$country,all$l),mean,na.rm=T)
+aggregate(all$age,by=list(all$country,all$l),range,na.rm=T)
+all$x=ifelse(all$country=="arg" & all$school=="cayetano",1,0)
+cbind(aggregate(all$pc,by=list(all$country,all$l,all$x),mean,na.rm=T),(aggregate(all$pc,by=list(all$country,all$l,all$x),mean,na.rm=T)$x-.5)/#
+aggregate(all$pc,by=list(all$country,all$l,all$x),sd,na.rm=T)$x)
+aggregate(all$age,by=list(all$country,all$l,all$x),mean,na.rm=T)#
+aggregate(all$age,by=list(all$country,all$l,all$x),range,na.rm=T)

@@ -1,0 +1,598 @@
+[1] "Fri Jun 10 13:01:06 2016"
+[1] 51 52
+      Anon                                   id          school          date.x            profile  
+ D10    : 1   05F09834024C4C6BBB415698CC63DA1F: 1   dumeril :14   2016-03-23:10   Test_mix1_beg:28  
+ D11    : 1   0FEB560F4B184E628AE32D867855CC75: 1   fautrier:19   2016-04-05:13   Test_mix2_beg:23  
+ D13    : 1   10B54AD35AF84A4583847364F67E69B1: 1   massena :18   2016-04-06:11                     
+ D14    : 1   134FA33F7A6E4F16837963EF1BA4CA66: 1                 2016-04-12: 5                     
+ D16    : 1   18F6CA41FB004DC6AC8021638A1A7731: 1                 2016-04-13: 4                     
+ D17    : 1   18F719E1B7454C3E824D16E1F129BCFA: 1                 2016-04-14: 4                     
+ (Other):45   (Other)                         :45                 2016-04-15: 4                     
+ trials_completed trials_attempted       pc            rt_corr       rt_incorr         pc_1        
+ Min.   : 2.00    Min.   : 0.00    Min.   :0.1818   Min.   :1204   Min.   :1290   Min.   :0.09091  
+ 1st Qu.:24.50    1st Qu.:19.50    1st Qu.:0.6065   1st Qu.:1922   1st Qu.:2004   1st Qu.:0.57143  
+ Median :36.00    Median :35.00    Median :0.7812   Median :2268   Median :2329   Median :0.78947  
+ Mean   :31.59    Mean   :29.29    Mean   :0.7395   Mean   :2279   Mean   :2561   Mean   :0.73786  
+ 3rd Qu.:41.00    3rd Qu.:40.00    3rd Qu.:0.9012   3rd Qu.:2584   3rd Qu.:3112   3rd Qu.:0.92222  
+ Max.   :41.00    Max.   :41.00    Max.   :1.0000   Max.   :3838   Max.   :4924   Max.   :1.00000  
+                                   NA's   :4        NA's   :4      NA's   :17     NA's   :4        
+      pc_2             rt_1           rt_2         propLeft           bias         pc_easy      
+ Min.   :0.1667   Min.   :1436   Min.   :1059   Min.   :0.0000   Min.   :0.00   Min.   :0.1111  
+ 1st Qu.:0.5857   1st Qu.:1998   1st Qu.:1900   1st Qu.:0.3705   1st Qu.:0.00   1st Qu.:0.6396  
+ Median :0.8000   Median :2218   Median :2232   Median :0.4692   Median :0.00   Median :0.8333  
+ Mean   :0.7400   Mean   :2342   Mean   :2343   Mean   :0.4297   Mean   :0.36   Mean   :0.7595  
+ 3rd Qu.:0.9115   3rd Qu.:2576   3rd Qu.:2725   3rd Qu.:0.5308   3rd Qu.:1.00   3rd Qu.:0.9286  
+ Max.   :1.0000   Max.   :4633   Max.   :4159   Max.   :0.7895   Max.   :1.00   Max.   :1.0000  
+ NA's   :4        NA's   :4      NA's   :4      NA's   :1        NA's   :1      NA's   :4       
+     pc_mod          pc_diff          rt_easy         rt_mod        rt_diff        pc_noun       
+ Min.   :0.2000   Min.   :0.2500   Min.   :1440   Min.   : 891   Min.   :1067   Min.   :0.07143  
+ 1st Qu.:0.6384   1st Qu.:0.5774   1st Qu.:1854   1st Qu.:1690   1st Qu.:1875   1st Qu.:0.63397  
+ Median :0.8875   Median :0.7500   Median :2124   Median :2123   Median :2353   Median :0.86364  
+ Mean   :0.7992   Mean   :0.7052   Mean   :2205   Mean   :2237   Mean   :2346   Mean   :0.78760  
+ 3rd Qu.:0.9464   3rd Qu.:0.8462   3rd Qu.:2447   3rd Qu.:2586   3rd Qu.:2680   3rd Qu.:0.95454  
+ Max.   :1.0000   Max.   :1.0000   Max.   :3578   Max.   :4417   Max.   :3681   Max.   :1.00000  
+ NA's   :11       NA's   :4        NA's   :11     NA's   :14     NA's   :11     NA's   :4        
+     pc_adj          pc_verb          rt_noun           rt_adj        rt_verb         N_easy     
+ Min.   :0.2000   Min.   :0.0000   Min.   : 915.5   Min.   :1465   Min.   : 891   Min.   : 0.00  
+ 1st Qu.:0.5000   1st Qu.:0.5455   1st Qu.:1757.5   1st Qu.:2121   1st Qu.:2406   1st Qu.: 8.00  
+ Median :0.7143   Median :0.8182   Median :2030.5   Median :2609   Median :2538   Median :12.00  
+ Mean   :0.6376   Mean   :0.7156   Mean   :2079.2   Mean   :2556   Mean   :2645   Mean   :10.31  
+ 3rd Qu.:0.8571   3rd Qu.:0.9091   3rd Qu.:2368.0   3rd Qu.:2852   3rd Qu.:3030   3rd Qu.:14.00  
+ Max.   :1.0000   Max.   :1.0000   Max.   :3838.0   Max.   :4671   Max.   :3812   Max.   :14.00  
+ NA's   :14       NA's   :14       NA's   :4        NA's   :14     NA's   :15                    
+     N_mod            N_diff           N_noun          N_adj           N_verb               Date    Remove 
+ Min.   : 0.000   Min.   : 0.000   Min.   : 0.00   Min.   :0.000   Min.   : 0.000   05/04/2016:13   no:51  
+ 1st Qu.: 4.500   1st Qu.: 7.500   1st Qu.:12.50   1st Qu.:3.000   1st Qu.: 3.000   06/04/2016:11          
+ Median :10.000   Median :12.000   Median :19.00   Median :6.000   Median : 9.000   12/04/2016: 5          
+ Mean   : 8.863   Mean   : 9.725   Mean   :16.37   Mean   :5.196   Mean   : 7.333   13/04/2016: 4          
+ 3rd Qu.:14.000   3rd Qu.:12.500   3rd Qu.:22.00   3rd Qu.:7.000   3rd Qu.:11.000   14/04/2016: 4          
+ Max.   :14.000   Max.   :13.000   Max.   :22.00   Max.   :8.000   Max.   :12.000   15/04/2016: 4          
+                                                                                    23/03/2016:10          
+                                              Comments   check                                       uuid   
+                                                  :50   Mode:logical   05F09834024C4C6BBB415698CC63DA1F: 1  
+ maybe sound problems, child performed until Test6: 1   NA's:51        0FEB560F4B184E628AE32D867855CC75: 1  
+                                                                       10B54AD35AF84A4583847364F67E69B1: 1  
+                                                                       134FA33F7A6E4F16837963EF1BA4CA66: 1  
+                                                                       18F6CA41FB004DC6AC8021638A1A7731: 1  
+                                                                       18F719E1B7454C3E824D16E1F129BCFA: 1  
+                                                                       (Other)                         :45  
+   subject_id                   session_started_at       config_profile     thisdir  
+ Min.   :  2.0   2016-03-23T08:44:49.000Z: 1       Test_mix1_beg:28     dumeril :14  
+ 1st Qu.: 20.0   2016-03-23T08:45:06.000Z: 1       Test_mix2_beg:23     fautrier:19  
+ Median :112.0   2016-03-23T08:59:55.000Z: 1                            massena :18  
+ Mean   :118.5   2016-03-23T09:00:41.000Z: 1                                         
+ 3rd Qu.:205.5   2016-03-23T09:17:10.000Z: 1                                         
+ Max.   :218.0   2016-03-23T09:18:29.000Z: 1                                         
+                 (Other)                 :45                                         
+                                                  thisf           date.y           DOB         edMom       
+ 101_app_session_953860E3A330422593763027863067BA.csv: 1   05/04/2016:13   07/03/2013: 2   Min.   : 2.000  
+ 102_app_session_98BC8B8C72214D1DAED95CE29E6D22C3.csv: 1   06/04/2016:11   02/01/2013: 1   1st Qu.: 5.000  
+ 104_app_session_FC8CEEF2DD8E4280BFDAAF71D0F38BE7.csv: 1   12/04/2016: 5   02/02/2013: 1   Median : 7.000  
+ 105_app_session_72321C90E39E4934820AD7F9524AB934.csv: 1   13/04/2016: 4   03/02/2014: 1   Mean   : 6.658  
+ 106_app_session_2EAEE5BFC200421E84EACAEBCD5FEE74.csv: 1   14/04/2016: 4   03/03/2013: 1   3rd Qu.: 8.000  
+ 14_app_session_BED2E8D1B7474A81B50C5601B0DD7A8F.csv : 1   15/04/2016: 4   03/08/2013: 1   Max.   :11.000  
+ (Other)                                             :45   23/03/2016:10   (Other)   :44   NA's   :13      
+          lang         age             ed         age.c         langdummy      
+ bilingual  :23   Min.   :1.969   higher:18   Min.   :-0.8040   Mode :logical  
+ monolingual:17   1st Qu.:2.552   lower :20   1st Qu.:-0.2208   FALSE:34       
+ NA's       :11   Median :2.897   NA's  :13   Median : 0.1242   TRUE :17       
+                  Mean   :2.772               Mean   : 0.0000   NA's :0        
+                  3rd Qu.:3.072               3rd Qu.: 0.2994                  
+                  Max.   :3.274               Max.   : 0.5020                  
+                                                                               
+[1] "# ** planned analysis 1 **\ttotal number of trials completed"
+
+Call:
+lm(formula = trials_completed ~ ed + age.c + langdummy, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-31.760  -7.348   2.606   6.614  15.876 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     32.128      2.963  10.843 1.41e-12 ***
+edlower         -1.843      3.499  -0.527    0.602    
+age.c            8.469      5.102   1.660    0.106    
+langdummyTRUE    4.408      3.628   1.215    0.233    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 10.68 on 34 degrees of freedom
+  (13 observations deleted due to missingness)
+Multiple R-squared:  0.1553,	Adjusted R-squared:  0.08077 
+F-statistic: 2.084 on 3 and 34 DF,  p-value: 0.1207
+
+[1] "trials_completed, mean & SD"
+     [,1]     [,2]     [,3]    
+[1,] "Higher" "34.611" "10.182"
+[2,] "Lower"  "31.8"   "12.038"
+[1] "trials_completed, range"
+  Group.1 x.1 x.2
+1  higher   2  41
+2   lower   7  41
+[1] "# ** planned analysis 2 **\ttotal number of trials attempted"
+
+Call:
+lm(formula = trials_attempted ~ ed + age.c + langdummy, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-30.314  -6.490   3.136   6.881  16.339 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     30.127      2.999  10.044 1.04e-11 ***
+edlower         -2.012      3.542  -0.568   0.5737    
+age.c           10.587      5.164   2.050   0.0481 *  
+langdummyTRUE    4.117      3.673   1.121   0.2701    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 10.81 on 34 degrees of freedom
+  (13 observations deleted due to missingness)
+Multiple R-squared:  0.1879,	Adjusted R-squared:  0.1162 
+F-statistic: 2.622 on 3 and 34 DF,  p-value: 0.06649
+
+[1] "trials_attempted, mean & SD"
+     [,1]     [,2]     [,3]    
+[1,] "Higher" "32.611" "11.035"
+[2,] "Lower"  "29.45"  "11.98" 
+[1] "trials_attempted, range"
+  Group.1 x.1 x.2
+1  higher   0  41
+2   lower   7  41
+[1] "trials_attempted, distribution"
+    
+     higher lower
+  0       1     0
+  4       0     0
+  7       0     1
+  9       0     0
+  10      0     0
+  13      0     2
+  14      0     1
+  15      0     1
+  18      1     0
+  19      0     1
+  20      0     1
+  22      0     0
+  23      2     0
+  27      1     0
+  29      1     1
+  31      0     1
+  32      1     0
+  34      0     1
+  35      1     0
+  36      0     0
+  37      0     2
+  38      2     1
+  39      0     1
+  40      4     3
+  41      4     3
+[1] "# ** planned analysis 3 **\t%correct & RT per group"
+
+Call:
+lm(formula = (pc - 0.5) ~ ed + age.c + langdummy, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.26104 -0.07552 -0.00672  0.07455  0.40055 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    0.24005    0.03876   6.193 6.22e-07 ***
+edlower       -0.01176    0.04563  -0.258   0.7983    
+age.c          0.29770    0.06685   4.453 9.66e-05 ***
+langdummyTRUE  0.10641    0.04602   2.312   0.0274 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1332 on 32 degrees of freedom
+  (15 observations deleted due to missingness)
+Multiple R-squared:  0.5011,	Adjusted R-squared:  0.4544 
+F-statistic: 10.71 on 3 and 32 DF,  p-value: 4.95e-05
+
+
+Call:
+lm(formula = log(rt_corr) ~ ed + age.c + langdummy, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.38635 -0.15756 -0.01246  0.14008  0.41485 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept)    7.78581    0.05943 131.014   <2e-16 ***
+edlower       -0.01106    0.06995  -0.158    0.875    
+age.c         -0.14084    0.10249  -1.374    0.179    
+langdummyTRUE -0.10465    0.07056  -1.483    0.148    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2042 on 32 degrees of freedom
+  (15 observations deleted due to missingness)
+Multiple R-squared:  0.137,	Adjusted R-squared:  0.05606 
+F-statistic: 1.693 on 3 and 32 DF,  p-value: 0.1882
+
+
+Call:
+lm(formula = (pc - 0.5) ~ ed + age.c + langdummy + school, data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.21977 -0.08820  0.00880  0.05541  0.40426 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     0.27795    0.05019   5.538 5.11e-06 ***
+edlower        -0.01910    0.04660  -0.410 0.684883    
+age.c           0.32673    0.07301   4.475 0.000102 ***
+langdummyTRUE   0.12522    0.04769   2.626 0.013475 *  
+schoolfautrier -0.08076    0.05563  -1.452 0.156947    
+schoolmassena  -0.01657    0.06467  -0.256 0.799485    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.1327 on 30 degrees of freedom
+  (15 observations deleted due to missingness)
+Multiple R-squared:  0.536,	Adjusted R-squared:  0.4586 
+F-statistic:  6.93 on 5 and 30 DF,  p-value: 0.0002086
+
+
+Call:
+lm(formula = log(rt_corr) ~ ed + age.c + langdummy + school, 
+    data = data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.39249 -0.13130 -0.02746  0.13016  0.39270 
+
+Coefficients:
+               Estimate Std. Error t value Pr(>|t|)    
+(Intercept)     7.80646    0.07798 100.112   <2e-16 ***
+edlower        -0.02749    0.07240  -0.380    0.707    
+age.c          -0.08843    0.11342  -0.780    0.442    
+langdummyTRUE  -0.08116    0.07409  -1.095    0.282    
+schoolfautrier -0.07101    0.08642  -0.822    0.418    
+schoolmassena   0.04405    0.10047   0.438    0.664    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 0.2061 on 30 degrees of freedom
+  (15 observations deleted due to missingness)
+Multiple R-squared:  0.1757,	Adjusted R-squared:  0.0383 
+F-statistic: 1.279 on 5 and 30 DF,  p-value: 0.2989
+
+[1] "# ** not planned **\tRT per group * corr"
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: log(rt)
+           Chisq Df Pr(>Chisq)  
+ed        0.3066  1    0.57980  
+resp      4.2751  1    0.03867 *
+age.c     0.5794  1    0.44654  
+langdummy 0.3073  1    0.57933  
+ed:resp   1.1830  1    0.27674  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Linear mixed model fit by REML ['lmerMod']
+Formula: log(rt) ~ ed * resp + age.c + langdummy + (1 | id)
+   Data: rtstackcor
+
+REML criterion at convergence: 18.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-1.7040 -0.5930 -0.0111  0.5213  1.9589 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.02296  0.1515  
+ Residual             0.04312  0.2077  
+Number of obs: 59, groups:  id, 36
+
+Fixed effects:
+                       Estimate Std. Error t value
+(Intercept)            7.751941   0.072325  107.18
+edlower                0.003306   0.087599    0.04
+resprt_incorr          0.185410   0.083709    2.21
+age.c                 -0.086556   0.113710   -0.76
+langdummyTRUE         -0.043410   0.078306   -0.55
+edlower:resprt_incorr -0.125563   0.115441   -1.09
+
+Correlation of Fixed Effects:
+            (Intr) edlowr rsprt_ age.c  lnTRUE
+edlower     -0.670                            
+resprt_ncrr -0.430  0.365                     
+age.c       -0.064  0.179  0.099              
+lngdmmyTRUE -0.486  0.060 -0.007 -0.162       
+edlwr:rspr_  0.285 -0.481 -0.723 -0.054  0.053
+[1] "# ** analysis 4 **\t%correct & RT per group * difficulty (check - not sure if we declared it)\n"
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: (pc - 0.5)
+                Chisq Df Pr(>Chisq)    
+ed             0.0395  1    0.84240    
+difficulty     8.0875  2    0.01753 *  
+age.c         19.0070  1  1.302e-05 ***
+langdummy      4.8925  1    0.02697 *  
+ed:difficulty  0.7905  2    0.67352    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Linear mixed model fit by REML ['lmerMod']
+Formula: (pc - 0.5) ~ ed * difficulty + age.c + langdummy + (1 | id)
+   Data: pcstackdif
+
+REML criterion at convergence: -85.1
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.72129 -0.39630  0.06857  0.45669  2.60996 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.01292  0.1137  
+ Residual             0.01189  0.1090  
+Number of obs: 104, groups:  id, 36
+
+Fixed effects:
+                          Estimate Std. Error t value
+(Intercept)                0.21506    0.04360   4.932
+edlower                   -0.02931    0.05355  -0.547
+difficultypc_easy          0.03468    0.03740   0.927
+difficultypc_mod           0.06068    0.03740   1.623
+age.c                      0.28706    0.06584   4.360
+langdummyTRUE              0.09958    0.04502   2.212
+edlower:difficultypc_easy  0.04514    0.05148   0.877
+edlower:difficultypc_mod   0.01564    0.05365   0.292
+
+Correlation of Fixed Effects:
+                  (Intr) edlowr dffcltypc_s dffcltypc_m age.c  lnTRUE edlwr:dffcltypc_s
+edlower           -0.675                                                               
+dffcltypc_s       -0.429  0.349                                                        
+dffcltypc_m       -0.429  0.349  0.500                                                 
+age.c             -0.057  0.169  0.000       0.000                                     
+lngdmmyTRUE       -0.462  0.054  0.000       0.000      -0.172                         
+edlwr:dffcltypc_s  0.312 -0.481 -0.726      -0.363       0.000  0.000                  
+edlwr:dffcltypc_m  0.313 -0.468 -0.349      -0.697      -0.030 -0.020  0.480           
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: (pc - 0.5)
+                Chisq Df Pr(>Chisq)    
+ed             0.1852  1    0.66695    
+difficulty     8.1307  2    0.01716 *  
+age.c         20.5184  1  5.906e-06 ***
+langdummy      6.5796  1    0.01032 *  
+school         2.4027  2    0.30078    
+ed:difficulty  0.7860  2    0.67501    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: log(rt)
+               Chisq Df Pr(>Chisq)  
+ed            0.1431  1    0.70520  
+difficulty    8.8706  2    0.01185 *
+age.c         2.7893  1    0.09490 .
+langdummy     2.9719  1    0.08472 .
+ed:difficulty 3.3815  2    0.18438  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Linear mixed model fit by REML ['lmerMod']
+Formula: log(rt) ~ ed * difficulty + age.c + langdummy + (1 | id)
+   Data: rtstackdif
+
+REML criterion at convergence: -18.9
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.4355 -0.3963 -0.0583  0.4070  2.2703 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.03931  0.1983  
+ Residual             0.01932  0.1390  
+Number of obs: 97, groups:  id, 35
+
+Fixed effects:
+                           Estimate Std. Error t value
+(Intercept)                7.846178   0.068532  114.49
+edlower                    0.009382   0.084059    0.11
+difficultyrt_easy         -0.082660   0.047681   -1.73
+difficultyrt_mod          -0.044144   0.047681   -0.93
+age.c                     -0.194358   0.116373   -1.67
+langdummyTRUE             -0.128428   0.074497   -1.72
+edlower:difficultyrt_easy -0.002671   0.069244   -0.04
+edlower:difficultyrt_mod  -0.115586   0.071137   -1.62
+
+Correlation of Fixed Effects:
+                  (Intr) edlowr dffcltyrt_s dffcltyrt_m age.c  lnTRUE edlwr:dffcltyrt_s
+edlower           -0.640                                                               
+dffcltyrt_s       -0.348  0.284                                                        
+dffcltyrt_m       -0.348  0.284  0.500                                                 
+age.c             -0.092  0.127  0.000       0.000                                     
+lngdmmyTRUE       -0.491  0.042  0.000       0.000      -0.130                         
+edlwr:dffcltyrt_s  0.240 -0.412 -0.689      -0.344       0.000  0.000                  
+edlwr:dffcltyrt_m  0.240 -0.404 -0.335      -0.670      -0.007 -0.011  0.487           
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: log(rt)
+               Chisq Df Pr(>Chisq)  
+ed            0.4900  1     0.4839  
+difficulty    9.0573  2     0.0108 *
+age.c         0.9829  1     0.3215  
+langdummy     1.7435  1     0.1867  
+school        2.6151  2     0.2705  
+ed:difficulty 3.4239  2     0.1805  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+[1] "# ** analysis 5 **\tcompare different conceptualizations of ed (maternal education, etc.)"
+[1] "##TO DO"
+[1] "# ** analysis ** Differences by word type"
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: (pc - 0.5)
+            Chisq Df Pr(>Chisq)    
+ed         0.0103  1   0.919125    
+lexCat    24.1479  2  5.706e-06 ***
+age.c     19.7691  1  8.738e-06 ***
+langdummy  7.8368  1   0.005119 ** 
+ed:lexCat  0.6743  2   0.713803    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Linear mixed model fit by REML ['lmerMod']
+Formula: (pc - 0.5) ~ ed * lexCat + age.c + langdummy + (1 | id)
+   Data: pcstacklex
+
+REML criterion at convergence: -40.6
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-2.8220 -0.4912  0.1043  0.5903  2.1821 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.01229  0.1108  
+ Residual             0.02006  0.1416  
+Number of obs: 94, groups:  id, 36
+
+Fixed effects:
+                      Estimate Std. Error t value
+(Intercept)            0.07727    0.05070   1.524
+edlower                0.03177    0.06627   0.479
+lexCatpc_noun          0.19904    0.04963   4.011
+lexCatpc_verb          0.07537    0.05113   1.474
+age.c                  0.32604    0.07333   4.446
+langdummyTRUE          0.13743    0.04909   2.799
+edlower:lexCatpc_noun -0.05706    0.07265  -0.785
+edlower:lexCatpc_verb -0.04597    0.07497  -0.613
+
+Correlation of Fixed Effects:
+               (Intr) edlowr lxCtpc_n lxCtpc_v age.c  lnTRUE edlwr:lxCtpc_n
+edlower        -0.622                                                      
+lexCatpc_nn    -0.517  0.390                                               
+lexCtpc_vrb    -0.490  0.370  0.494                                        
+age.c          -0.044  0.055 -0.018   -0.010                               
+lngdmmyTRUE    -0.454  0.040  0.020    0.016   -0.160                      
+edlwr:lxCtpc_n  0.333 -0.617 -0.684   -0.338    0.090  0.008               
+edlwr:lxCtpc_v  0.329 -0.568 -0.337   -0.682    0.013 -0.002  0.520        
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: (pc - 0.5)
+            Chisq Df Pr(>Chisq)    
+ed         0.0752  1   0.783970    
+lexCat    23.3188  2  8.637e-06 ***
+age.c     20.1869  1  7.023e-06 ***
+langdummy  9.1395  1   0.002502 ** 
+school     1.5913  2   0.451291    
+ed:lexCat  0.7000  2   0.704685    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: log(rt)
+            Chisq Df Pr(>Chisq)    
+ed         0.0253  1     0.8737    
+lexCat    45.2093  2  1.524e-10 ***
+age.c      1.2899  1     0.2561    
+langdummy  4.8531  1     0.0276 *  
+ed:lexCat  2.4757  2     0.2900    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Linear mixed model fit by REML ['lmerMod']
+Formula: log(rt) ~ ed * lexCat + age.c + langdummy + (1 | id)
+   Data: rtstacklex
+
+REML criterion at convergence: 7.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.2130 -0.3484 -0.0248  0.5008  1.7402 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.02215  0.1488  
+ Residual             0.03457  0.1859  
+Number of obs: 94, groups:  id, 36
+
+Fixed effects:
+                      Estimate Std. Error t value
+(Intercept)            7.92215    0.06720  117.88
+edlower                0.04701    0.08770    0.54
+lexCatrt_noun         -0.24552    0.06517   -3.77
+lexCatrt_verb          0.09640    0.06714    1.44
+age.c                 -0.11084    0.09759   -1.14
+langdummyTRUE         -0.14401    0.06537   -2.20
+edlower:lexCatrt_noun -0.03304    0.09543   -0.35
+edlower:lexCatrt_verb -0.14679    0.09844   -1.49
+
+Correlation of Fixed Effects:
+               (Intr) edlowr lxCtrt_n lxCtrt_v age.c  lnTRUE edlwr:lxCtrt_n
+edlower        -0.623                                                      
+lexCatrt_nn    -0.512  0.387                                               
+lexCtrt_vrb    -0.485  0.367  0.494                                        
+age.c          -0.045  0.057 -0.018   -0.010                               
+lngdmmyTRUE    -0.456  0.041  0.020    0.015   -0.160                      
+edlwr:lxCtrt_n  0.330 -0.612 -0.684   -0.338    0.089  0.008               
+edlwr:lxCtrt_v  0.326 -0.564 -0.337   -0.682    0.012 -0.002  0.520        
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: log(rt)
+            Chisq Df Pr(>Chisq)    
+ed         0.2437  1    0.62151    
+lexCat    45.3866  2  1.395e-10 ***
+age.c      0.1999  1    0.65482    
+langdummy  3.3988  1    0.06525 .  
+school     2.4497  2    0.29380    
+ed:lexCat  2.3793  2    0.30433    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+[1] "# ** planned analysis **\tInternal validity with cronbach alpha, using split trial"
+
+Reliability analysis   
+Call: alpha(x = cbind(data$pc_1, data$pc_2))
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd
+      0.85      0.85    0.74      0.74 5.6 0.042 0.74 0.21
+
+ lower alpha upper     95% confidence boundaries
+0.77 0.85 0.93 
+
+ Reliability if an item is dropped:
+   raw_alpha std.alpha G6(smc) average_r  S/N alpha se
+V1      0.74      0.74    0.55      0.74   NA       NA
+V2      0.55      0.74      NA        NA 0.74     0.12
+
+ Item statistics 
+    n raw.r std.r r.cor r.drop mean   sd
+V1 47  0.93  0.93   0.8   0.74 0.74 0.22
+V2 47  0.93  0.93   0.8   0.74 0.74 0.23
+
+Reliability analysis   
+Call: alpha(x = cbind(data$rt_1, data$rt_2))
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean  sd
+      0.87      0.88    0.78      0.78 7.2 0.035 2342 550
+
+ lower alpha upper     95% confidence boundaries
+0.8 0.87 0.94 
+
+ Reliability if an item is dropped:
+   raw_alpha std.alpha G6(smc) average_r  S/N alpha se
+V1      0.78      0.78    0.61      0.78   NA       NA
+V2      0.61      0.78      NA        NA 0.78     0.12
+
+ Item statistics 
+    n raw.r std.r r.cor r.drop mean  sd
+V1 47  0.94  0.94  0.84   0.78 2342 539
+V2 47  0.95  0.94  0.84   0.78 2343 626
+[1] "# Test potential presence of side bias"
+
+ 0  1 
+32 18 
+[1] "# ** NUTSHELL **\tEffect sizes"
+[1] "trials_completed d= 0.457855266031959 \n r= 0.223154770898865"
+[1] "trials_attempted d= 0.457855266031959 \n r= 0.223154770898865"
+[1] "pc d= 0.457855266031959 \n r= 0.223154770898865"
+[1] "rt_corr d= 0.457855266031959 \n r= 0.223154770898865"

@@ -1,0 +1,292 @@
+[1] "Thu Jun 30 15:33:40 2016"
+[1] 120  36
+       id             school           date                   profile   trials_completed trials_attempted       pc        
+ 491    :  1   cayetano  :56   2016-04-27:21   Espanol_Grupo1_imp :31   Min.   : 2.00    Min.   : 1.00    Min.   :0.3590  
+ 492    :  1   others    : 2   2016-05-11:19   Espanol_Grupo1_preg:32   1st Qu.:41.00    1st Qu.:37.00    1st Qu.:0.7698  
+ 500    :  1   pestalozzi:62   2016-04-28:18   Espanol_Grupo2_imp :29   Median :41.00    Median :40.00    Median :0.8765  
+ 501    :  1                   2016-05-10:14   Espanol_Grupo2_preg:28   Mean   :39.94    Mean   :37.81    Mean   :0.8350  
+ 502    :  1                   2016-05-13:12                            3rd Qu.:41.00    3rd Qu.:41.00    3rd Qu.:0.9376  
+ 503    :  1                   2016-05-06:11                            Max.   :41.00    Max.   :41.00    Max.   :1.0000  
+ (Other):114                   (Other)   :25                                                              NA's   :2       
+    rt_corr       rt_incorr         pc_1             pc_2             rt_1           rt_2         propLeft     
+ Min.   :1544   Min.   :1622   Min.   :0.2500   Min.   :0.4000   Min.   :1540   Min.   :1446   Min.   :0.0000  
+ 1st Qu.:2112   1st Qu.:2199   1st Qu.:0.7619   1st Qu.:0.7500   1st Qu.:2133   1st Qu.:2194   1st Qu.:0.4390  
+ Median :2394   Median :2680   Median :0.8889   Median :0.8500   Median :2401   Median :2422   Median :0.4878  
+ Mean   :2485   Mean   :2845   Mean   :0.8394   Mean   :0.8303   Mean   :2506   Mean   :2560   Mean   :0.4651  
+ 3rd Qu.:2788   3rd Qu.:3396   3rd Qu.:0.9518   3rd Qu.:0.9474   3rd Qu.:2810   3rd Qu.:2905   3rd Qu.:0.5299  
+ Max.   :3935   Max.   :5334   Max.   :1.0000   Max.   :1.0000   Max.   :3996   Max.   :4664   Max.   :0.8378  
+ NA's   :2      NA's   :51     NA's   :2        NA's   :2        NA's   :2      NA's   :2                      
+      bias            N_easy          N_mod           N_diff         pc_easy           pc_mod          pc_diff      
+ Min.   :0.0000   Min.   : 0.00   Min.   : 0.00   Min.   : 0.00   Min.   :0.2308   Min.   :0.2308   Min.   :0.2308  
+ 1st Qu.:0.0000   1st Qu.:13.00   1st Qu.:13.00   1st Qu.:11.00   1st Qu.:0.8462   1st Qu.:0.7857   1st Qu.:0.6923  
+ Median :0.0000   Median :14.00   Median :14.00   Median :13.00   Median :0.9286   Median :0.8571   Median :0.8333  
+ Mean   :0.2333   Mean   :13.23   Mean   :12.75   Mean   :11.76   Mean   :0.8675   Mean   :0.8401   Mean   :0.7919  
+ 3rd Qu.:0.0000   3rd Qu.:14.00   3rd Qu.:14.00   3rd Qu.:13.00   3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:0.9231  
+ Max.   :1.0000   Max.   :14.00   Max.   :14.00   Max.   :13.00   Max.   :1.0000   Max.   :1.0000   Max.   :1.0000  
+                                                                  NA's   :3        NA's   :2        NA's   :2       
+    rt_easy         rt_mod        rt_diff         N_noun          N_adj           N_verb          pc_noun      
+ Min.   :1424   Min.   :1014   Min.   :1389   Min.   : 0.00   Min.   :0.000   Min.   : 0.000   Min.   :0.3636  
+ 1st Qu.:2047   1st Qu.:2096   1st Qu.:2200   1st Qu.:20.75   1st Qu.:7.000   1st Qu.: 9.000   1st Qu.:0.8220  
+ Median :2335   Median :2378   Median :2524   Median :22.00   Median :8.000   Median :10.000   Median :0.9091  
+ Mean   :2437   Mean   :2479   Mean   :2639   Mean   :20.52   Mean   :7.425   Mean   : 9.792   Mean   :0.8786  
+ 3rd Qu.:2710   3rd Qu.:2794   3rd Qu.:3049   3rd Qu.:22.00   3rd Qu.:8.000   3rd Qu.:11.000   3rd Qu.:0.9545  
+ Max.   :3990   Max.   :4230   Max.   :4038   Max.   :22.00   Max.   :8.000   Max.   :11.000   Max.   :1.0000  
+ NA's   :4      NA's   :3      NA's   :4                                                       NA's   :2       
+     pc_adj          pc_verb          rt_noun         rt_adj        rt_verb             dob           age         SES    
+ Min.   :0.2500   Min.   :0.1250   Min.   :1410   Min.   :1739   Min.   :1118   2012-10-22:  3   Min.   :2.839   Low:57  
+ 1st Qu.:0.6250   1st Qu.:0.7273   1st Qu.:1926   1st Qu.:2276   1st Qu.:2417   2012-07-19:  2   1st Qu.:3.157   Mid:63  
+ Median :0.7500   Median :0.8182   Median :2169   Median :2637   Median :2788   2012-09-26:  2   Median :3.365           
+ Mean   :0.7474   Mean   :0.8092   Mean   :2281   Mean   :2797   Mean   :2886   2012-10-12:  2   Mean   :3.390           
+ 3rd Qu.:0.8750   3rd Qu.:1.0000   3rd Qu.:2467   3rd Qu.:3234   3rd Qu.:3293   2012-12-07:  2   3rd Qu.:3.608           
+ Max.   :1.0000   Max.   :1.0000   Max.   :3806   Max.   :5395   Max.   :5080   (Other)   :100   Max.   :4.235           
+ NA's   :3        NA's   :2        NA's   :2      NA's   :3      NA's   :2      NA's      :  9   NA's   :9               
+[1] "CHECK EFFECT OF INSTRUCTIONS"
+[1] "# ** planned analysis 1 **\ttotal number of trials completed"
+[1] "trials_completed, mean & SD"
+     [,1]  [,2]     [,3]   
+[1,] "Low" "39.93"  "5.885"
+[2,] "Mid" "39.952" "5.484"
+[1] "trials_completed, range"
+  Group.1 x.1 x.2
+1     Low   2  41
+2     Mid   8  41
+[1] "# ** planned analysis 2 **\ttotal number of trials attempted"
+[1] "trials_attempted, mean & SD"
+     [,1]  [,2]     [,3]   
+[1,] "Low" "37.807" "6.41" 
+[2,] "Mid" "37.81"  "5.769"
+[1] "trials_attempted, range"
+  Group.1 x.1 x.2
+1     Low   1  41
+2     Mid   7  41
+[1] "trials_attempted, distribution"
+    
+     Low Mid
+  1    1   0
+  7    0   1
+  12   0   1
+  19   1   0
+  24   1   0
+  29   0   1
+  30   1   0
+  32   0   1
+  34   2   2
+  35   2   3
+  36   5   6
+  37   2   2
+  38   3   4
+  39   5  12
+  40  14  11
+  41  20  19
+[1] "# ** planned analysis 3 **\t%correct & RT per group"
+[1] "# ** not planned **\tRT per group * corr"
+Linear mixed model fit by REML ['lmerMod']
+Formula: log(rt) ~ SES * resp + age.c + (1 | id)
+   Data: rtstackcor
+
+REML criterion at convergence: -24.9
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.53871 -0.48696 -0.09202  0.53174  2.77451 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.02077  0.1441  
+ Residual             0.02808  0.1676  
+Number of obs: 172, groups:  id, 110
+
+Fixed effects:
+                     Estimate Std. Error t value
+(Intercept)           7.80874    0.03177  245.83
+SESMid               -0.00332    0.04286   -0.08
+resprt_incorr         0.05411    0.03759    1.44
+age.c                -0.13225    0.06586   -2.01
+SESMid:resprt_incorr  0.11012    0.05724    1.92
+
+Correlation of Fixed Effects:
+            (Intr) SESMid rsprt_ age.c 
+SESMid      -0.748                     
+resprt_ncrr -0.476  0.350              
+age.c        0.108 -0.146  0.037       
+SESMd:rspr_  0.315 -0.421 -0.656  0.000
+[1] "# ** analysis 4 **\t%correct & RT per group * difficulty (check - not sure if we declared it)\n"
+Linear mixed model fit by REML ['lmerMod']
+Formula: (pc - 0.5) ~ SES * difficulty + age.c + (1 | id)
+   Data: pcstackdif
+
+REML criterion at convergence: -416.2
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.9329 -0.4730  0.0749  0.5370  2.5705 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.012113 0.11006 
+ Residual             0.008511 0.09226 
+Number of obs: 329, groups:  id, 110
+
+Fixed effects:
+                         Estimate Std. Error t value
+(Intercept)               0.20712    0.02063  10.042
+SESMid                    0.15583    0.02782   5.602
+difficultypc_easy         0.11730    0.01864   6.293
+difficultypc_mod          0.06048    0.01864   3.245
+age.c                     0.11446    0.04069   2.813
+SESMid:difficultypc_easy -0.07527    0.02509  -3.000
+SESMid:difficultypc_mod  -0.02005    0.02503  -0.801
+
+Correlation of Fixed Effects:
+                  (Intr) SESMid dffcltypc_s dffcltypc_m age.c  SESMd:dffcltypc_s
+SESMid            -0.748                                                        
+dffcltypc_s       -0.452  0.335                                                 
+dffcltypc_m       -0.452  0.335  0.500                                          
+age.c              0.103 -0.139  0.000       0.000                              
+SESMd:dffcltypc_s  0.336 -0.449 -0.743      -0.371       0.000                  
+SESMd:dffcltypc_m  0.336 -0.450 -0.372      -0.745       0.000  0.499           
+Linear mixed model fit by REML ['lmerMod']
+Formula: log(rt) ~ SES * difficulty + age.c + (1 | id)
+   Data: rtstackdif
+
+REML criterion at convergence: -157.4
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-3.5657 -0.5472 -0.0252  0.4931  2.6302 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.02884  0.1698  
+ Residual             0.01832  0.1353  
+Number of obs: 325, groups:  id, 110
+
+Fixed effects:
+                         Estimate Std. Error t value
+(Intercept)               7.86799    0.03158  249.14
+SESMid                   -0.00200    0.04237   -0.05
+difficultyrt_easy        -0.09351    0.02783   -3.36
+difficultyrt_mod         -0.08721    0.02797   -3.12
+age.c                    -0.14621    0.06223   -2.35
+SESMid:difficultyrt_easy  0.02021    0.03717    0.54
+SESMid:difficultyrt_mod   0.03023    0.03719    0.81
+
+Correlation of Fixed Effects:
+                  (Intr) SESMid dffcltyrt_s dffcltyrt_m age.c  SESMd:dffcltyrt_s
+SESMid            -0.752                                                        
+dffcltyrt_s       -0.447  0.333                                                 
+dffcltyrt_m       -0.451  0.336  0.505                                          
+age.c              0.106 -0.141 -0.001      -0.005                              
+SESMd:dffcltyrt_s  0.335 -0.440 -0.749      -0.378       0.000                  
+SESMd:dffcltyrt_m  0.339 -0.444 -0.380      -0.752       0.004  0.501           
+[1] "# ** analysis 5 **\tcompare different conceptualizations of SES (maternal education, etc.)"
+[1] "##TO DO"
+[1] "# ** analysis ** Differences by word type"
+Linear mixed model fit by REML ['lmerMod']
+Formula: log(rt) ~ SES * lexCat + age.c + (1 | id)
+   Data: rtstacklex
+
+REML criterion at convergence: -94.1
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-4.1500 -0.4952 -0.0462  0.5191  2.5328 
+
+Random effects:
+ Groups   Name        Variance Std.Dev.
+ id       (Intercept) 0.02783  0.1668  
+ Residual             0.02458  0.1568  
+Number of obs: 329, groups:  id, 110
+
+Fixed effects:
+                      Estimate Std. Error t value
+(Intercept)           7.928195   0.032870  241.20
+SESMid               -0.029397   0.044426   -0.66
+lexCatrt_noun        -0.213003   0.031672   -6.73
+lexCatrt_verb        -0.009623   0.031672   -0.30
+age.c                -0.125916   0.063154   -1.99
+SESMid:lexCatrt_noun  0.035626   0.042638    0.84
+SESMid:lexCatrt_verb  0.083414   0.042638    1.96
+
+Correlation of Fixed Effects:
+               (Intr) SESMid lxCtrt_n lxCtrt_v age.c  SESMd:lxCtrt_n
+SESMid         -0.746                                               
+lexCatrt_nn    -0.482  0.356                                        
+lexCtrt_vrb    -0.482  0.356  0.500                                 
+age.c           0.101 -0.135  0.000    0.000                        
+SESMd:lxCtrt_n  0.358 -0.482 -0.743   -0.371    0.000               
+SESMd:lxCtrt_v  0.358 -0.482 -0.371   -0.743    0.000  0.502        
+[1] "# ** planned analysis **\tInternal validity with cronbach alpha, using split trial"
+
+	Pearson's product-moment correlation
+
+data:  data$pc_1 and data$pc_2
+t = 13.104, df = 116, p-value < 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.6878292 0.8364872
+sample estimates:
+      cor 
+0.7725377 
+
+[1] "Espanol_Grupo1_imp"
+
+	Pearson's product-moment correlation
+
+data:  data$pc_1[data$profile == thisprof] and data$pc_2[data$profile == thisprof]
+t = 6.606, df = 29, p-value = 3.066e-07
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.5800603 0.8860737
+sample estimates:
+      cor 
+0.7750896 
+
+[1] "Espanol_Grupo1_preg"
+
+	Pearson's product-moment correlation
+
+data:  data$pc_1[data$profile == thisprof] and data$pc_2[data$profile == thisprof]
+t = 6.6682, df = 29, p-value = 2.594e-07
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.5848709 0.8876281
+sample estimates:
+    cor 
+0.77798 
+
+[1] "Espanol_Grupo2_imp"
+
+	Pearson's product-moment correlation
+
+data:  data$pc_1[data$profile == thisprof] and data$pc_2[data$profile == thisprof]
+t = 7.1018, df = 27, p-value = 1.231e-07
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.6255791 0.9056674
+sample estimates:
+      cor 
+0.8070465 
+
+[1] "Espanol_Grupo2_preg"
+
+	Pearson's product-moment correlation
+
+data:  data$pc_1[data$profile == thisprof] and data$pc_2[data$profile == thisprof]
+t = 5.7643, df = 25, p-value = 5.239e-06
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.5265513 0.8821799
+sample estimates:
+      cor 
+0.7554101 
+
+[1] "# Test potential presence of side bias"
+
+ 0  1 
+92 28 
+[1] "# ** NUTSHELL **\tEffect sizes"
+[1] "trials_completed d= -0.00946038626828271 \n r= 0.00473014021663914"
+[1] "trials_attempted d= -0.0010156193367134 \n r= 0.000507809602882106"
+[1] "pc d= -0.361388688418535 \n r= 0.177814793904265"
+[1] "rt_corr d= 1.40459462910178 \n r= 0.574723410614314"
