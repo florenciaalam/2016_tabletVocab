@@ -1,0 +1,155 @@
+Lunes
+Mañana ** ojo** me pregunto si no es mejor que yo llegue tipo 11 AM: instalar el server de backup. (Alex sola!)
+Tarde: aprender a usar el server + Estudio de comprensión, cuestiones técnicas, tablet, etc. (todas)
+Martes
+M: Estudio de comprensión, terminar de definir el diseño, etc. (Nosotras y Flor, Ale S. Ale M.? Maia? )
+T: seguir comprension, si terminamos input
+Miércoles
+M:  Gestos (Flor, Cynthia, Maia, Ileana, vos, yo)
+T: paper sobre input comparando a traves de los dos grupos (todas)
+Jueves
+M y T: Estadística, en principio lo que haríamos para el trabajo de SES; input y comprensión (lo longitudinal, ¿para la próxima o cómo te parece?). 
+Viernes 
+M: Responsiveness (Ale S, Ale M, vos, yo)
+T: Planificacion a largo termino, becas y viajes
+
+
+videos (Carla, Emi, Flor, vos, yo y las que quieran) 
+1
+
+=========
+TEST
+Donde? Queremos minimizar las diferencias entre grupos. Los de NSM estan en casas tranquilas, podriamos conseguir un lugar similar para NSB? Comedor comunitario - no, ruido (retumba), puede haber un monton de gente. Casa de Ramon?
+Filmamos? NO pero audio, y DECIMOS si pasa algo
+Llevar 2 ipads cuando hay muchos chicos?
+Auriculares: NO; no es ecologico
+
+Explicar el objetivo a los padres: Vemos produccion en las grabaciones, pero chicos comprenden mucho mas. 
+
+0. Preparacion
+ANTES!!! No en la casa. Declarar el numero del chico.
+
+Imposible de tener una situacion unica. Concentrado, comodo, que lo hagan solos. 
+Tratar de preparar la situacion lo mas que se pueda: Si la tele/radio prendida, pedir que la apaguen, si la gente se puede apartar que lo hagan. Explicar a los padres en una visita previa y firmar el consentimiento. Repetir lo esencial en la visita misma. 
+Explicar que es un examen dificil, para muchas edades. 
+
+1. Llegada
+Dos experimentadores - uno hace el cuestionario con la madre y otro se pone con el chico
+- Si el chico quiere estar upa de la mama: las preguntas se hacen despues. Se anota pero no es un problema -- queremos que el chico este comodo, etc, ver arriba.
+- Presencia de otros chicos: traemos segundo ipad
+
+2. Empieza el test
+
+INTERACCION CON EL CHICO:
+Pautada. 
+Mis 4 situaciones:
+- no interactua para nada -- al principio, mas tarde
+- interactua pero no bien
+- se distrae
+- no responde
++ chicos te hablan de las imagenes
+
+MADRE:
+- si da feedback despues, recordarle (pero no es terrible)
+- bias o madre responde o da pistas --> decir a la madre NO y excluir el ensayo
+- se pone nerviosa -- repetir que no pasa nada
+- interaccion con uno ("pero eso lo sabia!!")
+- al final, pregunta como le fue al chico: decir que todo OK
+
+EL SEGUNDO EXP:
+- distrae a los otros, alejar los perros
+
+3. Despues del test
+Si quieren jugar de nuevo.
+
+TEST ADULTOS:
+Para validar los estimulos, no los mismos padres
+
+PILOTOS NINOS
+
+
+SEGUIMIENTO A MAS LARGO TERMINO
+TRES LINEAS (Y cada uno estudiara los aspectos que le interesan, y si hay que tomar mas datos, nos colaboramos.)
+SEGUIMIENTO LONGITUDINAL -- LUCIA
+Por que hacerlo? objetivo: medir produccion y para conectar con trabajos anteriores
+cada 4 meses (ver Goldin-Meadow), 6 meses, o un año
+Por que seguido? evitar que las familias se olviden; porque en el barrio no les gustarian que desaparezcamos. Posible remplazar con visitas o llamados dia del niño, cumple.
++ o en lugar de seguimiento en casos especificos (por ej 3-4 años para narrativa)
+
+Que hacer? Seguimiento longitudinal en las casas cada un año
+produccion espontanea con audio 4h
+prueba de comprension - app expandida (ver arriba)
+grabador --> necesitamos chalecos nuevos
+
+
+JARDINES -- ILEANA
+Jardines: --> objetivo es ver el input
+mirar clases de 1, 2, 3 años. Comparar entre salas. Seguimiento longitudinal.
+cuando sea posible, ver a los mismos chicos que hemos visto, pero los mas jovenes van a ser nuevos (obviamente)
+- LENA o video? mejor video para gestos, ver si nos permiten. Se escucha bien? - quizas usar varios LENA.  Las otras familias tienen que firmar algo, a ver en que se ponen de acuerdo.
+Si es posible, tomar los mismos chicos en la casa.
+
+
+TODOS
+5 años
+- comprehension (app expandido)
+- produccion (test PLS5 o espontaneo)
+- escritura
+
+DEVOLUCION
+General, momentos y situaciones en las cuales los chicos hablan mas. No necesariamente hablar de diferencias de grupos.
+
+
+CHICOS 
+Homogeneos, ninguno con un trastorno claro. Ningun chico con indices sociales raros. Dos un poquito mas lentos para caminar y/o que hablan muy poquito. 
+
+***** MARTES
+Nos dividimos en grupos de trabajo. Uno revisa la lista de palabras y reordena los pares (notas en https://drive.google.com/open?id=1rVMK7b02MrlGXbTIsG629SzAsOrFFXR7R2GamX1RKo4). Otro busca imagenes. Un tercero trabaja en la programacion.
+
+
+*******
+Richman, Miller, 1992 contingency across social group
+
+Decisiones:
+- arrancar, peinarse/reirse, pesada?, rota?
+
+Alex:
+- tiempo corte
+- animaciones
+- sonido positivo
+- grabar las frases y editarlas
+- analisis
+
+Lucia:
+- generar las 2 versiones paralelas json para el piloto
+
+Alex+Charlotte:
+- tamanos "grande"
+- fotos: abrir, tirar, ; sacar fondos (excepto mosquito), camas, 
+
+$$$$ ultimo dia
+EDICION DE IMAGENES, ULTIMAS VERSIONES
+    Removing background - with GIMP : Layer menu --> transparency --> add an alpha channel --> shift + O + clic on the background --> erase or suppr --> save --> need to convert it in png (for example http://image.online-convert.com/fr/convertir-en-png)
+    - with PowerPoint (when it is complicated with GIMP) : double clic on the picture --> remove the background (top left) --> mark areas to keep and delete (the pink areas will be deleted by clicking next to the image) --> after that, right clic on the picture --> save as picture (.png)
+
+    Add a background with PowerPoint : first remove the background --> add a desired color rectangle and put the picture on it --> screen print (on the keyboard) --> right clic --> paste --> doucle clic on it --> crop the image --> right clic on it --> save as picture (.png)
+
+No need to change the size of the images before add them on iDevXXI. However, if the picture is too big, you can add some blank around it with Paint.
+
+$$$$$$$$$$$$
+Analisis:
+Gestos comunicativos 10, 13, 16 meses; Ntot=27 (9 each)
+Gesto indicativo + reaching + pointing +++ direccion de la mirada (solo, secuencial, alternado)
+Influencia del contexto interpersonal
+Tres grados de proximidad con la madre (upa, al lado, atras)
+Teatro con objeto como estimulo
+
+
+
+
+$$$$$ to add
+http://www.ncbi.nlm.nih.gov/pubmed/23472954
+http://www.ncbi.nlm.nih.gov/pubmed/8783139
+http://www.ncbi.nlm.nih.gov/pubmed/8604259
+http://onlinelibrary.wiley.com/doi/10.1111/j.1469-8749.1980.tb04371.x/abstract
+http://journals.lww.com/intjrehabilres/Citation/1982/06000/Standardization_of_the_Denver_Developmental.4.aspx
